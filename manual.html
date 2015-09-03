@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Manual for Proteator</title>
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <style>
+        h1,h2,h3,h4,p{
+            margin-left:10px;
+        }
+        a{
+            color:blue;
+            text-decoration:underline;
+            display:inline;
+            padding:0;
+            margin:0;
+        }
+        a:hover{
+            background-color:white;
+        }
+        .navigator{
+            right:10px;
+            top:5px;
+            position:fixed;
+            width:180px;
+        }
+        .navigator ul{
+            list-style:none;
+        }
+        .navigator a{
+            padding:0px;
+            margin:0px;
+        }
+        .main{
+            padding-right:200px;
+        }
+    </style>
+</head>
+<body>
+<div class="navigator">
+    <ul>
+        <li><a href="#uploadingData">Uploading Data</a></li>
+        <li><a href="#toolsAndFilters">Tools and filters</a></li>
+        <ul>
+            <li><a href="#filters">Filters</a></li>
+            <li><a href="#tools">Tools</a></li>
+        </ul>
+        <li><a href="#impressum">Impressum</a></li>
+    </ul>
+</div>
+<div class="main">
+<a href="index.html">Return to main page.</a>
+<h1>Manual</h1>
+<p>The following guide will allow you to visualize protein/peptide data with <i>Proteator</i>. Begin with <i>Uploading data</i> in order to learn how to map peptides
+    to their respective positions on the protein. <i>Tools and filters</i> provides information for the different tools or filters to use.<br/>
+For usage of <i>Proteator</i>, we recommend the web browser <i>Google Chrome</i>, although some other browsers (e.g. <i>Microsoft Edge</i> will also work. Please note
+    that <i>Proteator</i> is still under development and will receive updates from time to time which will improve its functionality.
+</p>
+<h2 id="uploadingData">Uploading data
+</h2>
+<ul>
+    <li><em>Requirements:</em> The required input consists of a text file (.mzTab or comma- or tab-separated values). When using a .mzTab file,
+    a PSH or PEH section should be present. When using other file types, please make sure they contain a protein identifier (e.g. P12830) and
+    the sequence of identified peptides (e.g. K.n[1.01]YTALVDQEEKEDVKc[17.00].S). The header for the respective column should be located in the first line
+    of the text file.</li>
+    <li>Under <i>Files</i> select any number of files that you want to visualize. Please note that big or many files will increase loading time.</li>
+    <li>After all files have been selected, press <i>submit</i>.</li>
+    <li>The following window will open up:</li>
+    <img style="width:1000px" src="img/proteator_fileInput.jpg"/>
+    <li>All files that are not of the type <i>.mzTab</i> will require user input.</li>
+    <li>At the upper left corner, the file names are displayed. Click on the names to change the file.</li>
+    <li>The table in the center of the window provides a preview of the file.</li>
+    <li>Please enter the following information:</li>
+    <ul>
+        <li>Specify whether the file is comma or tab-separated under "Column separation".</li>
+        <li>For "Header for accession column", enter the title of the column that contains the protein accession (in this example "protein"). Specify the format with
+        the rightmost selection under "Protein format". Note that if several proteins, separated by commas are present, only the first one will be regarded.</li>
+        <li>For "Header for peptide column", enter the title of the column containing the peptide sequence (here: "peptide").</li>
+        <li>If the file contains an express ratio, enter the resptive colum title under "Header for ratio column". The values should be supplied as decimal numbers.</li>
+        <li>Repeat those steps for all files which are displayed in the the upper left corner of the window.</li>
+        <li>Click apply.</li>
+    </ul>
+    <li><i>Proteator</i> will now begin downloading the necessary protein data from <i>Uniprot</i>. The progress can be followed by the appearance of the following progress bar:</li>
+    <img src="img/proteator_loadingBar.jpg" style="width:500px"/>
+    <li>Please be patient as the download can take some time.</li>
+    <li>Once it is finished, the submitted data will be displayed in the following form:</li>
+    <img src="img/proteator_results.jpg" style="width:1000px"/>
+    <li>Accession and long name of the protein are displayed on the top left. Click on the accession to be redirected to the protein entry on <i>Uniprot</i>.</li>
+    <li>It follows a scale for the size of the protein and the protein itself. The colored areas on the protein correspond to certain topological domains.
+    Refer to the legend on the right or hover your mouse over the protein to learn which color means which type of domain.</li>
+    <li>Below the protein you can see the peptides mapped to it. If an express ratio was entered during input, it will be reflected by the color of the peptide.
+    The express ratio will furthermore be listed as foldchange - log2(xpress) - on the bar below the protein. Hover your mouse over a peptide or click on it to
+    see its sequence and express ratio.</li>
+    <li>Click on the "+" button for a more extensive view of the protein sequence with mapped peptides and topological annotation.</li>
+
+</ul>
+<h2 id="toolsAndFilters">Tools and filters</h2>
+<h3 id="filters">Filters:</h3>
+<ul>
+    <li>After a dataset has been visualized, move your mouse to "Filter".</li>
+    <li>At the current moment, you can filter for three types of topological domains: cytoplasmic/lumenal, transmembrane and extracellular.</li>
+    <li>Select any of those three domains.</li>
+    <li>Filter types determines which logic should be applied to the selected domains:</li>
+    <ul>
+        <li>Select "Display all" to undo filters and display everything.</li>
+        <li>"AND" applies Boolean AND logic to the selected domains. If "AND" is selected, only proteins are shown which contain ALL of the selected domains.</li>
+        <li>"OR" applies Boolean OR logic to the selected domains. If "OR" is selected, all proteins are shown which contain either of the selected domains.</li>
+    </ul>
+</ul>
+<h3 id="tools">Tools:</h3>
+<ul>
+    <li>Under "Tools" click "Invert foldchange" to invert all foldchange values.</li>
+    <li>[CURRENTLY DEPRECATED] Click "Calculate coverage" to calculate and display the coverage for each protein.</li>
+</ul>
+<h2 id="impressum">Impressum</h2>
+    <>
+        Proteator was created by Patrick Heisterkamp (contact: patrick.heisterkamp@gmail.com), University of Freiburg, on order of the AG Schilling, University of Freiburg.
+    <br/>
+        Especial gratitude goes to Lars Nilse and Björn Grüning (both University of Freiburg) who provided valuable support during the development.
+        <br/>
+    The sequence viewer is used under <a href="https://github.com/ljgarcia/biojs-vis-sequence/blob/master/LICENSE">Apache License 2.0</a>. It was created by <a href="https://github.com/greenify">
+    <i>greenify</i></a> and <a href="https://github.com/ljgarcia"><i>ljgarcia</i></a> on <a href="http://biojs.io/">biojs.io</a>.
+    </p>
+
+<a href="index.html">Return to main page.</a>
+</div>
+</body>
+</html>

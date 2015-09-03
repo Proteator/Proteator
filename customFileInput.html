@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom input</title>
+
+    <style>
+        .customInput_container{
+            background:white;
+            border: thin solid black;
+            padding:0;
+            position: fixed;
+            left:0;
+            right:0;
+            bottom:0;
+            top:0;
+            width:80%;
+            height:80%;
+            margin:auto;
+        }
+        .customInput_applyButton{
+            position:absolute;
+            left:10px;
+            bottom:10px;
+        }
+        .customInput_cancelButton{
+            position:absolute;
+            right:10px;
+            bottom:10px;
+        }
+
+        .customInput_container span{
+            display:block;
+        }
+        .customInput_settings div{
+            position:relative;
+            display: inline-block;
+        }
+        .customInput_container .customInput_previewTable{
+            display:block;
+            height:300px;
+            border-collapse:collapse;
+        }
+        .customInput_previewTable td {
+            border: 1px solid black;
+        }
+        .customInput_container .customInput_previewTableBody{
+            display:block;
+            height: 100%;
+            width:100%;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+
+        .customInput_container .customInput_fileTable{
+            padding-top:0;
+            paddin-bottom:0;
+            margin-top:0;
+            margin-bottom:0;
+            display:block;
+            border-collapse:collapse;
+        }
+        .customInput_container .customInput_fileTable td{
+            padding:5px 10px 5px 10px;
+        }
+
+        /*for current selection:*/
+        .td_active{
+            border:none;
+        }
+        .td_inactive{
+            border-bottom: thin solid black;
+            border-left: thin solid black;
+            border-right: thin solid black;
+        }
+
+
+        ::selection{
+            background-color: #0af;
+        }
+    </style>
+</head>
+<body>
+
+<!-- copy to main file -->
+<div id="customContainer" class="customInput_container">
+    <table class="customInput_fileTable" id="customInput_fileTable">
+        <tbody id="customInput_fileTableBody">
+        <tr>
+            <td class="td_active">
+                File 1
+            </td>
+            <td class="td_inactive">File 2</td>
+            <td class="td_inactive">File 3</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="customInput_settings" id="customInput_settings">
+        <div id="customInputSetting_left">
+        <span>
+            <input type="text" id="customInput_proteinLabel"><label for="customInput_proteinLabel">Header for accession column</label>
+        </span>
+        <span>
+            <input type="text" id="customInput_peptideLabel"><label for="customInput_peptideLabel">Header for peptide column</label>
+        </span>
+        <span>
+            <input type="text" id="customInput_xpressLabel"><label for="customInput_xpressLabel">Header for xpress column (optional)</label>
+        </span>
+        </div>
+
+        <div id="customInputSetting_middle">
+
+            <p>Column separation</p>
+            <span>
+            <fieldset>
+                <input type="radio" id="customInput_separation_tab" name="separation" value="tab-separated" checked onclick="displayLines(customInput.lines)"> tab</br>
+                <input type="radio" id="customInput_separation_komma" name="separation" value="komma-separated" onclick="displayLines(customInput.lines)"> komma
+            </fieldset>
+            </span>
+        </div>
+
+        <div id="customInputSetting_right">
+            <!--for selection files like .mztab; TODO: write the scripts for this
+            <p>Header line</p>
+            <span>
+                <input type="checkbox" id="customInput_headerlineCheck"><label for="customInput_headerlineCheck">Header line not first line</label>
+            </span>
+            <span>
+                <input type="text" id="customInput_headerLineName" disabled><label for="customInput_headerLineName">Header line marked by</label>
+            </span>-->
+
+            <p>Protein format</p>
+            <span>
+            <fieldset id="testfieldset">
+                <input type="radio" id="customInput_proteinformat_long" name="proteinformat" value="long" checked>tr|G3X9L6|G3X9L6_MOUSE</br>
+                <input type="radio" id="customInput_proteinformat_short" name="proteinformat" value="short">G3X9L6
+            </fieldset>
+            </span>
+        </div>
+    </div>
+
+    <p>Preview:</p>
+    <table class="customInput_previewTable" id="customInput_previewTable">
+        <tbody id="customInput_previewTableBody" class="customInput_previewTableBody">
+        <tr>
+            <td>
+                1
+            </td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>
+                3
+            </td>
+            <td>4</td>
+        </tr>
+        </tbody>
+    </table>
+    <button class="customInput_cancelButton" onclick="customInput_cancel()">Cancel</button>
+    <button class="customInput_applyButton" onclick="customInput_start()">Apply</button>
+</div>
+
+</body>
+</html>

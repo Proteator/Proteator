@@ -13,8 +13,10 @@ function function_cancelDownload(){
 }
 
 
+var tempXmlStorage=[];
 function downloadData(){
     console.log("Download process started");
+
 
     var gradientsize=0;
     $(".loadingbar").css("display","block");
@@ -31,18 +33,22 @@ function downloadData(){
         proteinnumber++;
         idArray.push(id);
     }
-    console.log("Proteins before download2:");
-    console.log(proteins);
-    console.log("idArray");
-    console.log(idArray);
 
     //TODO: adjust proteinnumber if ids are removed from the list as they are double
     proteins2={};
     var downloadcounter=0;
     $("#loadingtext").text("Downloading proteins: "+downloadcounter+"/"+proteinnumber);
-    setTimeout(downloadProteinById(),0);
+
+    var batchsize = 50;
+
+    console.log("Batchsize: "+batchsize);
+    setTimeout(downloadProteinsAsBatch(0),0);
 
 
+    //old and slow:
+    //setTimeout(downloadProteinById(),0);
+
+    //old function, currently not used
     function downloadProteinById(){
 
         var id = idArray[downloadcounter];
@@ -82,7 +88,7 @@ function downloadData(){
             }
 
         } catch (e) {
-            // console.log("Download failed "+e);
+            console.error(e);
         }
         }
         downloadcounter++;
@@ -108,6 +114,85 @@ function downloadData(){
 
     }
 
+    //not all proteins should be downloaded at once due to strain on the memory and loading times -> batches
+
+
+
+    function downloadProteinsAsBatch(startposition){
+        var batchcounter=startposition;
+        var last = startposition+batchsize;
+        if(last>idArray.length){
+            last=idArray.length;
+        }
+
+        var proteinsDownloaded=0;
+        tempXmlStorage=[];//saves xml
+
+
+        $("#loadingtext").text("Downloading proteins: "+batchcounter+"/"+proteinnumber);
+        //update the loading bar
+        var percent=((batchcounter/proteinnumber)*100);
+        var percent2=percent+gradientsize+"%";
+        percent+="%";
+        $(".loadingbar").css("background","linear-gradient(to right, #2672EC "+percent+", white "+percent2+")");
+        $(".loadingbar").css("background","-moz-linear-gradient(right, #2672EC "+percent+", white "+percent2+")");
+        $(".loadingbar").css("background","-o-linear-gradient(right, #2672EC "+percent+", white "+percent2+")");
+        $(".loadingbar").css("background","-webkit-linear-gradient(left, #2672EC "+percent+", white "+percent2+")");
+
+        //watch out: last is NOT downloaded anymore
+        for(batchcounter;batchcounter<last;batchcounter++){
+            var id = idArray[batchcounter];
+            //prevents double downloading if different ids for the same protein were listed
+            if(id in proteins && id!="" && id !=undefined){
+
+                console.log("Downloading: "+batchcounter+"/"+proteinnumber);
+
+                var uniprot_url = "http://www.uniprot.org/uniprot/" + id + ".xml";
+
+                jQuery.ajax({
+                    url: uniprot_url,
+                    type: 'GET',
+                    success: function (resp) {
+                        console.log("Retrieved: "+batchcounter+"/"+proteinnumber);
+
+                        tempXmlStorage.push(resp);
+                        responseReceived();
+                    },
+                    //if error occurs, the protein can't be displayed
+                    error: function (request, status, error) {
+                        console.log("Error when downloading: " + status + " " + error);
+                        delete proteins[id];
+                    }
+                });
+
+            }
+        }
+
+        //collects all received responses only continues after all proteins arrived
+        function responseReceived(){
+            proteinsDownloaded++;
+            if(proteinsDownloaded+startposition>=last){
+                for(container in tempXmlStorage){
+                    readXml(tempXmlStorage[container]);
+                }
+                //continue with next batch or go on
+                if(batchcounter>=idArray.length){
+                    //finished downloading, continue
+                    $(".loadingbar").css("display","none");//hide loadingbar
+
+                    proteins=proteins2;//transfer to old list; from now on, proteins and proteins 2 are equivalent
+
+                    d3.select("#json_download").attr("class","pButton");//allow download of the data
+
+                    visualize();//display
+                }
+                else{
+                    setTimeout(downloadProteinsAsBatch(last),0);//timeout for interface update
+                }
+            }
+        }
+
+    }
 
 }
 
@@ -115,7 +200,8 @@ function downloadData(){
 
 var proteins2={};//create new object as there seem to be problems with only using a single one
 
-function readXml(xml,currentId) {
+function readXml(xml) {
+    //currentId serves to recognize protein duplicates within the original file
 
     //here: combine the ids and the respective sequences
     var ids2 = xml.getElementsByTagName("accession");//temporary collection
@@ -141,23 +227,23 @@ function readXml(xml,currentId) {
             proteins2[mainId]["sequence"]="";
 
             //only proteins that are really defined
-            if (currentId in proteins) {
+            if (id in proteins) {
             //transfer all the peptides if they aren't present yet
-            for (peptide in proteins[currentId].peptides) {
+            for (peptide in proteins[id].peptides) {
 
                 //if undefined, add it; if already defined, only if probability is higher
                 if (proteins2[mainId].peptides[peptide] == undefined) {
                     //transferred the peptide
-                    proteins2[mainId].peptides[peptide] = proteins[currentId].peptides[peptide];
+                    proteins2[mainId].peptides[peptide] = proteins[id].peptides[peptide];
                 } else {
                     var oldProb = proteins2[mainId].peptides[peptide].probability;
-                    var newProb = proteins[currentId].peptides[peptide].probability;
+                    var newProb = proteins[id].peptides[peptide].probability;
                     if (newProb > oldProb) {
-                        proteins2[mainId].peptides[peptide] = proteins[currentId].peptides[peptide];
+                        proteins2[mainId].peptides[peptide] = proteins[id].peptides[peptide];
                     }
                 }
             }
-                delete proteins[currentId];
+                delete proteins[id];
             }
 
         }
@@ -199,34 +285,41 @@ function readXml(xml,currentId) {
 
     //here: specify which features should be downloaded
     //display features
-    var featurelist = xml.getElementsByTagName("feature");
-    for (i = 0; i < featurelist.length; i++) {
-        var type = featurelist[i].getAttribute("type");
-        if (type == "topological domain") {
-            //TODO: check whether correct or not
-            var begin = featurelist[i].getElementsByTagName("begin")[0].getAttribute("position");
-            var end = featurelist[i].getElementsByTagName("end")[0].getAttribute("position");
-            var description = featurelist[i].getAttribute("description");
-            var transfer = [type, begin, end, description];
-            proteins2[mainId].topology.push(transfer);
-        }
-        else if (type == "transmembrane region") {//here the description is in most cases "helical" or so. I don't need this.
-            var begin = featurelist[i].getElementsByTagName("begin")[0].getAttribute("position");
-            var end = featurelist[i].getElementsByTagName("end")[0].getAttribute("position");
-            var description = "Transmembrane";
-            var transfer = [type, begin, end, description];
-            proteins2[mainId].topology.push(transfer);
-        }
-        else if (type == "signal peptide") {//here the description is in most cases "helical" or so. I don't need this.
-            var begin = featurelist[i].getElementsByTagName("begin")[0].getAttribute("position");
-            var end = featurelist[i].getElementsByTagName("end")[0].getAttribute("position");
-            var description = "Signal peptide";
-            var transfer = [type, begin, end, description];
-            proteins2[mainId].topology.push(transfer);
-        }
-    }
-}
+    console.log("Extracting features for "+mainId);
 
+    //TODO: frequently, errors are thrown - why?
+        var featurelist = xml.getElementsByTagName("feature");
+        for (i = 0; i < featurelist.length; i++) {
+            var type = featurelist[i].getAttribute("type");
+            try {
+                if (type == "topological domain") {
+                    //TODO: check whether correct or not
+                    var begin = featurelist[i].getElementsByTagName("begin")[0].getAttribute("position");
+                    var end = featurelist[i].getElementsByTagName("end")[0].getAttribute("position");
+                    var description = featurelist[i].getAttribute("description");
+                    var transfer = [type, begin, end, description];
+                    proteins2[mainId].topology.push(transfer);
+                }
+                else if (type == "transmembrane region") {//here the description is in most cases "helical" or so. I don't need this.
+                    var begin = featurelist[i].getElementsByTagName("begin")[0].getAttribute("position");
+                    var end = featurelist[i].getElementsByTagName("end")[0].getAttribute("position");
+                    var description = "Transmembrane";
+                    var transfer = [type, begin, end, description];
+                    proteins2[mainId].topology.push(transfer);
+                }
+                else if (type == "signal peptide") {//here the description is in most cases "helical" or so. I don't need this.
+                    var begin = featurelist[i].getElementsByTagName("begin")[0].getAttribute("position");
+                    var end = featurelist[i].getElementsByTagName("end")[0].getAttribute("position");
+                    var description = "Signal peptide";
+                    var transfer = [type, begin, end, description];
+                    proteins2[mainId].topology.push(transfer);
+                }
+            }
+            catch(e){
+                //from time to time, topological domains will just have "position" instead of begin and end which makes the information invaluable
+            }
+        }
+}
 
 
 //export function to download the JSON file upon download

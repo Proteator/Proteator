@@ -1,5 +1,10 @@
 /**
  * Created by Patrick on 20.06.2015.
+ * This script contains all available filters and tools:
+ * Filtering for topological information - TODO: simplify addition of new topological info in script
+ * Inversion of fold ratios
+ * Calculation of coverage - TODO: final touches, reenable
+ * TODO: function for sorting proteins by coverage, size, etc.
  */
 
 var proteinData={};//object to save additional data for the proteins while keeping the information separate from the main "protein" object

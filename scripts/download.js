@@ -1,10 +1,6 @@
-//task for this file:
-    //download sequence data, topological data (X)
-    //find equivalent ids and unify those entries (X)
-    //create from this information an object that will be used for visualization (X)
-    //allow the user to download a modified interact.prot file (with foldRatio and unq stripped peptides)
-    //or a proteator-specific JSON file that contains the downloaded information (X)
-    //for the visualization: also display peptides that could not be aligned
+/**
+ *This file controls the download of data from Uniprot, the download of data (export) to the user and the respective UI.
+ */
 
 //only for development purposes
 var cancelDownload=false;

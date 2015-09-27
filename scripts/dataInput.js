@@ -1,8 +1,17 @@
 /**
  * Created by Patrick on 14.06.2015.
+ *
+ * This Script handles user input.
  */
 
-    //allows to create the fold ratio (express to log2)
+/**
+ * Possible TODOS:
+ * improve the selection process (clicking istead of typing)
+ * mzTab fold ratio?
+ */
+
+
+//allows to create the fold ratio (express to log2)
 Math.log = (function() {
     var log = Math.log;
     return function(n, base) {
@@ -10,15 +19,12 @@ Math.log = (function() {
     };
 })();
 
-//TODO: improve the selection process (clicking istead of typing)
-//TODO: automatically apply mzTab settings (don't disply mztabss)
-//TODO: extract fold ratio out of mztab
 
-//TODO: reimplement JSON upload
 
 
 var activeTab;//saves the tab which is currently being modified
 var fileSettings={};//object to save the settings made by the user for the different files
+
 /*
 fileSettings={
     id={

@@ -1,9 +1,13 @@
+/**
+ * this script is responsible for displaying proteins and mapping peptides
+ *
+ * possible TODOs:
+ * dynamically display only the proteins currently on screen (reduces memory/CPU usage
+ * provide the user with a button to cancel the download?
+ * display unalignable peptides
+ * create log with undownloaded peptides
+ */
 
-//TODO: visualize only proteins currently on screen
-//TODO: add cancel download button again
-//TODO: manual
-//TODO: display additional information for the proteins/peptides
-//TODO: add warning if file was not saved and window is closed or new data downloaded
 
 //as the individual components are prone to change during development, it is the easiest approach to create one of the divs and then measure its height in order to get the height for every div
 var firstDivId;

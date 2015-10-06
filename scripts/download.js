@@ -157,7 +157,8 @@ function downloadData(){
                     //if error occurs, the protein can't be displayed
                     error: function (request, status, error) {
                         console.log("Error when downloading: " + status + " " + error);
-                        delete proteins[id];
+                        //delete proteins[id];//would only delete last protein
+                        responseReceived();
                     }
                 });
 
@@ -197,7 +198,9 @@ function downloadData(){
 var proteins2={};//create new object as there seem to be problems with only using a single one
 
 function readXml(xml) {
+    if(xml!=null){
     //currentId serves to recognize protein duplicates within the original file
+
 
     //here: combine the ids and the respective sequences
     var ids2 = xml.getElementsByTagName("accession");//temporary collection
@@ -315,6 +318,7 @@ function readXml(xml) {
                 //from time to time, topological domains will just have "position" instead of begin and end which makes the information invaluable
             }
         }
+    }
 }
 
 

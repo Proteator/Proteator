@@ -76,7 +76,7 @@ For usage of <i>Proteator</i>, we recommend the web browser <i>Google Chrome</i>
         <li>For "Header for accession column", enter the title of the column that contains the protein accession (in this example "protein"). Specify the format with
         the rightmost selection under "Protein format". Note that if several proteins, separated by commas are present, only the first one will be regarded.</li>
         <li>For "Header for peptide column", enter the title of the column containing the peptide sequence (here: "peptide").</li>
-        <li>If the file contains an express ratio, enter the resptive colum title under "Header for ratio column". The values should be supplied as decimal numbers.</li>
+        <li>If the file contains an express ratio, enter the resptive colum title under "Header for ratio column". The values should be supplied as ratio (values between 0 and &#8594;∞) and as decimal numbers.</li>
         <li>Repeat those steps for all files which are displayed in the the upper left corner of the window.</li>
         <li>Click apply.</li>
     </ul>
@@ -88,8 +88,8 @@ For usage of <i>Proteator</i>, we recommend the web browser <i>Google Chrome</i>
     <li>Accession and long name of the protein are displayed on the top left. Click on the accession to be redirected to the protein entry on <i>Uniprot</i>.</li>
     <li>It follows a scale for the size of the protein and the protein itself. The colored areas on the protein correspond to certain topological domains.
     Refer to the legend on the right or hover your mouse over the protein to learn which color means which type of domain.</li>
-    <li>Below the protein you can see the peptides mapped to it. If an express ratio was entered during input, it will be reflected by the color of the peptide.
-    The express ratio will furthermore be listed as foldchange - log2(xpress) - on the bar below the protein. Hover your mouse over a peptide or click on it to
+    <li>Below the protein you can see the peptides mapped to it. If an express ratio was entered during input, the fold change will be calculated and reflected by the color of the peptide.
+        The exact number will be listed as foldchange - log2(xpress) - on the bar below the protein. Hover your mouse over a peptide or click on it to
     see its sequence and express ratio.</li>
     <li>Click on the "+" button for a more extensive view of the protein sequence with mapped peptides and topological annotation.</li>
 

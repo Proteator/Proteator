@@ -472,14 +472,7 @@ function splitCustomInput(data, data_access) {
 
                 if (proteinAccessionLong) {//sp|P12830|someName
                     for (entry in entries) {
-                        var id;
-                        if(entries.length%3==0){//only if three are there; otherwise read like in the short settings
-                           id = entries[entry].split("|")[1];
-                        }
-                        else{
-                            id=entries[entry];
-                        }
-
+                        var id = entries[entry].split("|")[1];
                         ids.push(id);
                     }
                 }

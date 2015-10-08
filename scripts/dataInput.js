@@ -184,6 +184,7 @@ function createDefaultSettings(tab_id,file){
     fileSettings[tab_id].tab_separation=true;
     fileSettings[tab_id].protein_format_long=true;
     fileSettings[tab_id]["file"]=file;
+    fileSettings[tab_id]["onlyUseRatio"]=false;
 }
 
 //visualize the settings
@@ -211,6 +212,12 @@ function setSettings(tab_id){
         d3.select("#customInput_proteinformat_long").property("checked",false);
         d3.select("#customInput_proteinformat_short").property("checked",true);
     }
+    if(settings["onlyUseRatio"]){
+        d3.select("#checkbox_onlyUseRatio").property("checked",true);
+    }
+    else{
+        d3.select("#checkbox_onlyUseRatio").property("checked",false);
+    }
 
     //preview file
     customInput_fileChanged(tab_id);
@@ -227,6 +234,7 @@ function saveSettings(){
     fileSettings[tab_id].xpress_header=d3.select("#customInput_xpressLabel").property("value").toLowerCase();
     fileSettings[tab_id].tab_separation=d3.select("#customInput_separation_tab").property("checked");
     fileSettings[tab_id].protein_format_long=d3.select("#customInput_proteinformat_long").property("checked");
+    fileSettings[tab_id]["onlyUseRatio"]=d3.select("#checkbox_onlyUseRatio").property("checked");
 
     colorize();//marks the corresponding table cells
 }
@@ -317,7 +325,16 @@ function displayLines(lines){
 
 //----------------main functions-----------------------
 
-var proteins={};//save and download
+var proteins={};//save and download all data
+var ratioData={};//if "onlyUseRatios" was selected, the peptides will be saved in this object along with the ratio. Later, the ratios will be applied to the peptides from the protein object
+var ratioDataContainsInput=true;//bool to save wether data from in there should be copied or not
+/*form:
+ratioData={
+    [peptideSequence]ATRBASDAD:
+        "ratio":[array with all ratios for the unique stripped peptide][1.5,1.2,...]
+}
+
+ */
 
 var splitbytab;
 
@@ -333,6 +350,8 @@ var fileNumber=0;
 function extractData(){
     proteinData={};//reset protein data
     proteins={};//clear object
+    ratioData={};
+    ratioDataContainsInput = false;
 
     displayLoading(true);
 
@@ -392,45 +411,52 @@ function splitCustomInput(data, data_access) {
     var settings = fileSettings[data_access];
 
     //for ease of selecting the lines
-    var code_proteinheader=settings.accession_header;
-    var code_peptideheader=settings.peptide_header;
-    var code_xpressheader=settings.xpress_header;
-    var proteinAccessionLong=settings.protein_format_long;
+    var code_proteinheader = settings.accession_header;
+    var code_peptideheader = settings.peptide_header;
+    var code_xpressheader = settings.xpress_header;
+    var proteinAccessionLong = settings.protein_format_long;
     var splitByTab = settings.tab_separation;
+
+    //onlyUseRatio -> peptides are saved to ratioData
+    var onlyUseRatio = settings["onlyUseRatio"];
+    if(onlyUseRatio){
+        //set this to true in order to add a step in which the data is transferred
+        ratioDataContainsInput=true;
+    }
 
 
     //find relevant lines + columns
-    var headerline=[];
-    var peptidelines=[];
+    var headerline = [];
+    var peptidelines = [];
 
     //TODO: function to search for the first line
     //TODO: search for xpress ratio
 
-    for(line in lines){
-        var line2 = lines[line].replace("\r","");
-        var tempArray=[];
-        if(splitByTab){
-            tempArray=line2.split("\t");
+    for (line in lines) {
+        var line2 = lines[line].replace("\r", "");
+        var tempArray = [];
+        if (splitByTab) {
+            tempArray = line2.split("\t");
         }
-        else{
+        else {
             //split by komma
-            tempArray=line2.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
+            tempArray = line2.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
         }
-        if(line==0){
-            headerline=tempArray;
-            for(entry in headerline){
-                headerline[entry]=headerline[entry].toLowerCase();//lower case necessary as input was also transformed to lower case
+        if (line == 0) {
+            headerline = tempArray;
+            for (entry in headerline) {
+                headerline[entry] = headerline[entry].toLowerCase();//lower case necessary as input was also transformed to lower case
             }
         }
-        else{
+        else {
             peptidelines.push(tempArray);
         }
     }
 
     //find columns: sequence, accession
-    var proteinColumnTitle=code_proteinheader;
-    var peptideColumnTitle=code_peptideheader;
-    var xpressColumnTitle=code_xpressheader;
+    var proteinColumnTitle = code_proteinheader;
+    var peptideColumnTitle = code_peptideheader;
+    var xpressColumnTitle = code_xpressheader;
 
     var peptidePosition = -1;
     var proteinPosition = -1;
@@ -442,112 +468,140 @@ function splitCustomInput(data, data_access) {
         } else if (headerline[j] == proteinColumnTitle) {
             proteinPosition = j;
         }
-        else if(xpressColumnTitle!=""&&headerline[j]==xpressColumnTitle){
-            xpressPosition=j;
-             console.log("xpress position: "+xpressPosition);
+        else if (xpressColumnTitle != "" && headerline[j] == xpressColumnTitle) {
+            xpressPosition = j;
+            console.log("xpress position: " + xpressPosition);
         }
     }
 
     //console alert if columns weren't found
-    if(peptidePosition==-1){
-        console.log("custom input: "+code_peptideheader+": no sequence column found");
-    } else if(proteinPosition==-1){
-        console.log("custom input: "+code_proteinheader+": no accession column found");
+    if (peptidePosition == -1) {
+        console.log("custom input: " + code_peptideheader + ": no sequence column found");
+    } else if (proteinPosition == -1) {
+        console.log("custom input: " + code_proteinheader + ": no accession column found");
     }
 
     //transfer data to "proteins" object
-    for (var i = 0; i < peptidelines.length; i++) {
-        //check for empty entries
-        var line=peptidelines[i];
+    if (!onlyUseRatio){
+        for (var i = 0; i < peptidelines.length; i++) {
+            //check for empty entries
+            var line = peptidelines[i];
 
-        try {
-            //prevent errors if lines are missing entries
-            if (line.length >= proteinPosition && line!=undefined) {
+            try {
+                //prevent errors if lines are missing entries
+                if (line.length >= proteinPosition && line != undefined&&line!="") {
 
-                //decide between different sorts of accession (long/short)
-                var ids = [];//TODO: handle multiple entrie
+                    //decide between different sorts of accession (long/short)
+                    var ids = [];//TODO: handle multiple entrie
 
-                var entries = line[proteinPosition].split(",");
-                console.log("Entries: "+entries);
+                    var entries = line[proteinPosition].split(",");
+                    console.log("Entries: " + entries);
 
-                if (proteinAccessionLong) {//sp|P12830|someName
-                    for (entry in entries) {
-                        var id = entries[entry].split("|")[1];
-                        ids.push(id);
-                    }
-                }
-                else {
-                    for (entry in entries) {
-                        var id = entries[entry];
-                        ids.push(id);
-                    }
-
-                }
-
-                //TODO: display unaligned proteins
-                //remove everyhting but big letters and use this for all peptides
-                var sequence = line[peptidePosition].replace(/[^A-Z]/g, '');
-                for (idnumber in ids) {
-                    console.log("Ids: "+ids+" IdNumber: "+idnumber);
-                    var id = ids[idnumber];
-                    //if the entry was undefined -> simply add new peptide
-                    //TODO: if any new changes: combine the functions that save data in "proteins" as one function
-                    console.log("Before definition - ID: "+id+" Proteins[id]: "+proteins[id]);
-                    if (proteins[id] == undefined) {
-                        console.log("ID: "+id+" Proteins[id]: "+proteins[id]);
-                        proteins[id] = {};
-                        proteins[id].peptides = {};//peptides also saved as object to prevent duplicates
-                        //in the peptides, also ratio and probability are saved;
-                        //TODO: get name out of xml file
-                        //proteins[id].name = name;//define name only if the protein was undefined until now
-
-                        if (sequence != "") {
-                            proteins[id].peptides[sequence] = {};
-                            if (xpressPosition != -1) {
-                                proteins[id].peptides[sequence]["ratio"] = line[xpressPosition];
-                                console.log("xpress: " + line[xpressPosition]);
-                            }
-                            else {
-                                proteins[id].peptides[sequence]["ratio"] = "undefined";
-                            }
+                    if (proteinAccessionLong) {//sp|P12830|someName
+                        for (entry in entries) {
+                            var id = entries[entry].split("|")[1];
+                            ids.push(id);
                         }
-                    } else {//add peptide to existing object
-                        if (sequence != "") {
-                            //only add if peptide not listed yet
-                            if (proteins[id].peptides[sequence] == undefined) {
+                    }
+                    else {
+                        for (entry in entries) {
+                            var id = entries[entry];
+                            ids.push(id);
+                        }
+
+                    }
+
+                    //TODO: display unaligned peptides
+                    //remove everyhting but big letters and use this for all peptides
+                    var sequence = line[peptidePosition].replace(/[^A-Z]/g, '');
+                    for (idnumber in ids) {
+                        var id = ids[idnumber];
+                        //if the entry was undefined -> simply add new peptide
+                        //TODO: if any new changes: combine the functions that save data in "proteins" as one function
+                        if (proteins[id] == undefined) {
+                            proteins[id] = {};
+                            proteins[id].peptides = {};//peptides also saved as object to prevent duplicates
+                            //in the peptides, also ratio and probability are saved;
+                            //TODO: get name out of xml file
+                            //proteins[id].name = name;//define name only if the protein was undefined until now
+
+                            if (sequence != "") {
                                 proteins[id].peptides[sequence] = {};
                                 if (xpressPosition != -1) {
                                     proteins[id].peptides[sequence]["ratio"] = line[xpressPosition];
+                                    console.log("xpress: " + line[xpressPosition]);
                                 }
                                 else {
                                     proteins[id].peptides[sequence]["ratio"] = "undefined";
                                 }
-                            } else {
-                                //otherwise update the probability if it is higher or defined versus undefined
-                                var oldProb;
-                                try {
-                                    oldProb = proteins[id].peptides[stripped]["probability"];
-                                    if (oldProb == "undefined") {
+                            }
+                        } else {//add peptide to existing object
+                            if (sequence != "") {
+                                //only add if peptide not listed yet
+                                if (proteins[id].peptides[sequence] == undefined) {
+                                    proteins[id].peptides[sequence] = {};
+                                    if (xpressPosition != -1) {
+                                        proteins[id].peptides[sequence]["ratio"] = line[xpressPosition];
+                                    }
+                                    else {
+                                        proteins[id].peptides[sequence]["ratio"] = "undefined";
+                                    }
+                                } else {
+                                    //otherwise update the probability if it is higher or defined versus undefined
+                                    var oldProb;
+                                    try {
+                                        oldProb = proteins[id].peptides[stripped]["probability"];
+                                        if (oldProb == "undefined") {
+                                            oldProb = 0;
+                                        }
+                                    } catch (e) {
                                         oldProb = 0;
                                     }
-                                } catch (e) {
-                                    oldProb = 0;
+                                    //TODO: here: compare probability (or other value) with the old one
                                 }
-                                //TODO: here: compare probability (or other value) with the old one
                             }
                         }
                     }
                 }
             }
+            catch (e) {
+                console.log("Error in data input: " + e);
+            }
         }
-        catch(e){
-            console.log("Error in data input: "+e);
+    }
+    else{
+        for (var i = 0; i < peptidelines.length; i++) {
+            //check for empty entries
+            var line = peptidelines[i];
+
+            try {
+                //prevent errors if lines are missing entries
+                if (line.length >= proteinPosition && line != undefined) {
+                    //remove everyhting but big letters and use this for all peptides
+                    var sequence = stripPeptide(line[peptidePosition]);
+                    //initialize
+                    if(ratioData[sequence]==undefined){
+                        ratioData[sequence]={};
+                        ratioData[sequence]["ratios"]=[];
+                    }
+                    if (xpressPosition != -1) {
+                        //all ratios are saved; later the mean value is used
+                        ratioData[sequence]["ratios"].push(line[xpressPosition]);
+                    }
+                }
+            }
+            catch (e) {
+                console.log("Error in data input: " + e);
+            }
         }
     }
 
     fileCounter++;
     //start only if every file processed:
     if(fileCounter>=fileNumber){
+        if(ratioDataContainsInput){
+            transferRatioData();
+        }
         //add foldratio to every protein; remove proteins without peptides
         modifyProteins();
     }
@@ -728,10 +782,59 @@ function displayLoading(bool){
         d3.select("#loading_holder").style("display","none");
     }
 }
+
+//transfer ratio data from ratioData to proteins
+function transferRatioData(){
+    console.log("transferring ratios");
+    //for all the peptides listed in the proteins object, get the ratio from the ratioData object
+    for(id in proteins){
+        var peptideList = proteins[id].peptides;//is an object
+        for(entry in peptideList){
+            var peptide=entry;
+            console.log("Peptide: "+entry);
+            if(ratioData[peptide]!=undefined){
+                var ratios = ratioData[peptide].ratios;//array
+                var ratio=0;//final ratio is mean value
+                var counter=0;
+                console.log(JSON.stringify(ratios));
+                for(j in ratios){
+                    ratio+=parseFloat(ratios[j]);//otherwise treated as string
+                    counter++;
+                }
+                ratio=Math.round((ratio/counter)*100)/100;
+                proteins[id]["peptides"][peptide]["ratio"]=ratio;
+            }
+            else{
+                console.log("Ratio data for "+peptide+" not defined");
+            }
+        }
+    }
+    console.log("transferring ratios finished");
+}
+
+//TODO: test for all data cases that I had yet
+function stripPeptide(peptide){
+    //first case: brackets mark modifications -> take all in between the two bracket-construct
+    var start=peptide.indexOf("]");
+    var end = peptide.substring(start,peptide.length).indexOf("[")+start;
+    var strippedPeptide;
+
+    if(start==-1||stop==-1){
+        //if either could not be found, only use default method
+        strippedPeptide=peptide;
+    }
+    else{
+        strippedPeptide=peptide.substring(start,end);
+    }
+    //now standard method for removal of wrong characters
+    strippedPeptide=strippedPeptide.replace(/[^A-Z]/g, '');
+
+    return strippedPeptide;
+}
+
 //calculates foldratio and adds it to the peptides; removes entries if no peptide is present
 function modifyProteins(){
-    console.log("Proteins end: ");
-    console.log(proteins);
+    console.log("Modifying protein entries");
 
     for(protein in proteins){
 

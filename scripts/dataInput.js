@@ -194,7 +194,6 @@ function setSettings(tab_id){
     d3.select("#customInput_peptideLabel").property("value",settings.peptide_header);
     d3.select("#customInput_xpressLabel").property("value",settings.xpress_header);
 
-    console.log("tab separation: "+settings.tab_separation);
     if(settings.tab_separation){
         d3.select("#customInput_separation_tab").property("checked",true);
         d3.select("#customInput_separation_komma").property("checked",false);
@@ -374,7 +373,6 @@ function extractData(){
         var type = name.substring(name.lastIndexOf(".")+1);
 
         console.log("Downloading file settings: "+data);
-        console.log(proteins);
         if(type.toLowerCase()=="mztab"){
             read_mztab(data);
         }
@@ -470,7 +468,6 @@ function splitCustomInput(data, data_access) {
         }
         else if (xpressColumnTitle != "" && headerline[j] == xpressColumnTitle) {
             xpressPosition = j;
-            console.log("xpress position: " + xpressPosition);
         }
     }
 
@@ -495,7 +492,6 @@ function splitCustomInput(data, data_access) {
                     var ids = [];//TODO: handle multiple entrie
 
                     var entries = line[proteinPosition].split(",");
-                    console.log("Entries: " + entries);
 
                     if (proteinAccessionLong) {//sp|P12830|someName
                         for (entry in entries) {
@@ -529,7 +525,6 @@ function splitCustomInput(data, data_access) {
                                 proteins[id].peptides[sequence] = {};
                                 if (xpressPosition != -1) {
                                     proteins[id].peptides[sequence]["ratio"] = line[xpressPosition];
-                                    console.log("xpress: " + line[xpressPosition]);
                                 }
                                 else {
                                     proteins[id].peptides[sequence]["ratio"] = "undefined";
@@ -764,7 +759,6 @@ function splitMzTabData(data) {
     }}
 
     fileCounter++;
-    console.log("Filecounter: "+fileCounter+"/"+fileNumber);
     //start only if every file processed:
     if(fileCounter>=fileNumber){
         //add foldratio to every protein; remove proteins without peptides
@@ -791,12 +785,10 @@ function transferRatioData(){
         var peptideList = proteins[id].peptides;//is an object
         for(entry in peptideList){
             var peptide=entry;
-            console.log("Peptide: "+entry);
             if(ratioData[peptide]!=undefined){
                 var ratios = ratioData[peptide].ratios;//array
                 var ratio=0;//final ratio is mean value
                 var counter=0;
-                console.log(JSON.stringify(ratios));
                 for(j in ratios){
                     ratio+=parseFloat(ratios[j]);//otherwise treated as string
                     counter++;
@@ -812,21 +804,19 @@ function transferRatioData(){
     console.log("transferring ratios finished");
 }
 
-//TODO: test for all data cases that I had yet
+//TODO: are capital letters in all cases the only correct signs?
 function stripPeptide(peptide){
-    //first case: brackets mark modifications -> take all in between the two bracket-construct
-    var start=peptide.indexOf("]");
-    var end = peptide.substring(start,peptide.length).indexOf("[")+start;
     var strippedPeptide;
+    strippedPeptide=peptide;
+    //"n" (start) and "c" (end) mark the peptide I want. In between are brackets that need to be removed
+    var n_index=strippedPeptide.indexOf('n');
+    var c_index=strippedPeptide.indexOf('c');
 
-    if(start==-1||stop==-1){
-        //if either could not be found, only use default method
-        strippedPeptide=peptide;
+    //if those are present, split in between
+    if(n_index!=-1&&c_index!=-1){
+        strippedPeptide = strippedPeptide.substring(n_index+1,c_index);
     }
-    else{
-        strippedPeptide=peptide.substring(start,end);
-    }
-    //now standard method for removal of wrong characters
+    //rest: remove all symbols that are not capital letters
     strippedPeptide=strippedPeptide.replace(/[^A-Z]/g, '');
 
     return strippedPeptide;
@@ -868,8 +858,6 @@ function modifyProteins(){
     displayLoading(false);
 
     //next step, new file: download proteins from uniprot
-    console.log("Proteins before download:");
-    console.log(proteins);
     downloadData();
     displayLoading(false);
 }

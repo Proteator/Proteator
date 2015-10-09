@@ -43,10 +43,8 @@ function getElementHeight(elementId){
      //create array of the proteins to be able to setTimeout
      var proteinIds=[];
 
-     console.log("Visualized proteins: ");
-     console.log(proteins);
      for(id in proteins){
-         //only push the ids if the protein is set to be visible
+         //only push the ids if the protein is set to be visible (filter)
          var visible = proteinData[id].visible||true;
 
          if(visible){
@@ -105,6 +103,14 @@ function getElementHeight(elementId){
                  div.append("label").text("- "+proteins[id].name);
                  div.append("br");
 
+                 //if IL nondifferentiation is active, save a modified sequence in the proteinData
+                 if(IL_nondifferentiation){
+                     var sequence_mod=proteins[id].sequence;
+                     //in  this sequence, Is and Ls will be replaced with 1s
+                     sequence_mod = sequence_mod.replace(/I/g,"1");
+                     sequence_mod = sequence_mod.replace(/L/g,"1")
+                     proteinData[id]["modified"]=sequence_mod;
+                 }
 
                  try{
                      //createLegend(div);
@@ -152,6 +158,7 @@ function getElementHeight(elementId){
 //old proteator functions
 
 //buttonName = proteinID
+//TODO: use for alignment saved alignment data from main function
 function createBiojSequence(button){
     var id = button.name;
     var divname="d3"+id;
@@ -202,13 +209,25 @@ function createBiojSequence(button){
         myAnnotations=[];
 
         for (peptide in proteins[id].peptides) {
-            var pepseq = peptide
+            var pepseq;
+            if(!IL_nondifferentiation){
+                pepseq = peptide;
+            }
+            else{
+                pepseq = proteinData[id].peptides_modified[peptide];
+            }
             if(pepseq!="N/A"){
                 var ratio = proteins[id].peptides[peptide].ratio;
                 var foldRatio = proteins[id].peptides[peptide].foldRatio;
 
                 //find where the sequence lies (check again whether code is correct)
-                var seq = proteins[id].sequence;
+                var seq;
+                if(!IL_nondifferentiation){
+                    seq = proteins[id].sequence;
+                }
+                else{
+                    seq = proteinData[id].modified;
+                }
 
                 //TODO: can currently only find a single occurence of this peptide, check also for repeats
                 var myStart = seq.indexOf(pepseq)+1;
@@ -317,7 +336,14 @@ function visualizeData(div, id) {
     var graphSvg = div.append("svg").attr("class", "graphSvg");
     var infoDiv = div.append("div").attr("id", "info" + id).attr("class", "infoDiv");
 
-    var sequence = proteins[id].sequence;
+    var sequence;
+    if(!IL_nondifferentiation){
+        sequence = proteins[id].sequence;
+    }
+    else{
+        sequence = proteinData[id].modified;
+    }
+
 
     var defaultMax = 500;//on this size, a protein will occupy the entire width
     if (sequence.length > defaultMax) {
@@ -436,18 +462,39 @@ function visualizeData(div, id) {
             }
     ]*/
 
+    if(IL_nondifferentiation){
+        //the the modified peptides (1 instead of I/L) will be saved in proteinData accessible by their normal peptides
+        //after mapping is done, the changes are reverted
+        proteinData[id].peptides_modified={};
+        for (peptide in proteins[id].peptides){
+            var modified_peptide = peptide;
+            modified_peptide = modified_peptide.replace(/I/g,"1");
+            modified_peptide = modified_peptide.replace(/L/g,"1");
+            //save the normal peptides accessible by the modified peptides
+            proteinData[id].peptides_modified[peptide]=modified_peptide;
+        }
+    }
+
     //create mappingData
     for (peptide in proteins[id].peptides) {
         var additionalLines=0;//if several peptides overlap
 
-        //find where the sequence lies (check again whether code is correct)
 
+        //find where the sequence lies (check again whether code is correct)
         var indexes = [];
         currentPos = 0;
         if(peptide.length>0){//don't search for empty peptides
-
             while (true) {
-                var index1 = sequence.indexOf(peptide, currentPos);
+                var index1;
+                if(!IL_nondifferentiation){
+                    index1 = sequence.indexOf(peptide, currentPos);
+                }
+                else{
+                    var mod_sequence=proteinData[id].modified;
+                    var mod_peptide = proteinData[id].peptides_modified[peptide];
+                    index1 = mod_sequence.indexOf(mod_peptide, currentPos);
+                }
+
                 if (index1 == -1) {
                     break;
                 } else {
@@ -461,7 +508,14 @@ function visualizeData(div, id) {
         for(var j=0;j<indexes.length;j++){//create new entry for every position found
             var temp = {};
             temp.id = id; //also save id to make peptides unique
-            temp.sequence=peptide;
+
+            if(!IL_nondifferentiation){
+                temp.sequence=peptide;
+            }
+            else{
+                temp.sequence=proteinData[id].peptides_modified[peptide];
+            }
+
             temp.probability=proteins[id].peptides[peptide].probability;
             temp.ratio=proteins[id].peptides[peptide].ratio;
             temp.foldRatio=proteins[id].peptides[peptide].foldRatio;

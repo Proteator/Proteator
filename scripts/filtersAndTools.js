@@ -190,6 +190,31 @@ function calculateCoverage(){
             }
         }
     }
-
-
 }
+
+
+//TODO: does the extra code for this tool lead to significantly longer loading times? if yes: improve
+//some search engines don't differentiate between I and L. This options treats I and L as the same when mapping
+var IL_nondifferentiation=false;
+function IL_nondif_clicked(){
+    var checked = d3.select("#IL_nondif").property("checked");
+    if(checked){
+        IL_nondifferentiation=true;
+        //if data is already loaded: reload via visualize(); here: also apply the changes
+
+        if(!$.isEmptyObject(proteins)){
+            visualize();
+        }
+    }
+    else{
+        IL_nondifferentiation=false;
+        if(!$.isEmptyObject(proteins)){
+            visualize();
+        }
+    }
+}
+/**IL_nondif leads to the following changes in visualization():
+ * a modified protein sequence with 1s instead of Is and Ls is created and saved in protein data
+ * for peptides the same
+ * in peptides, the modified version is also the one displayed
+**/

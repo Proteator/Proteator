@@ -116,6 +116,9 @@
                 <li class="subitem">
                     <p class="pButton_inactive" onclick="invertFoldRatios()" id="tools_invertFoldRatios">Invert foldchange</p>
                 </li>
+                <li class="subitem">
+                    <input type="checkbox" id="IL_nondif" name="IL_nondif">I/L nondifferentiation</input>
+                </li>
                 <!--essentially working - requires just some minor fixes: create <p> for this information in visualization.js, update only this p, don't create new ones,
                 display automatically if once calculated after filtering
                 <li class="subitem">
@@ -278,8 +281,10 @@
 
 <!-- if you download the html file, the protein data is saved here-->
 <div id="dataContainer" class="dataContainer"></div>
-<script>
 
+<!-- bind listeners -->
+<script>
+$("#IL_nondif").change(function(){IL_nondif_clicked();});
 </script>
 
 </body>

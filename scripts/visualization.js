@@ -615,7 +615,11 @@ function visualizeData(div, id) {
             //if no element with the id "peptideInfoFinal...." exists, a new element should be generated
             //old: selection = infoDiv.append("p").text(d.sequence +" Heavy2Light: "+d.ratio+" foldRatio: "+d.foldRatio).attr("id","peptideInfo"+d.id+"_"+d.sequence);
 
-            selection = infoDiv.select("#peptideInfo"+d.id).html(d.sequence +" Ratio: "+d.ratio);
+            var ratioString="";
+            if(d.ratio!=undefined){
+                ratioString = " Ratio: "+ d.ratio;
+            }
+            selection = infoDiv.select("#peptideInfo"+d.id).html(d.sequence +ratioString);
             //this element has the id "peptideInfo...." and will be emptied by the mouseout-function, not so the final one (onclick);
         }
     }).on("mouseout",function(d){
@@ -648,7 +652,11 @@ function visualizeData(div, id) {
             //remove old selection, create new one with new id
             //TODO: find way to update old selection, prevent removal
             d3.select("#peptideInfo"+d.id).html("</br>");
-            selection = infoDiv.append("p").text(d.sequence +" Ratio: "+d.ratio).attr("id","peptideInfoFinal"+d.id+"_"+d.sequence);
+            var ratioString="";
+            if(d.ratio!=undefined){
+                ratioString = " Ratio: "+ d.ratio;
+            }
+            selection = infoDiv.append("p").text(d.sequence +ratioString).attr("id","peptideInfoFinal"+d.id+"_"+d.sequence);
         }
         else{
             //color it grey to mark mouseover
@@ -687,13 +695,11 @@ function createGraph(dataSvg, peptideData, infoDiv){
     for(peptide in peptideData){
         var ratio= peptideData[peptide].foldRatio;
 
-        if(!isNaN(ratio)){
+        if(!isNaN(ratio)&&ratio!=null){
             worthDisplaying=true;
-            console.log("worthDisplaying");
             break;
         }
     }
-    console.log("Display: "+worthDisplaying);
 
     if(worthDisplaying) {
         //todo use final variables for options
@@ -723,11 +729,8 @@ function createGraph(dataSvg, peptideData, infoDiv){
             function (d) {
                 var selection = d3.select(this);
 
-                if (isNaN(d.foldRatio)) {
-                    selection.remove();
-                }
                 //remove all circles with a non-numerical foldRatio
-                if (isNaN(d.foldRatio)) {
+                if (isNaN(d.foldRatio)|| d.foldRatio==null) {
                     selection.remove();
                 } else {
                     var value = scale(d.foldRatio) + x_offset;

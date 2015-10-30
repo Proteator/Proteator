@@ -342,6 +342,7 @@ function downloadJSON(){
     }
 }
 
+//export html
 function downloadHTML(){
     if(d3.select("#html_download").attr("class")=="pButton") {//active
         downloadHTML_execute();

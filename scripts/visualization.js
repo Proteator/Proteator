@@ -195,7 +195,10 @@ function createBiojSequence(button){
                 content.background="yellow";
             }
             else if(feature[3]=="Signal peptide"){
-                content.background="green";
+                content.background="cyan";
+            }
+            else if(feature[3]=="Mitochondrial intermembrane"){
+                content.background="violet";
             }
             else if(feature[3]=="Mitochondrial intermembrane"){
                 content.background="violet";
@@ -380,17 +383,26 @@ function visualizeData(div, id) {
         var color_temp;
         var descr = feature[3];
 
-        //different colors
-        if (feature[3] == "Extracellular") {
-            color_temp = "#9D1309";
-        } else if (feature[3] == "Transmembrane") {
-            color_temp = "orange";
+        //TODO: outsource to function (also for j3ds)
+        if(feature[3]=="Extracellular"){
+            color_temp="#9D1309";
+        }else if(feature[3]=="Transmembrane"){
+            color_temp="orange";
         }
-        else if (feature[3] == "Cytoplasmic" || feature[3] == "Lumenal") {
-            color_temp = "yellow";
+        else if(feature[3]=="Cytoplasmic"||feature[3]=="Lumenal"){
+            color_temp="yellow";
         }
-        else if (feature[3] == "Signal peptide") {
-            color_temp = "cyan";
+        else if(feature[3]=="Signal peptide"){
+            color_temp="cyan";
+        }
+        else if(feature[3]=="Mitochondrial intermembrane"){
+            color_temp="violet";
+        }
+        else if(feature[3]=="Mitochondrial intermembrane"){
+            color_temp="violet";
+        }
+        else{
+            color_temp="blue";
         }
 
         var tempObject = {

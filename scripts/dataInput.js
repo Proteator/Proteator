@@ -167,7 +167,6 @@ function setActiveTab(td){
     var id=td.id;
     setSettings(id);
 
-    console.log(td);
     //set all tabs inactive
     d3.select("#customInput_tabs").selectAll("td").attr("class","td_inactive");
     //set the clicked tab as active
@@ -224,8 +223,6 @@ function setSettings(tab_id){
 
 //called by onchange in the text fields
 function saveSettings(){
-    console.log(activeTab);
-    console.log("ID: "+activeTab.id);
     var tab_id = activeTab.id;
     //labels are transformed to lower case in order to ease input
     fileSettings[tab_id].accession_header=d3.select("#customInput_proteinLabel").property("value").toLowerCase();
@@ -295,13 +292,11 @@ function customInput_fileChanged(tab_id){
 function displayLines(lines){
     var table = d3.select("#customInput_previewTableBody");
     table.selectAll("*").remove();
-    console.log("table cleared");
     customInput.splitByTab=false;
     if(d3.select("#customInput_separation_tab").property("checked")){
         customInput.splitByTab=true;
     }
     //otherwise split by komma
-    console.log("Split by tab: "+customInput.splitByTab);
     for(line in lines){
         var tempArray;
         //split by tab
@@ -347,6 +342,8 @@ var fileCounter=0;
 var fileNumber=0;
 //extract the data from all the files by calling the respective methods
 function extractData(){
+    console.log("Input settings:");
+    console.log(JSON.stringify(fileSettings));
     proteinData={};//reset protein data
     proteins={};//clear object
     ratioData={};
@@ -372,7 +369,7 @@ function extractData(){
         var name = file.name;
         var type = name.substring(name.lastIndexOf(".")+1);
 
-        console.log("Downloading file settings: "+data);
+        console.log("File name: "+name);
         if(type.toLowerCase()=="mztab"){
             read_mztab(data);
         }
@@ -824,7 +821,7 @@ function stripPeptide(peptide){
 
 //calculates foldratio and adds it to the peptides; removes entries if no peptide is present
 function modifyProteins(){
-    console.log("Modifying protein entries");
+    console.log("Calculating ratios.");
 
     for(protein in proteins){
 
@@ -843,7 +840,9 @@ function modifyProteins(){
             catch(e){
                 console.log(e);
             }
-            peptideList[peptide].foldRatio=foldRatio;
+
+            //round to two decimal places
+            peptideList[peptide].foldRatio=+(Math.round(foldRatio + "e+2")  + "e-2");
         }
         //remove protein just if no peptides were found
         if(currentProt.id==""||currentProt.id=="undefined"||protein==undefined){

@@ -77,7 +77,6 @@ function getElementHeight(elementId){
      setTimeout(function(){displayProtein(0,firstend);},0);
 
      function displayProtein(startline, stopline){
-         console.log("Processing "+startline +" of "+max);
 
          //display progress
          $("#loadingtext").text("Visualizing: "+startline+"/"+max);
@@ -617,7 +616,7 @@ function visualizeData(div, id) {
 
             var ratioString="";
             if(d.ratio!=undefined){
-                ratioString = " Ratio: "+ d.ratio;
+                ratioString = " Ratio: "+ d.ratio+" log2(Ratio): "+ d.foldRatio;
             }
             selection = infoDiv.select("#peptideInfo"+d.id).html(d.sequence +ratioString);
             //this element has the id "peptideInfo...." and will be emptied by the mouseout-function, not so the final one (onclick);
@@ -654,7 +653,7 @@ function visualizeData(div, id) {
             d3.select("#peptideInfo"+d.id).html("</br>");
             var ratioString="";
             if(d.ratio!=undefined){
-                ratioString = " Ratio: "+ d.ratio;
+                ratioString = " Ratio: "+ d.ratio+" log2(Ratio): "+ d.foldRatio;
             }
             selection = infoDiv.append("p").text(d.sequence +ratioString).attr("id","peptideInfoFinal"+d.id+"_"+d.sequence);
         }
@@ -764,7 +763,7 @@ function createGraph(dataSvg, peptideData, infoDiv){
                 var selection = document.getElementById("peptideInfoFinal" + d.id + "_" + d.sequence);//can't use d3 here as it doesn't return "null"
                 if (selection == null) {
                     //if no element with the id "peptideInfoFinal...." exists, a new element should be generated
-                    selection = infoDiv.select("#peptideInfo" + d.id).html(d.sequence + " Ratio: " + d.ratio);
+                    selection = infoDiv.select("#peptideInfo" + d.id).html(d.sequence + " Ratio: " + d.ratio+" log2(Ratio): "+ d.foldRatio);
                     //this element has the id "peptideInfo...." and will be destroyed by the mouseout-function, not so the final one (onclick);
                 }
             }).on("mouseout", function (d) {
@@ -801,7 +800,7 @@ function createGraph(dataSvg, peptideData, infoDiv){
                     //remove old selection, create new one with new id
                     //TODO: find way to update old selection, prevent removal
                     d3.select("#peptideInfo" + d.id + "_" + d.sequence).remove();
-                    selection = infoDiv.append("p").text(d.sequence + " Heavy2Light: " + d.ratio + " foldRatio: " + d.foldRatio).attr("id", "peptideInfoFinal" + d.id + "_" + d.sequence);
+                    selection = infoDiv.append("p").text(d.sequence + " Heavy2Light: " + d.ratio + " log2(Ratio): " + d.foldRatio).attr("id", "peptideInfoFinal" + d.id + "_" + d.sequence);
                 }
                 else {
                     //color it grey to mark mouseover
@@ -823,6 +822,6 @@ function createGraph(dataSvg, peptideData, infoDiv){
             },
             "y": 5,
             "class": "axisLabel"
-        }).style("text-anchor", "middle").text("foldchange");
+        }).style("text-anchor", "middle").text("foldchange (ratio - log2)");
     }
 }

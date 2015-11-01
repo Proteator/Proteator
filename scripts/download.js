@@ -61,7 +61,6 @@ function downloadData(){
             $(".loadingbar").css("background","-o-linear-gradient(right, #2672EC "+percent+", white "+percent2+")");
             $(".loadingbar").css("background","-webkit-linear-gradient(left, #2672EC "+percent+", white "+percent2+")");
 
-        console.log(downloadcounter+"/"+proteinnumber);
         try {
             var url = "http://www.uniprot.org/uniprot/" + id + ".xml";
 
@@ -102,9 +101,6 @@ function downloadData(){
 
             d3.select("#json_download").attr("class","pButton");//allow download of the data
 
-            console.log("Proteins after download:");
-            console.log(proteins);
-
             visualize();//display
         }
 
@@ -141,7 +137,6 @@ function downloadData(){
             //prevents double downloading if different ids for the same protein were listed
             if(id in proteins && id!="" && id !=undefined){
 
-                console.log("Downloading: "+batchcounter+"/"+proteinnumber);
 
                 var uniprot_url = "http://www.uniprot.org/uniprot/" + id + ".xml";
 
@@ -149,14 +144,13 @@ function downloadData(){
                     url: uniprot_url,
                     type: 'GET',
                     success: function (resp) {
-                        console.log("Retrieved: "+batchcounter+"/"+proteinnumber);
 
                         tempXmlStorage.push(resp);
                         responseReceived();
                     },
                     //if error occurs, the protein can't be displayed
                     error: function (request, status, error) {
-                        console.log("Error when downloading: " + status + " " + error);
+                        console.log("Error while downloading: " + status + " " + error);
                         //delete proteins[id];//would only delete last protein
                         responseReceived();
                     }
@@ -284,7 +278,6 @@ function readXml(xml) {
 
     //here: specify which features should be downloaded
     //display features
-    console.log("Extracting features for "+mainId);
 
     //TODO: frequently, errors are thrown - why?
         var featurelist = xml.getElementsByTagName("feature");

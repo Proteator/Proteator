@@ -24,7 +24,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-29.82353">
+            <state vertical-scroll-proportion="0.0">
               <caret line="172" column="20" selection-start-line="172" selection-start-column="20" selection-end-line="172" selection-end-column="20" />
               <folding />
             </state>
@@ -34,7 +34,7 @@
       <file leaf-file-name="download.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/download.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.368421">
+            <state vertical-scroll-proportion="0.0">
               <caret line="155" column="21" selection-start-line="155" selection-start-column="21" selection-end-line="155" selection-end-column="21" />
               <folding />
             </state>
@@ -44,7 +44,7 @@
       <file leaf-file-name="dataInput.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/dataInput.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.342105">
+            <state vertical-scroll-proportion="0.0">
               <caret line="377" column="9" selection-start-line="377" selection-start-column="9" selection-end-line="377" selection-end-column="9" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -64,11 +64,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="visualization.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="visualization.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/visualization.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5232068">
+            <state vertical-scroll-proportion="0.0">
               <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="filtersAndTools.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scripts/filtersAndTools.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.36794767">
+              <caret line="84" column="44" selection-start-line="84" selection-start-column="44" selection-end-line="84" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -82,13 +92,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/scripts/filtersAndTools.js" />
         <option value="$PROJECT_DIR$/manual.html" />
         <option value="$PROJECT_DIR$/scripts/onlyForHtmlDownload.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/scripts/download.js" />
         <option value="$PROJECT_DIR$/scripts/dataInput.js" />
         <option value="$PROJECT_DIR$/scripts/visualization.js" />
+        <option value="$PROJECT_DIR$/scripts/filtersAndTools.js" />
       </list>
     </option>
   </component>
@@ -128,7 +138,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -178,6 +187,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -252,10 +262,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="2182" height="1402" extended-state="6" />
+    <frame x="-11" y="-11" width="2182" height="1402" extended-state="7" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24768518" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24768518" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -388,7 +398,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="131" column="31" selection-start-line="131" selection-start-column="23" selection-end-line="131" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -437,7 +446,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="131" column="31" selection-start-line="131" selection-start-column="23" selection-end-line="131" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -486,7 +494,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="131" column="31" selection-start-line="131" selection-start-column="23" selection-end-line="131" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -535,7 +542,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="131" column="31" selection-start-line="131" selection-start-column="23" selection-end-line="131" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -577,7 +583,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="528" column="22" selection-start-line="528" selection-start-column="1" selection-end-line="528" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -619,7 +624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="528" column="22" selection-start-line="528" selection-start-column="1" selection-end-line="528" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -657,7 +661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="131" column="31" selection-start-line="131" selection-start-column="23" selection-end-line="131" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -665,13 +668,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.57947856">
           <caret line="115" column="5" selection-start-line="115" selection-start-column="5" selection-end-line="115" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/filtersAndTools.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="31" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -685,7 +681,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-29.82353">
+        <state vertical-scroll-proportion="0.0">
           <caret line="172" column="20" selection-start-line="172" selection-start-column="20" selection-end-line="172" selection-end-column="20" />
           <folding />
         </state>
@@ -693,7 +689,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/download.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.368421">
+        <state vertical-scroll-proportion="0.0">
           <caret line="155" column="21" selection-start-line="155" selection-start-column="21" selection-end-line="155" selection-end-column="21" />
           <folding />
         </state>
@@ -701,7 +697,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/dataInput.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.342105">
+        <state vertical-scroll-proportion="0.0">
           <caret line="377" column="9" selection-start-line="377" selection-start-column="9" selection-end-line="377" selection-end-column="9" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -712,8 +708,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/visualization.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5232068">
+        <state vertical-scroll-proportion="0.0">
           <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/filtersAndTools.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36794767">
+          <caret line="84" column="44" selection-start-line="84" selection-start-column="44" selection-end-line="84" selection-end-column="44" />
           <folding />
         </state>
       </provider>

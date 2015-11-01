@@ -48,13 +48,26 @@ function applyFilter(){
     var or=document.getElementById("filter_button_or").checked;
     var all=document.getElementById("filter_button_all").checked;
 
+    console.log("---------------Filter data-----------------");
+    console.log("Filter data:");
+    console.log("Intracellular: "+intracellular);
+    console.log("Extracellular: "+extracellular);
+    console.log("Transmembrane: "+transmembrane);
+    console.log("Filter types:");
+    console.log("And: "+and);
+    console.log("Or: "+or);
+    console.log("All: "+all);
+    console.log("---------------Filter data-----------------");
+
     if(all){//turn all proteins that have been downloaded on
+        console.log("Displaying all proteins.");
         for(id in proteins){
             if(proteins[id].sequence!=""){
                 proteinData[id].visible=true;}
         }
     }
     else{
+        console.log("Applying filter.");
         for(id in proteins){
             var hasTrans=proteinData[id].has["Transmembrane"];
             var hasIntrac=proteinData[id].has["Cytoplasmic"];
@@ -86,6 +99,9 @@ function applyFilter(){
                     display=true;
                 }
                 proteinData[id].visible=display;
+                if(display){
+                    console.log("Display: "+id);
+                }
             }
         }
     }

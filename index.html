@@ -112,12 +112,15 @@
 
         <li class="topitem">
             <p class="title">Tools</p>
-            <ul class="sublist">
+            <ul class="sublist" style="width:150px;">
                 <li class="subitem">
                     <p class="pButton_inactive" onclick="invertFoldRatios()" id="tools_invertFoldRatios">Invert foldchange</p>
                 </li>
                 <li class="subitem">
                     <input type="checkbox" id="IL_nondif" name="IL_nondif">I/L nondifferentiation</input>
+                </li>
+                <li class="subitem">
+                    <p class="pButton" onclick="createHistogram()" id="tools_createHistogram">Create histogram</p>
                 </li>
                 <!--essentially working - requires just some minor fixes: create <p> for this information in visualization.js, update only this p, don't create new ones,
                 display automatically if once calculated after filtering

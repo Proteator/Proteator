@@ -234,3 +234,44 @@ function IL_nondif_clicked(){
  * for peptides the same
  * in peptides, the modified version is also the one displayed
 **/
+
+
+
+//create a histogram for the peptide data
+//in addition to this function, the file onlyForHistograms.js is necessary
+function createHistogram(){
+    //save all foldratios as array:
+    var dataArray=[];
+    for(id in proteins){
+        var peptides = proteins[id]["peptides"];
+        for(sequence in peptides){
+            var foldRatio = peptides[sequence]["foldRatio"];
+            if(!isNaN(foldRatio)){
+                dataArray.push(foldRatio);
+            }
+        }
+    }
+
+    //create the new window and load the necessary script
+    var histogram = window.open ('', 'histogram', "height=650,width=650, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, directories=no, status=no");
+    if (window.focus) {histogram.focus();}
+    histogram.document.write('<html><head><title>Histogram</title>');
+    //here: this function will create the histogram
+    histogram.document.write('<scr'+'ipt src="scripts/onlyForHistogram.js"></scr'+'ipt>');
+    //dependencies:
+    histogram.document.write('<scr'+'ipt src="scripts/plotly.min.js"></scr'+'ipt>');
+    histogram.document.write('<scr'+'ipt src="scripts/jquery-1.7.2.min.js"></scr'+'ipt>');
+    histogram.document.write('<scr'+'ipt src="scripts/typedarray.js"></scr'+'ipt>');
+    histogram.document.write('<scr'+'ipt src="scripts/d3.v3.min.js"></scr'+'ipt>');
+
+    histogram.document.write('</head><body>');
+    //this container will hold the histogram
+    histogram.document.write('<div id="container" style="width:600px;height:600px;"></div>');
+    //data container: here save all peptide foldratios:
+    histogram.document.write('<div id="dataContainer" style="display:none;">');
+    histogram.document.write(JSON.stringify(dataArray));
+    histogram.document.write('</div>');
+
+    histogram.document.write('</body></html>');
+    histogram.document.close();
+}

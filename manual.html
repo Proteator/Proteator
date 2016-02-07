@@ -59,6 +59,7 @@ For usage of <i>Proteator</i>, we recommend the web browser <i>Google Chrome</i>
 <h2 id="uploadingData">Uploading data
 </h2>
 <ul>
+    <li><b><a href="downloads/proteator_example%20file.txt">Donwload the example file</a></b></li>
     <li><em>Requirements:</em> The required input consists of a text file (.mzTab or comma- or tab-separated values). When using a .mzTab file,
     a PSH or PEH section should be present. When using other file types, please make sure they contain a protein identifier (e.g. P12830) and
     the sequence of identified peptides (e.g. K.n[1.01]YTALVDQEEKEDVKc[17.00].S). The header for the respective column should be located in the first line
@@ -66,17 +67,17 @@ For usage of <i>Proteator</i>, we recommend the web browser <i>Google Chrome</i>
     <li>Under <i>Files</i> select any number of files that you want to visualize. Please note that big or many files will increase loading time.</li>
     <li>After all files have been selected, press <i>submit</i>.</li>
     <li>The following window will open up:</li>
-    <img style="width:1000px" src="img/proteator_fileInput.jpg"/>
+    <img style="width:1000px" src="img/proteator_fileInput.PNG"/>
     <li>All files that are not of the type <i>.mzTab</i> will require user input.</li>
     <li>At the upper left corner, the file names are displayed. Click on the names to change the file.</li>
     <li>The table in the center of the window provides a preview of the file.</li>
     <li>Please enter the following information:</li>
     <ul>
         <li>Specify whether the file is comma or tab-separated under "Column separation".</li>
-        <li>For "Header for accession column", enter the title of the column that contains the protein accession (in this example "protein"). Specify the format with
+        <li>For "Header for accession column", enter the title of the column that contains the protein accession (in this example "<b>protein</b>"). Specify the format with
         the rightmost selection under "Protein format". Note that if several proteins, separated by commas are present, only the first one will be regarded.</li>
-        <li>For "Header for peptide column", enter the title of the column containing the peptide sequence (here: "peptide").</li>
-        <li>If the file contains an express ratio, enter the respective colum title under "Header for ratio column". The values should be supplied as ratio (values between 0 and &#8594;∞) and as decimal numbers.</li>
+        <li>For "Header for peptide column", enter the title of the column containing the peptide sequence (example: "<b>peptide</b>").</li>
+        <li>If the file contains an express ratio, enter the respective colum title under "Header for ratio column" (example: "<b>xpress</b>"). The values should be supplied as ratio (values between 0 and &#8594;∞).</li>
         <li>Repeat those steps for all files which are displayed in the the upper left corner of the window.</li>
         <li>Click apply.</li>
     </ul>
@@ -85,7 +86,7 @@ For usage of <i>Proteator</i>, we recommend the web browser <i>Google Chrome</i>
     <img src="img/proteator_loadingBar.jpg" style="width:500px"/>
     <li>Please be patient as the download can take some time.</li>
     <li>Once it is finished, the submitted data will be displayed in the following form:</li>
-    <img src="img/proteator_results.jpg" style="width:1000px"/>
+    <img src="img/output.PNG" style="width:1000px"/>
     <li>Accession and long name of the protein are displayed on the top left. Click on the accession to be redirected to the protein entry on <i>Uniprot</i>.</li>
     <li>It follows a scale for the size of the protein and the protein itself. The colored areas on the protein correspond to certain topological domains.
     Refer to the legend on the right or hover your mouse over the protein to learn which color means which type of domain.</li>
@@ -115,7 +116,6 @@ For usage of <i>Proteator</i>, we recommend the web browser <i>Google Chrome</i>
     <li>[CURRENTLY DEPRECATED] Click "Calculate coverage" to calculate and display the coverage for each protein.</li>
 </ul>
 <h2 id="impressum">Impressum</h2>
-    <>
         Proteator was created by Patrick Heisterkamp (contact: patrick.heisterkamp@gmail.com), University of Freiburg, on order of the AG Schilling, University of Freiburg.
     <br/>
         Especial gratitude goes to Lars Nilse and Björn Grüning (both University of Freiburg) who provided valuable support during the development.

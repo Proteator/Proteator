@@ -1,0 +1,451 @@
+MTD	mzTab-version	1.0.0
+MTD	mzTab-mode	Summary
+MTD	mzTab-type	Identification
+MTD	description	Export from idXML
+MTD	protein_search_engine_score[1]	[, , custom score, ]
+MTD	psm_search_engine_score[1]	[, , Fido, ]
+MTD	ms_run[1]-location	D:/data/Lars/temp/2015-09-20_155213_ukmz1005immz_3652_1/TOPPAS_tmp/protein_quantification_Leu3SILAC_LTQOrbiXL_20150920/041_IDFilter/out/BM_40_P191009_041109.idXML
+
+PRH	accession	description	taxid	species	database	database_version	search_engine	best_search_engine_score[1]	ambiguity_members	modifications	protein_coverage	opt_global_Posterior_Probability_score	opt_global_target_decoy	opt_global_protein_group_type
+PRT	sp|A5Z2X5|YP010_YEAST	UPF0495 protein YPR010C-A OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=YPR010C-A PE=3 SV=1	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|D6VTK4|STE2_YEAST	Pheromone alpha factor receptor OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=STE2 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|D6W196|CMC1_YEAST	Truncated non-functional calcium-binding mitochondrial carrier SAL1-1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=SAL1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|O13297|CET1_YEAST	mRNA-capping enzyme subunit beta OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=CET1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|O13516|RS9A_YEAST	40S ribosomal protein S9-A OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=RPS9A PE=1 SV=3	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|O13527|YA11B_YEAST	Truncated transposon Ty1-A Gag-Pol polyprotein OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=TY1B-A PE=3 SV=3	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|O13535|YH11B_YEAST	Transposon Ty1-H Gag-Pol polyprotein OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=TY1B-H PE=3 SV=1	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|O13556|YL462_YEAST	Putative uncharacterized protein YLR462W OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=YLR462W PE=5 SV=1	null	null	null	null	null	0	null	null	null	0.993910431861877	target	single_protein
+PRT	sp|O13559|YRF14_YEAST	Y' element ATP-dependent helicase protein 1 copy 4 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=YRF1-4 PE=2 SV=1	null	null	null	null	null	0	null	null	null	0.999988257884979	target	single_protein
+PRT	sp|O13563|RPN13_YEAST	26S proteasome regulatory subunit RPN13 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=RPN13 PE=1 SV=1	null	null	null	null	null	0	null	null	null	0.999927580356598	target	single_protein
+PRT	sp|O13585|YP089_YEAST	Dilute domain-containing protein YPR089W OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=YPR089W PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|O14455|RL36B_YEAST	60S ribosomal protein L36-B OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=RPL36B PE=1 SV=3	null	null	null	null	null	0	null	null	null	0.999912083148956	target	single_protein
+PRT	sp|O14467|MBF1_YEAST	Multiprotein-bridging factor 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=MBF1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	0.999923825263977	target	single_protein
+PRT	sp|O74302|YD13A_YEAST	Transposon Ty1-DR4 Gag polyprotein OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=TY1A-DR4 PE=2 SV=1	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|O74700|TIM9_YEAST	Mitochondrial import inner membrane translocase subunit TIM9 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=TIM9 PE=1 SV=1	null	null	null	null	null	0	null	null	null	0.999994277954102	target	single_protein
+PRT	sp|P00044|CYC1_YEAST	Cytochrome c iso-1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=CYC1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	0.999998986721039	target	single_protein
+PRT	sp|P00128|QCR7_YEAST	Cytochrome b-c1 complex subunit 7 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=QCR7 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00330|ADH1_YEAST	Alcohol dehydrogenase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=ADH1 PE=1 SV=5	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00358|G3P2_YEAST	Glyceraldehyde-3-phosphate dehydrogenase 2 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=TDH2 PE=1 SV=3	null	null	null	null	null	0	null	null	null	0.99978095293045	target	single_protein
+PRT	sp|P00359|G3P3_YEAST	Glyceraldehyde-3-phosphate dehydrogenase 3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=TDH3 PE=1 SV=3	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00360|G3P1_YEAST	Glyceraldehyde-3-phosphate dehydrogenase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=TDH1 PE=1 SV=3	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00401|COX1_YEAST	Cytochrome c oxidase subunit 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=COX1 PE=3 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00410|COX2_YEAST	Cytochrome c oxidase subunit 2 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=COX2 PE=1 SV=1	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00424|COX5A_YEAST	Cytochrome c oxidase polypeptide 5A, mitochondrial OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=COX5A PE=1 SV=1	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00425|COX5B_YEAST	Cytochrome c oxidase polypeptide 5B, mitochondrial OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=COX5B PE=1 SV=3	null	null	null	null	null	0	null	null	null	0.999171912670136	target	single_protein
+PRT	sp|P00427|COX6_YEAST	Cytochrome c oxidase subunit 6, mitochondrial OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=COX6 PE=1 SV=1	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00431|CCPR_YEAST	Cytochrome c peroxidase, mitochondrial OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=CCP1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00445|SODC_YEAST	Superoxide dismutase [Cu-Zn] OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=SOD1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	0.999943733215332	target	single_protein
+PRT	sp|P00546|CDK1_YEAST	Cyclin-dependent kinase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=CDC28 PE=1 SV=1	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00549|KPYK1_YEAST	Pyruvate kinase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=CDC19 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00560|PGK_YEAST	Phosphoglycerate kinase OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=PGK1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00729|CBPY_YEAST	Carboxypeptidase Y OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=PRC1 PE=1 SV=1	null	null	null	null	null	0	null	null	null	0.999262869358063	target	single_protein
+PRT	sp|P00815|HIS2_YEAST	Histidine biosynthesis trifunctional protein OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=HIS4 PE=1 SV=3	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00817|IPYR_YEAST	Inorganic pyrophosphatase OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=IPP1 PE=1 SV=4	null	null	null	null	null	0	null	null	null	0.999999940395355	target	single_protein
+PRT	sp|P00830|ATPB_YEAST	ATP synthase subunit beta, mitochondrial OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=ATP2 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00890|CISY1_YEAST	Citrate synthase, mitochondrial OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=CIT1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00899|TRPE_YEAST	Anthranilate synthase component 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=TRP2 PE=1 SV=4	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00924|ENO1_YEAST	Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=ENO1 PE=1 SV=3	null	null	null	null	null	0	null	null	null	0.999999046325684	target	single_protein
+PRT	sp|P00925|ENO2_YEAST	Enolase 2 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=ENO2 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00927|THDH_YEAST	Threonine dehydratase, mitochondrial OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=ILV1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00931|TRP_YEAST	Tryptophan synthase OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=TRP5 PE=1 SV=1	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00937|TRPG_YEAST	Multifunctional tryptophan biosynthesis protein OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=TRP3 PE=1 SV=2	null	null	null	null	null	0	null	null	null	0.99999988079071	target	single_protein
+PRT	sp|P00942|TPIS_YEAST	Triosephosphate isomerase OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=TPI1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	0.994875490665436	target	single_protein
+PRT	sp|P00950|PMG1_YEAST	Phosphoglycerate mutase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GPM1 PE=1 SV=3	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P00958|SYMC_YEAST	Methionine--tRNA ligase, cytoplasmic OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=MES1 PE=1 SV=4	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P01094|IPA3_YEAST	Protease A inhibitor 3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=PAI3 PE=1 SV=1	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P01119|RAS1_YEAST	Ras-like protein 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=RAS1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P01120|RAS2_YEAST	Ras-like protein 2 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=RAS2 PE=1 SV=4	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P01123|YPT1_YEAST	GTP-binding protein YPT1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=YPT1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P02309|H4_YEAST	Histone H4 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=HHF1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P02381|RMAR_YEAST	Ribosomal protein VAR1, mitochondrial OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=VAR1 PE=1 SV=3	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P02400|RLA4_YEAST	60S acidic ribosomal protein P2-beta OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=RPP2B PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P02406|RL28_YEAST	60S ribosomal protein L28 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=RPL28 PE=1 SV=3	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P02407|RS17A_YEAST	40S ribosomal protein S17-A OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=RPS17A PE=1 SV=1	null	null	null	null	null	0	null	null	null	0.997057378292084	target	single_protein
+PRT	sp|P02557|TBB_YEAST	Tubulin beta chain OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=TUB2 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P02829|HSP82_YEAST	ATP-dependent molecular chaperone HSP82 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=HSP82 PE=1 SV=1	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P02992|EFTU_YEAST	Elongation factor Tu, mitochondrial OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=TUF1 PE=1 SV=1	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P02994|EF1A_YEAST	Elongation factor 1-alpha OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=TEF1 PE=1 SV=1	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P03871|REP1_YEAST	Partitioning protein REP1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=REP1 PE=1 SV=1	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P03876|AI2M_YEAST	Putative COX1/OXI3 intron 2 protein OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=aI2 PE=3 SV=2	null	null	null	null	null	0	null	null	null	0.999920129776001	target	single_protein
+PRT	sp|P03965|CARB_YEAST	Carbamoyl-phosphate synthase arginine-specific large chain OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=CPA2 PE=1 SV=1	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P04037|COX4_YEAST	Cytochrome c oxidase subunit 4, mitochondrial OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=COX4 PE=1 SV=1	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P04039|COX8_YEAST	Cytochrome c oxidase polypeptide VIII, mitochondrial OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=COX8 PE=1 SV=2	null	null	null	null	null	0	null	null	null	0.999633848667145	target	single_protein
+PRT	sp|P04050|RPB1_YEAST	DNA-directed RNA polymerase II subunit RPB1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=RPO21 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P04051|RPC1_YEAST	DNA-directed RNA polymerase III subunit RPC1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=RPO31 PE=1 SV=1	null	null	null	null	null	0	null	null	null	0.970322072505951	target	single_protein
+PRT	sp|P04076|ARLY_YEAST	Argininosuccinate lyase OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=ARG4 PE=1 SV=2	null	null	null	null	null	0	null	null	null	0.999999821186066	target	single_protein
+PRT	sp|P04147|PABP_YEAST	Polyadenylate-binding protein, cytoplasmic and nuclear OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=PAB1 PE=1 SV=4	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P04387|GAL80_YEAST	Galactose/lactose metabolism regulatory protein GAL80 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GAL80 PE=1 SV=2	null	null	null	null	null	0	null	null	null	0.989805102348328	target	single_protein
+PRT	sp|P04449|RL24A_YEAST	60S ribosomal protein L24-A OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=RPL24A PE=1 SV=1	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P04456|RL25_YEAST	60S ribosomal protein L25 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=RPL25 PE=1 SV=4	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P04650|RL39_YEAST	60S ribosomal protein L39 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=RPL39 PE=1 SV=3	null	null	null	null	null	0	null	null	null	0.981769919395447	target	single_protein
+PRT	sp|P04786|TOP1_YEAST	DNA topoisomerase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=TOP1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	0.999999940395355	target	single_protein
+PRT	sp|P04801|SYTC_YEAST	Threonine--tRNA ligase, cytoplasmic OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=THS1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P04802|SYDC_YEAST	Aspartate--tRNA ligase, cytoplasmic OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=DPS1 PE=1 SV=3	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P04803|SYWM_YEAST	Tryptophan--tRNA ligase, mitochondrial OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=MSW1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	0.993964433670044	target	single_protein
+PRT	sp|P04806|HXKA_YEAST	Hexokinase-1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=HXK1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P04807|HXKB_YEAST	Hexokinase-2 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=HXK2 PE=1 SV=4	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P04819|DNLI1_YEAST	DNA ligase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=CDC9 PE=1 SV=2	null	null	null	null	null	0	null	null	null	0.986600518226624	target	single_protein
+PRT	sp|P04821|CDC25_YEAST	Cell division control protein 25 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=CDC25 PE=1 SV=1	null	null	null	null	null	0	null	null	null	0.99999326467514	target	single_protein
+PRT	sp|P04840|VDAC1_YEAST	Mitochondrial outer membrane protein porin 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=POR1 PE=1 SV=4	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P05030|PMA1_YEAST	Plasma membrane ATPase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=PMA1 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P05317|RLA0_YEAST	60S acidic ribosomal protein P0 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=RPP0 PE=1 SV=2	null	null	null	null	null	0	null	null	null	1	target	single_protein
+PRT	sp|P05319|RLA2_YEAST	60S acidic ribosomal protein P2-alpha OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=RPP2A PE=1 SV=1	null	null	null	null	null	0	null	null	null	0.999979555606842	target	single_protein
+PRT	sp|P05373|HEM2_YEAST	Delta-aminolevulinic acid dehydratase OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=HEM2 PE=1 SV=2	null	null	null	null	null	0	null	null	null	0.994631946086884	target	single_protein
+PRT	sp|Q12232|SLP1_YEAST	null	null	null	null	null	null	0.7897696595	sp|Q12232|SLP1_YEAST	null	null	indistinguishable_group
+
+PSH	sequence	PSM_ID	accession	unique	database	database_version	search_engine	search_engine_score[1]	modifications	retention_time	charge	exp_mass_to_charge	calc_mass_to_charge	spectra_ref	pre	post	start	end	opt_global_modified_sequence	opt_global_consensus_support	opt_global_protein_references	opt_global_target_decoy
+PSM	LRESELFR	0	sp|Q02883|FMP30_YEAST	1	null	null	[, , Fido, ]	0.992679915599229	null	6382.388671875	2	525.287658691406	525.290550678971	null	R	P	null	null	LRESELFR	0	unique	target
+PSM	PVPEEYLQTDPSYGLTSDEVLK	1	sp|P05030|PMA1_YEAST	1	null	null	[, , Fido, ]	0.771551834328815	7-UniMod:262,15-UniMod:262,21-UniMod:262	6377.94091796875	3	830.425537109375	830.426317185405	null	R	R	null	null	PVPEEYL(Label:2H(3))QTDPSYGL(Label:2H(3))TSDEVL(Label:2H(3))K	0	unique	target
+PSM	DVEETVSIPFDPSKDTFDHSKLFDR	2	sp|P39986|ATC6_YEAST	1	null	null	[, , Fido, ]	0.996161346853499	null	6364.83984375	3	975.471923828125	975.469809529638	null	R	Y	null	null	DVEETVSIPFDPSKDTFDHSKLFDR	0	unique	target
+PSM	KYSKKDTTTK	3	sp|P33301|XRS2_YEAST	1	null	null	[, , Fido, ]	0.996493250855744	null	6244.47509765625	2	600.33740234375	600.335155902271	null	K	W	null	null	KYSKKDTTTK	0	unique	target
+PSM	FFKSFSAK	4	sp|P38187|UBP13_YEAST	1	null	null	[, , Fido, ]	0.993260931252346	null	6237.458984375	2	481.262268066406	481.260730051371	null	K	H	null	null	FFKSFSAK	1	unique	target
+PSM	KKHKKHK	5	sp|P20447|DBP3_YEAST	1	null	null	[, , Fido, ]	0.996270849570191	null	6204.7265625	2	467.304534912109	467.308879678971	null	D	K	null	null	KKHKKHK	1	non-unique	target
+PSM	KLPLPAKR	6	sp|P38630|RFC1_YEAST	1	null	null	[, , Fido, ]	0.997988179337359	2-UniMod:262,4-UniMod:262	6202.28369140625	2	464.831573486328	464.832293971121	null	K	K	null	null	KL(Label:2H(3))PL(Label:2H(3))PAKR	0	unique	target
+PSM	LLNDDVLNNK	7	sp|Q12019|MDN1_YEAST	1	null	null	[, , Fido, ]	0.993931768872203	null	6017.3876953125	2	579.307678222656	579.311680806571	null	R	L	null	null	LLNDDVLNNK	0	unique	target
+PSM	RRKQAHELR	8	sp|P18410|SPO7_YEAST	1	null	null	[, , Fido, ]	0.996214760526612	null	6011.7080078125	2	597.347534179688	597.352339370371	null	R	P	null	null	RRKQAHELR	0	unique	target
+PSM	FINCKTVK	9	sp|P12945|NAT1_YEAST	1	null	null	[, , Fido, ]	0.996337632327448	4-UniMod:4	6010.2666015625	2	505.283294677734	505.278597043971	null	R	Y	null	null	FINC(Carbamidomethyl)KTVK	1	unique	target
+PSM	TIGIVEMSQGVR	10	sp|P32528|DUR1_YEAST	1	null	null	[, , Fido, ]	0.981255640940031	null	5997.70166015625	2	645.3505859375	645.347740362971	null	K	S	null	null	TIGIVEMSQGVR	1	unique	target
+PSM	MLKDLVREK	11	sp|P47133|EMC2_YEAST	1	null	null	[, , Fido, ]	0.995788854716255	null	5988.61962890625	2	566.335876464844	566.331361267271	null	-	L	null	null	MLKDLVREK	0	unique	target
+PSM	NSKIFSPFR	12	sp|Q06078|UTP21_YEAST	1	null	null	[, , Fido, ]	0.992645795229855	null	5984.27197265625	2	548.301574707031	548.300918210871	null	K	I	null	null	NSKIFSPFR	0	unique	target
+PSM	LVRRSCYR	13	sp|P32891|DLD1_YEAST	1	null	null	[, , Fido, ]	0.996774127558384	1-UniMod:262,6-UniMod:4	5983.28515625	2	556.81640625	556.812884229921	null	R	Y	null	null	L(Label:2H(3))VRRSC(Carbamidomethyl)YR	0	unique	target
+PSM	NLVIDIHGTK	14	sp|P04387|GAL80_YEAST	1	null	null	[, , Fido, ]	0.996364667425027	null	5977.62255859375	2	555.324035644531	555.319308306571	null	K	G	null	null	NLVIDIHGTK	0	unique	target
+PSM	ERNDLAIRK	15	sp|Q06677|SWA2_YEAST	1	null	null	[, , Fido, ]	0.996720782981005	5-UniMod:262	5974.41650390625	2	559.329650878906	559.329421912771	null	K	K	null	null	ERNDL(Label:2H(3))AIRK	0	unique	target
+PSM	KPPAFAKKGMK	16	sp|P05453|ERF3_YEAST	1	null	null	[, , Fido, ]	0.995650094822463	null	5972.5771484375	2	601.851928710938	601.857545847021	null	K	V	null	null	KPPAFAKKGMK	0	unique	target
+PSM	ELSWSEYEK	17	sp|P32660|ATC5_YEAST	1	null	null	[, , Fido, ]	0.99664358229786	2-UniMod:262	5965.97412109375	2	587.283935546875	587.278729785171	null	R	W	null	null	EL(Label:2H(3))SWSEYEK	0	unique	target
+PSM	IFIGFDR	18	sp|Q12482|AGC1_YEAST	1	null	null	[, , Fido, ]	0.99578243646302	null	5963.95556640625	2	434.241516113281	434.239797455671	null	K	L	null	null	IFIGFDR	1	unique	target
+PSM	LSSLDNKVTPR	19	sp|Q05648|YD282_YEAST	1	null	null	[, , Fido, ]	0.99570230425603	null	5960.646484375	2	615.349365234375	615.346054934171	null	K	I	null	null	LSSLDNKVTPR	0	unique	target
+PSM	IFVETKFSK	20	sp|P07149|FAS1_YEAST	1	null	null	[, , Fido, ]	0.989702039906753	null	5959.271484375	2	549.809020996094	549.813327290621	null	K	L	null	null	IFVETKFSK	0	unique	target
+PSM	LPLENLLR	21	sp|Q03327|UGO1_YEAST	1	null	null	[, , Fido, ]	0.994468391369439	null	5955.75341796875	2	484.303344726563	484.300386710871	null	K	R	null	null	LPLENLLR	0	unique	target
+PSM	LKNSPNGVIQR	22	sp|Q02950|RT51_YEAST	1	null	null	[, , Fido, ]	0.996328574850954	null	5954.17138671875	2	613.349609375	613.354213934171	null	K	T	null	null	LKNSPNGVIQR	0	unique	target
+PSM	RVEEQRKR	23	sp|Q12315|GLE1_YEAST	1	null	null	[, , Fido, ]	0.996436632319865	null	5952.583984375	2	550.815368652344	550.817798258721	null	R	K	null	null	RVEEQRKR	0	unique	target
+PSM	SLLSEYNILK	24	sp|P07806|SYV_YEAST	1	null	null	[, , Fido, ]	0.996427638661387	null	5948.19775390625	2	590.330200195313	590.334624402271	null	R	N	null	null	SLLSEYNILK	0	unique	target
+PSM	QNKQPPPNARR	25	sp|P38167|ECM21_YEAST	1	null	null	[, , Fido, ]	0.988321141253763	null	5943.517578125	2	653.354614257813	653.360361934171	null	K	H	null	null	QNKQPPPNARR	1	unique	target
+PSM	SFVSRPSR	26	sp|P38850|RT107_YEAST	1	null	null	[, , Fido, ]	0.993403457947523	null	5937.62744140625	2	468.253173828125	468.256510519471	null	R	A	null	null	SFVSRPSR	1	unique	target
+PSM	QSDVIKNR	27	sp|P38075|PDX3_YEAST	1	null	null	[, , Fido, ]	0.99689721783445	null	5933.0791015625	2	480.265258789063	480.267075583271	null	R	E	null	null	QSDVIKNR	0	unique	target
+PSM	NKQVLEIPR	28	sp|Q06132|SGD1_YEAST	1	null	null	[, , Fido, ]	0.996702124088147	5-UniMod:262	5930.32177734375	2	550.338317871094	550.336715444671	null	K	I	null	null	NKQVL(Label:2H(3))EIPR	0	unique	target
+PSM	EHYSVTLK	29	sp|Q06409|YL422_YEAST	1	null	null	[, , Fido, ]	0.991361029933544	7-UniMod:262	5929.71044921875	2	490.265533447266	490.267967189471	null	K	Q	null	null	EHYSVTL(Label:2H(3))K	0	unique	target
+PSM	EFQKFAPALK	30	sp|P31380|FUN30_YEAST	1	null	null	[, , Fido, ]	0.996393906041503	9-UniMod:262	5929.2666015625	2	591.338012695313	591.341466476571	null	R	I	null	null	EFQKFAPAL(Label:2H(3))K	0	unique	target
+PSM	IFWLFQR	31	sp|Q04048|SYF1_YEAST	1	null	null	[, , Fido, ]	0.990338580297037	null	5924.45458984375	2	505.282806396484	505.284539115171	null	R	C	null	null	IFWLFQR	0	unique	target
+PSM	FRQSKRR	32	sp|P20457|PRI2_YEAST	1	null	null	[, , Fido, ]	0.996664189804313	null	5939.08642578125	2	489.287963867188	489.291218615171	null	M	I	null	null	FRQSKRR	0	unique	target
+PSM	EKERKHR	33	sp|P34909|NOT4_YEAST	1	null	null	[, , Fido, ]	0.99654193807233	null	5913.27197265625	2	491.781921386719	491.780684099221	null	K	E	null	null	EKERKHR	1	unique	target
+PSM	ITELENANK	34	sp|P31115|PUS3_YEAST	1	null	null	[, , Fido, ]	0.996465520600347	null	5911.7060546875	2	516.270751953125	516.272024147071	null	R	P	null	null	ITELENANK	0	unique	target
+PSM	MRKLSWR	35	sp|Q12502|LDB19_YEAST	1	null	null	[, , Fido, ]	0.99645284585628	null	5903.00830078125	2	488.777893066406	488.779097996121	null	R	I	null	null	MRKLSWR	0	unique	target
+PSM	DGRGVPLGPR	36	sp|P53191|PIB2_YEAST	1	null	null	[, , Fido, ]	0.996924624362917	7-UniMod:262	5902.6357421875	2	513.795593261719	513.797757269221	null	R	N	null	null	DGRGVPL(Label:2H(3))GPR	0	unique	target
+PSM	DGILRSEK	37	sp|P36093|PHD1_YEAST	1	null	null	[, , Fido, ]	0.995277201454512	null	5899.60302734375	2	459.259857177734	459.256176551371	null	R	V	null	null	DGILRSEK	0	unique	target
+PSM	LYYYRSVR	38	sp|Q05854|YL278_YEAST	1	null	null	[, , Fido, ]	0.984736534772823	null	5896.62548828125	2	560.298095703125	560.300918210871	null	K	L	null	null	LYYYRSVR	0	unique	target
+PSM	NDVLKFDR	39	sp|P38205|NCL1_YEAST	1	null	null	[, , Fido, ]	0.981802754977095	4-UniMod:262	5892.95947265625	2	505.283172607422	505.278866221371	null	K	I	null	null	NDVL(Label:2H(3))KFDR	0	unique	target
+PSM	CKKEDLR	40	sp|P12612|TCPA_YEAST	1	null	null	[, , Fido, ]	0.995715161947769	1-UniMod:4,6-UniMod:262	5888.6875	2	476.262390136719	476.259619054471	null	R	R	null	null	C(Carbamidomethyl)KKEDL(Label:2H(3))R	0	unique	target
+PSM	MLKDLVREK	41	sp|P47133|EMC2_YEAST	1	null	null	[, , Fido, ]	0.989724702071864	null	5887.6787109375	2	566.335510253906	566.331361267271	null	-	L	null	null	MLKDLVREK	0	unique	target
+PSM	RKSGELPLQEK	42	sp|Q03016|GIP3_YEAST	1	null	null	[, , Fido, ]	0.995701216722914	null	5886.00048828125	2	642.873291015625	642.867154513921	null	K	E	null	null	RKSGELPLQEK	0	non-unique	target
+PSM	ILTLPNGER	43	sp|P36022|DYHC_YEAST	1	null	null	[, , Fido, ]	0.995723966483031	null	5884.0283203125	2	506.788024902344	506.792926194921	null	K	L	null	null	ILTLPNGER	0	unique	target
+PSM	EERKRARGK	44	sp|Q06706|ELP1_YEAST	1	null	null	[, , Fido, ]	0.994751909735351	null	5882.8544921875	2	565.328125	565.331072806571	null	R	K	null	null	EERKRARGK	1	unique	target
+PSM	RCFRRPR	45	sp|Q03656|SKY1_YEAST	1	null	null	[, , Fido, ]	0.985630430060537	2-UniMod:4	5878.51953125	2	524.289184570313	524.290695512071	null	K	R	null	null	RC(Carbamidomethyl)FRRPR	1	unique	target
+PSM	EIEQQIR	46	sp|P24384|PRP22_YEAST	1	null	null	[, , Fido, ]	0.996886709759014	null	5876.8935546875	2	458.2509765625	458.248351519471	null	R	K	null	null	EIEQQIR	1	unique	target
+PSM	NAKALESEFK	47	sp|P37291|GLYC_YEAST	1	null	null	[, , Fido, ]	0.996680527753555	5-UniMod:262	5875.880859375	2	570.315856933594	570.310363880871	null	K	N	null	null	NAKAL(Label:2H(3))ESEFK	0	unique	target
+PSM	YINLKSR	48	sp|P22768|ASSY_YEAST	1	null	null	[, , Fido, ]	0.990502250607655	null	5873.80419921875	2	447.259429931641	447.263804051371	null	R	G	null	null	YINLKSR	0	unique	target
+PSM	TPQFLAK	49	sp|Q12239|TM115_YEAST	1	null	null	[, , Fido, ]	0.994323746776956	5-UniMod:262	5873.56982421875	2	404.240905761719	404.243763061871	null	K	N	null	null	TPQFL(Label:2H(3))AK	0	unique	target
+PSM	DENVRQSLK	50	sp|P32642|GLRX4_YEAST	1	null	null	[, , Fido, ]	0.995278897786444	8-UniMod:262	5872.51025390625	2	546.302978515625	546.297787817071	null	R	K	null	null	DENVRQSL(Label:2H(3))K	0	unique	target
+PSM	VPSSDIVSR	51	sp|P40318|DOA10_YEAST	1	null	null	[, , Fido, ]	0.975174227365696	null	5871.7451171875	2	480.262908935547	480.261459083271	null	R	N	null	null	VPSSDIVSR	1	unique	target
+PSM	KGGRRVGR	52	sp|P32644|ECM32_YEAST	1	null	null	[, , Fido, ]	0.997042341711261	null	5870.73486328125	2	443.281524658203	443.278111051371	null	K	G	null	null	KGGRRVGR	0	unique	target
+PSM	LKAWDYFLK	53	sp|P35177|SPT7_YEAST	1	null	null	[, , Fido, ]	0.99649229047188	null	5870.14306640625	2	592.328674316406	592.329144338471	null	K	G	null	null	LKAWDYFLK	0	unique	target
+PSM	LEKEISRDKR	54	sp|P13185|KIN1_YEAST	1	null	null	[, , Fido, ]	0.991934439929684	null	5867.7841796875	2	637.360046386719	637.364778997971	null	K	T	null	null	LEKEISRDKR	0	unique	target
+PSM	IKPEFAENVLK	55	sp|P40506|PPCS_YEAST	1	null	null	[, , Fido, ]	0.996827455934905	10-UniMod:262	5866.068359375	2	645.876770019531	645.878413652021	null	K	N	null	null	IKPEFAENVL(Label:2H(3))K	0	unique	target
+PSM	EVLVHVKNLEK	56	sp|P07273|TFS2_YEAST	1	null	null	[, , Fido, ]	0.996471750203536	null	5865.78369140625	2	654.39013671875	654.387722593671	null	K	N	null	null	EVLVHVKNLEK	0	unique	target
+PSM	KIMTVEERRR	57	sp|Q12239|TM115_YEAST	1	null	null	[, , Fido, ]	0.997056438770091	null	5865.41064453125	2	659.374877929688	659.374623426771	null	K	Q	null	null	KIMTVEERRR	0	unique	target
+PSM	KQKIIDGK	58	sp|P53335|PXR1_YEAST	1	null	null	[, , Fido, ]	0.995075599444263	null	5864.41259765625	2	465.293853759766	465.292561678971	null	R	W	null	null	KQKIIDGK	0	unique	target
+PSM	THAIFSK	59	sp|P05374|CHO2_YEAST	1	null	null	[, , Fido, ]	0.994831920833981	null	5864.1357421875	2	402.225524902344	402.224147391871	null	K	I	null	null	THAIFSK	1	unique	target
+PSM	RGARYAR	60	sp|P40825|SYA_YEAST	1	null	null	[, , Fido, ]	0.979568357976112	null	5861.46142578125	2	425.246307373047	425.243736923771	null	R	K	null	null	RGARYAR	1	unique	target
+PSM	VIDALQLTDK	61	sp|P34227|PRX1_YEAST	1	null	null	[, , Fido, ]	0.996408459252334	null	5856.89501953125	2	558.321472167969	558.318974338471	null	R	E	null	null	VIDALQLTDK	0	unique	target
+PSM	QRGRIAAQK	62	sp|P05740|RL17A_YEAST	0	null	null	[, , Fido, ]	0.996876106893963	null	5850.60546875	2	514.306701660156	514.309608710871	null	R	R	null	null	QRGRIAAQK	0	non-unique	target
+PSM	QRGRIAAQK	62	sp|P46990|RL17B_YEAST	0	null	null	[, , Fido, ]	0.996876106893963	null	5850.60546875	2	514.306701660156	514.309608710871	null	null	null	null	null	QRGRIAAQK	0	non-unique	target
+PSM	MKGLLWSKNR	63	sp|P39960|BEM2_YEAST	1	null	null	[, , Fido, ]	0.995639539071521	null	5850.22119140625	2	616.854614257813	616.850252315121	null	-	K	null	null	MKGLLWSKNR	0	unique	target
+PSM	EQIKEKFRK	64	sp|P19658|EXO70_YEAST	1	null	null	[, , Fido, ]	0.925690571482884	null	5849.6259765625	2	603.353881835938	603.353682434171	null	K	F	null	null	EQIKEKFRK	1	unique	target
+PSM	MKRIAFYRR	65	sp|P32380|SP110_YEAST	1	null	null	[, , Fido, ]	0.996628222079285	null	5848.52978515625	2	620.857299804688	620.858411315121	null	R	S	null	null	MKRIAFYRR	0	unique	target
+PSM	YTLRPEYKK	66	sp|P41896|T2FB_YEAST	1	null	null	[, , Fido, ]	0.996614051710008	3-UniMod:262	5868.822265625	2	600.842834472656	600.844373492521	null	K	L	null	null	YTL(Label:2H(3))RPEYKK	0	unique	target
+PSM	RTHPVLYTR	67	sp|P41911|GPD2_YEAST	1	null	null	[, , Fido, ]	0.995388141253986	null	5847.875	2	571.821472167969	571.825091790621	null	K	R	null	null	RTHPVLYTR	0	unique	target
+PSM	IDEIDLKNPVR	68	sp|P19735|PRP6_YEAST	1	null	null	[, , Fido, ]	0.995591400127235	null	5843.86279296875	2	656.369689941406	656.366987529871	null	K	A	null	null	IDEIDLKNPVR	0	unique	target
+PSM	SIIDLSSR	69	sp|P47102|GEA1_YEAST	1	null	null	[, , Fido, ]	0.995264490696687	5-UniMod:262	5842.69970703125	2	447.259185791016	447.260142157571	null	R	S	null	null	SIIDL(Label:2H(3))SSR	0	unique	target
+PSM	KELKVEEERQRR	70	sp|Q12495|RLF2_YEAST	1	null	null	[, , Fido, ]	0.995785961620818	null	5841.60498046875	2	800.444213867188	800.449906348871	null	K	A	null	null	KELKVEEERQRR	0	unique	target
+PSM	KYIDSIANRLK	71	sp|P53104|ATG1_YEAST	1	null	null	[, , Fido, ]	0.995974452964723	null	5838.6328125	2	660.880249023438	660.885347077721	null	R	I	null	null	KYIDSIANRLK	0	unique	target
+PSM	WAAEYIIRR	72	sp|P07702|LYS2_YEAST	1	null	null	[, , Fido, ]	0.996257267188812	null	5837.2119140625	2	589.324951171875	589.327467306571	null	K	A	null	null	WAAEYIIRR	1	unique	target
+PSM	EITKNKRFQK	73	sp|P11075|SEC7_YEAST	1	null	null	[, , Fido, ]	0.995981462571857	null	5835.16650390625	2	646.378540039063	646.377689029871	null	R	L	null	null	EITKNKRFQK	1	unique	target
+PSM	LKGNHPIETTR	74	sp|Q12451|OSH2_YEAST	1	null	null	[, , Fido, ]	0.984548363681989	null	5833.44482421875	2	633.350158691406	633.351671434171	null	R	W	null	null	LKGNHPIETTR	0	unique	target
+PSM	LVAKEEENK	75	sp|Q12072|IOC2_YEAST	1	null	null	[, , Fido, ]	0.997049019067414	1-UniMod:262	5832.55126953125	2	531.795837402344	531.797089333021	null	R	K	null	null	L(Label:2H(3))VAKEEENK	0	unique	target
+PSM	TKEQSKNDKLK	76	sp|P36080|RRP14_YEAST	1	null	null	[, , Fido, ]	0.996577480974933	null	5831.8125	2	659.873962402344	659.869894545821	null	K	K	null	null	TKEQSKNDKLK	0	unique	target
+PSM	LPSLSSFQGK	77	sp|P25389|KCC4_YEAST	1	null	null	[, , Fido, ]	0.99342321040482	1-UniMod:262,4-UniMod:262	5831.51025390625	2	535.312377929688	535.311589455171	null	K	N	null	null	L(Label:2H(3))PSL(Label:2H(3))SSFQGK	0	unique	target
+PSM	YRPKGFR	78	sp|P13259|PCY1_YEAST	1	null	null	[, , Fido, ]	0.996147979849713	null	5827.89306640625	2	462.265228271484	462.264138019471	null	K	F	null	null	YRPKGFR	1	unique	target
+PSM	MLKNPKNSTR	79	sp|Q05648|YD282_YEAST	1	null	null	[, , Fido, ]	0.985818654757047	2-UniMod:262	5908.8291015625	2	596.338562011719	596.338932373471	null	K	Y	null	null	ML(Label:2H(3))KNPKNSTR	0	unique	target
+PSM	MKQREVYLK	80	sp|Q06053|DUS3_YEAST	1	null	null	[, , Fido, ]	0.990191730471726	null	5817.962890625	2	597.837036132813	597.836810783221	null	R	Y	null	null	MKQREVYLK	0	unique	target
+PSM	FIEDVLR	81	sp|P53141|MLC1_YEAST	1	null	null	[, , Fido, ]	0.996212952055901	null	5854.048828125	2	446.250427246094	446.250362519471	null	K	Q	null	null	FIEDVLR	0	unique	target
+PSM	ISRDRGIIDK	82	sp|P29469|MCM2_YEAST	1	null	null	[, , Fido, ]	0.997121003470447	null	5815.88916015625	2	586.844482421875	586.840939386321	null	K	I	null	null	ISRDRGIIDK	0	unique	target
+PSM	FRIERER	83	sp|P23643|VPS3_YEAST	1	null	null	[, , Fido, ]	0.994946626256049	null	5813.0302734375	2	503.285552978516	503.283059615171	null	K	A	null	null	FRIERER	1	unique	target
+PSM	MLKAFTPTLKK	84	sp|Q03219|YM44_YEAST	1	null	null	[, , Fido, ]	0.99617976824512	null	5811.9140625	2	639.38623046875	639.386136490571	null	R	I	null	null	MLKAFTPTLKK	0	unique	target
+PSM	RYEFKGLAK	85	sp|P21951|DPOE_YEAST	1	null	null	[, , Fido, ]	0.989178577707985	null	5809.85498046875	2	556.314880371094	556.316568274671	null	R	T	null	null	RYEFKGLAK	0	unique	target
+PSM	SKVDKYGRKIK	86	sp|Q06344|ESF1_YEAST	1	null	null	[, , Fido, ]	0.995680296226114	null	5807.69873046875	2	661.397521972656	661.401164125571	null	K	N	null	null	SKVDKYGRKIK	1	unique	target
+PSM	AQIISSMK	87	sp|P39104|PIK1_YEAST	1	null	null	[, , Fido, ]	0.99710483979823	null	5794.62353515625	2	439.240997314453	439.244222916371	null	R	E	null	null	AQIISSMK	0	unique	target
+PSM	RSRSTSNR	88	sp|P32832|RSC7_YEAST	1	null	null	[, , Fido, ]	0.994885912117301	null	5790.65625	2	482.262268066406	482.257573519471	null	K	P	null	null	RSRSTSNR	1	unique	target
+PSM	KKNNESSK	89	sp|P40477|NU159_YEAST	1	null	null	[, , Fido, ]	0.980700869483033	null	5789.9111328125	2	467.754119873047	467.751258535421	null	K	A	null	null	KKNNESSK	1	unique	target
+PSM	PPIHYVQR	90	sp|P41832|BNI1_YEAST	1	null	null	[, , Fido, ]	0.995485730357448	null	5788.736328125	2	505.282318115234	505.282528115171	null	R	I	null	null	PPIHYVQR	1	unique	target
+PSM	NKATNNK	91	sp|P15565|TRM1_YEAST	1	null	null	[, , Fido, ]	0.955145452270374	null	5787.36669921875	2	395.214721679688	395.214311359971	null	R	F	null	null	NKATNNK	1	unique	target
+PSM	ELISEFQK	92	sp|P25039|EFGM_YEAST	1	null	null	[, , Fido, ]	0.993989420505783	null	5785.99755859375	2	497.266723632813	497.266210115171	null	K	K	null	null	ELISEFQK	0	unique	target
+PSM	SIEFAKR	93	sp|Q12377|RPN6_YEAST	1	null	null	[, , Fido, ]	0.996681473195062	null	5785.45947265625	2	425.743072509766	425.742704471621	null	K	E	null	null	SIEFAKR	0	unique	target
+PSM	YGRKFALEK	94	sp|P38688|SRP72_YEAST	1	null	null	[, , Fido, ]	0.996662205119906	7-UniMod:262	5780.6884765625	2	557.822570800781	557.825983396821	null	K	L	null	null	YGRKFAL(Label:2H(3))EK	0	unique	target
+PSM	ERREYLTK	95	sp|P04819|DNLI1_YEAST	1	null	null	[, , Fido, ]	0.996745427546748	6-UniMod:262	5780.19970703125	2	549.309448242188	549.310697848971	null	K	V	null	null	ERREYL(Label:2H(3))TK	0	unique	target
+PSM	MANKVIQLQK	96	sp|P10174|COX7_YEAST	1	null	null	[, , Fido, ]	0.996182276416849	8-UniMod:262	5776.94873046875	2	588.349487304688	588.354050937271	null	-	I	null	null	MANKVIQL(Label:2H(3))QK	0	unique	target
+PSM	IYSGTLR	97	sp|P53893|RIA1_YEAST	1	null	null	[, , Fido, ]	0.992078448695477	null	5775.1572265625	2	405.230987548828	405.229429923771	null	R	V	null	null	IYSGTLR	0	unique	target
+PSM	NRPIVSTK	98	sp|P53220|TIM21_YEAST	1	null	null	[, , Fido, ]	0.996359959271078	null	5773.70849609375	2	457.770965576172	457.774536099221	null	R	K	null	null	NRPIVSTK	1	unique	target
+PSM	KQMELKRQR	99	sp|P33332|SEC3_YEAST	1	null	null	[, , Fido, ]	0.993365571125105	5-UniMod:262	5773.17626953125	2	610.362731933594	610.360198937271	null	K	Q	null	null	KQMEL(Label:2H(3))KRQR	0	unique	target
+PSM	NQLTRMNK	100	sp|P38330|RMD9L_YEAST	1	null	null	[, , Fido, ]	0.996830419294377	3-UniMod:262	5770.51025390625	2	504.278350830078	504.278343118271	null	R	K	null	null	NQL(Label:2H(3))TRMNK	0	unique	target
+PSM	PFKYGKKEAKR	101	sp|Q12082|YD157_YEAST	1	null	null	[, , Fido, ]	0.996494968409049	null	5769.91259765625	2	676.400756835938	676.395881593671	null	K	G	null	null	PFKYGKKEAKR	1	unique	target
+PSM	AKEMNLDLR	102	sp|Q07878|VPS13_YEAST	1	null	null	[, , Fido, ]	0.994773057693688	6-UniMod:262,8-UniMod:262	5768.18896484375	2	548.304748535156	548.308523852071	null	R	V	null	null	AKEMNL(Label:2H(3))DL(Label:2H(3))R	0	unique	target
+PSM	PLDSSRK	103	sp|P04037|COX4_YEAST	1	null	null	[, , Fido, ]	0.992763822642943	2-UniMod:262	5867.537109375	2	403.233184814453	403.233927029971	null	K	G	null	null	PL(Label:2H(3))DSSRK	0	unique	target
+PSM	EISRDKRTIR	104	sp|P13185|KIN1_YEAST	1	null	null	[, , Fido, ]	0.988009551462961	null	5767.68408203125	2	637.365356445313	637.370395497971	null	K	E	null	null	EISRDKRTIR	1	unique	target
+PSM	QFDLTEK	105	sp|O13329|FOB1_YEAST	1	null	null	[, , Fido, ]	0.99698575195347	4-UniMod:262	5765.9287109375	2	442.237609863281	442.233593061871	null	K	N	null	null	QFDL(Label:2H(3))TEK	0	unique	target
+PSM	SGPVRGQR	106	sp|Q12754|RRP12_YEAST	1	null	null	[, , Fido, ]	0.995681924069856	null	5764.67919921875	2	428.738128662109	428.741027439721	null	K	N	null	null	SGPVRGQR	1	unique	target
+PSM	QTMLSDSSGRR	107	sp|O13525|COQ4_YEAST	1	null	null	[, , Fido, ]	0.99471685784921	null	5762.87109375	2	619.307250976563	619.301321671571	null	K	I	null	null	QTMLSDSSGRR	0	unique	target
+PSM	VNAFRQKVQK	108	sp|P53075|SHE10_YEAST	1	null	null	[, , Fido, ]	0.994410335122682	null	5762.5869140625	2	609.35595703125	609.359298934171	null	R	K	null	null	VNAFRQKVQK	1	unique	target
+PSM	FSKRAVCK	109	sp|Q12494|KCS1_YEAST	1	null	null	[, , Fido, ]	0.997066154426194	7-UniMod:4	5874.8525390625	2	498.274536132813	498.276388512071	null	R	A	null	null	FSKRAVC(Carbamidomethyl)K	0	unique	target
+PSM	KIMTVEERRR	110	sp|Q12239|TM115_YEAST	1	null	null	[, , Fido, ]	0.991386032305359	null	5760.1181640625	2	659.371765136719	659.374623426771	null	K	Q	null	null	KIMTVEERRR	1	unique	target
+PSM	LINGLPDR	111	sp|Q03407|PKH1_YEAST	1	null	null	[, , Fido, ]	0.99678845457976	null	5758.9990234375	2	449.257507324219	449.261261551371	null	R	C	null	null	LINGLPDR	0	unique	target
+PSM	ESNKKKAINEK	112	sp|P21825|SEC62_YEAST	1	null	null	[, , Fido, ]	0.995975607774028	null	5754.79736328125	2	644.868103027344	644.864612013921	null	R	A	null	null	ESNKKKAINEK	1	unique	target
+PSM	IYLNQSKFSGR	113	sp|Q04636|POB3_YEAST	1	null	null	[, , Fido, ]	0.996738375399467	3-UniMod:262	5754.1201171875	2	658.367736816406	658.363462072271	null	R	F	null	null	IYL(Label:2H(3))NQSKFSGR	0	unique	target
+PSM	IWDISGLRK	114	sp|P53622|COPA_YEAST	1	null	null	[, , Fido, ]	0.996448691241364	7-UniMod:262	5751.615234375	2	545.821655273438	545.825983396821	null	R	R	null	null	IWDISGL(Label:2H(3))RK	0	unique	target
+PSM	RKNFTFSK	115	sp|P40048|PTP3_YEAST	1	null	null	[, , Fido, ]	0.996462626542187	null	5749.81005859375	2	514.289184570313	514.287810647071	null	R	L	null	null	RKNFTFSK	1	unique	target
+PSM	LTQEFVRIR	116	sp|P32892|DRS1_YEAST	1	null	null	[, , Fido, ]	0.996466264420461	null	5748.9794921875	2	581.335815429688	581.340574870371	null	K	K	null	null	LTQEFVRIR	0	unique	target
+PSM	SKDRWLNRK	117	sp|Q08492|BUD21_YEAST	1	null	null	[, , Fido, ]	0.996876274270915	6-UniMod:262	5748.7080078125	2	603.348693847656	603.350688476571	null	R	A	null	null	SKDRWL(Label:2H(3))NRK	0	unique	target
+PSM	ITAIIPNFPYAR	118	sp|P38689|KPR3_YEAST	1	null	null	[, , Fido, ]	0.996191818680811	null	5745.1904296875	2	688.394104003906	688.390265093671	null	R	Q	null	null	ITAIIPNFPYAR	1	unique	target
+PSM	EGAAGFLK	119	sp|Q07878|VPS13_YEAST	1	null	null	[, , Fido, ]	0.996335773960105	7-UniMod:262	5743.5888671875	2	398.223266601563	398.225570498071	null	K	G	null	null	EGAAGFL(Label:2H(3))K	0	unique	target
+PSM	IQEELTDRIK	120	sp|P32833|ORC2_YEAST	1	null	null	[, , Fido, ]	0.979262085365501	5-UniMod:262	5742.689453125	2	624.360412597656	624.355303072271	null	K	K	null	null	IQEEL(Label:2H(3))TDRIK	0	unique	target
+PSM	SRRFLYWR	121	sp|P32874|HFA1_YEAST	1	null	null	[, , Fido, ]	0.995906709649558	5-UniMod:262	5741.3818359375	2	593.834045410156	593.837216396821	null	K	L	null	null	SRRFL(Label:2H(3))YWR	0	unique	target
+PSM	EETTIEKIRR	122	sp|Q06344|ESF1_YEAST	1	null	null	[, , Fido, ]	0.996054793474748	null	5739.8291015625	2	637.860900878906	637.856786982021	null	K	K	null	null	EETTIEKIRR	1	unique	target
+PSM	TYVITKNGK	123	sp|P22276|RPC2_YEAST	1	null	null	[, , Fido, ]	0.996141709372834	null	5739.23291015625	2	512.291381835938	512.295301710871	null	K	I	null	null	TYVITKNGK	1	unique	target
+PSM	GHELPVK	124	sp|P32368|SAC1_YEAST	1	null	null	[, , Fido, ]	0.99671316723905	4-UniMod:262	5782.11962890625	2	391.731170654297	391.733562514021	null	K	E	null	null	GHEL(Label:2H(3))PVK	0	unique	target
+PSM	YIHSADVLHR	125	sp|Q00772|SLT2_YEAST	1	null	null	[, , Fido, ]	0.99616448831108	8-UniMod:262	5737.6357421875	2	607.333740234375	607.329421912771	null	K	D	null	null	YIHSADVL(Label:2H(3))HR	0	unique	target
+PSM	IEKGEKDKKDR	126	sp|Q03722|YMC0_YEAST	1	null	null	[, , Fido, ]	0.986201090845757	null	5734.3076171875	2	673.374816894531	673.375344061771	null	R	N	null	null	IEKGEKDKKDR	1	unique	target
+PSM	QLMCLAR	127	sp|P32386|YBT1_YEAST	1	null	null	[, , Fido, ]	0.996523329860155	2-UniMod:262,4-UniMod:4,5-UniMod:262	5732.2900390625	2	449.244995117188	449.249422493771	null	R	S	null	null	QL(Label:2H(3))MC(Carbamidomethyl)L(Label:2H(3))AR	0	unique	target
+PSM	VLRMQFR	128	sp|Q12502|LDB19_YEAST	1	null	null	[, , Fido, ]	0.996638856734271	2-UniMod:262	5729.654296875	2	476.778381347656	476.783063602321	null	R	L	null	null	VL(Label:2H(3))RMQFR	0	unique	target
+PSM	IFLQGLIDDDK	129	sp|Q04958|NTE1_YEAST	1	null	null	[, , Fido, ]	0.996955618139128	3-UniMod:262,6-UniMod:262	5729.05810546875	2	641.861938476563	641.861644194421	null	R	M	null	null	IFL(Label:2H(3))QGL(Label:2H(3))IDDDK	0	unique	target
+PSM	LKENGHR	130	sp|P38968|SEC31_YEAST	1	null	null	[, , Fido, ]	0.996191277082172	null	5727.78662109375	2	427.233093261719	427.235577923771	null	R	Q	null	null	LKENGHR	0	unique	target
+PSM	QISLEGLQK	131	sp|P35723|YET1_YEAST	1	null	null	[, , Fido, ]	0.996477293402649	null	5725.08984375	2	508.288116455078	508.292759210871	null	K	Q	null	null	QISLEGLQK	0	unique	target
+PSM	KNLQVENMK	132	sp|P30657|PSB7_YEAST	1	null	null	[, , Fido, ]	0.991631570292765	3-UniMod:262	5723.10205078125	2	553.806335449219	553.806933761821	null	K	W	null	null	KNL(Label:2H(3))QVENMK	0	unique	target
+PSM	NEIKSAQR	133	sp|P32867|SSO1_YEAST	1	null	null	[, , Fido, ]	0.996745027065039	null	5722.7734375	2	473.257537841797	473.259250551371	null	K	D	null	null	NEIKSAQR	0	unique	target
+PSM	STSKTSTK	134	sp|P53927|NOP15_YEAST	1	null	null	[, , Fido, ]	0.993553784219112	null	5764.3798828125	2	420.224761962891	420.227084955671	null	K	E	null	null	STSKTSTK	1	unique	target
+PSM	KMNLTRGINLR	135	sp|Q01939|PRS8_YEAST	1	null	null	[, , Fido, ]	0.985534461196717	4-UniMod:262,10-UniMod:262	5719.06103515625	2	661.398742675781	661.403821202971	null	R	K	null	null	KMNL(Label:2H(3))TRGINL(Label:2H(3))R	0	unique	target
+PSM	VLDDFKKAFR	136	sp|P36117|ALY1_YEAST	1	null	null	[, , Fido, ]	0.995690052240548	null	5718.11572265625	2	619.848388671875	619.848232918221	null	R	E	null	null	VLDDFKKAFR	0	unique	target
+PSM	PQGSLIASIQR	137	sp|Q06706|ELP1_YEAST	1	null	null	[, , Fido, ]	0.995143096233016	5-UniMod:262	5716.01318359375	2	586.84423828125	586.844904992521	null	K	K	null	null	PQGSL(Label:2H(3))IASIQR	0	unique	target
+PSM	HERKTNYK	138	sp|P40328|TBP6_YEAST	1	null	null	[, , Fido, ]	0.996890387902573	null	5710.69677734375	2	538.288024902344	538.285799647071	null	K	S	null	null	HERKTNYK	0	unique	target
+PSM	TYVITKNGK	139	sp|P22276|RPC2_YEAST	1	null	null	[, , Fido, ]	0.996091129640188	null	5707.90576171875	2	512.290710449219	512.295301710871	null	K	I	null	null	TYVITKNGK	1	unique	target
+PSM	QKKHSDFLLK	140	sp|Q12450|ERP4_YEAST	1	null	null	[, , Fido, ]	0.995153596655033	null	5707.5947265625	2	622.356750488281	622.361507466071	null	R	S	null	null	QKKHSDFLLK	0	unique	target
+PSM	SLNNAVR	141	sp|P38737|ECM29_YEAST	1	null	null	[, , Fido, ]	0.995613589667287	null	5705.0966796875	2	387.220550537109	387.216853859971	null	K	F	null	null	SLNNAVR	0	unique	target
+PSM	ARGSTGLR	142	sp|P40482|SEC24_YEAST	1	null	null	[, , Fido, ]	0.996411443155644	null	5704.345703125	2	409.237518310547	409.235577923771	null	R	M	null	null	ARGSTGLR	0	unique	target
+PSM	FWELDYLK	143	sp|P48360|ADRO_YEAST	1	null	null	[, , Fido, ]	0.996469252744614	4-UniMod:262,7-UniMod:262	5703.96142578125	2	560.300537109375	560.303232923271	null	K	T	null	null	FWEL(Label:2H(3))DYL(Label:2H(3))K	0	unique	target
+PSM	SNFIEEKILKSR	144	sp|Q06108|RGC1_YEAST	1	null	null	[, , Fido, ]	0.996555101562885	null	5703.34521484375	2	732.420227050781	732.414469221271	null	R	N	null	null	SNFIEEKILKSR	0	unique	target
+PSM	DRILKNNQR	145	sp|P40498|UTP25_YEAST	1	null	null	[, , Fido, ]	0.996300164781382	null	5702.32275390625	2	578.830505371094	578.830905822521	null	R	L	null	null	DRILKNNQR	0	unique	target
+PSM	KDDKTRNKPK	146	sp|P53220|TIM21_YEAST	1	null	null	[, , Fido, ]	0.996177284082812	null	5700.193359375	2	615.349792480469	615.351671434171	null	K	P	null	null	KDDKTRNKPK	1	unique	target
+PSM	AVKDALR	147	sp|P40362|UTP18_YEAST	1	null	null	[, , Fido, ]	0.996649197647304	6-UniMod:262	5698.57763671875	2	388.245727539063	388.246837061871	null	R	L	null	null	AVKDAL(Label:2H(3))R	0	unique	target
+PSM	RTGSVVRR	148	sp|P54786|ZDS2_YEAST	1	null	null	[, , Fido, ]	0.994438210453443	null	5694.8603515625	2	465.785675048828	465.783226599221	null	K	P	null	null	RTGSVVRR	1	unique	target
+PSM	EILGIEVK	149	sp|P25582|SPB1_YEAST	1	null	null	[, , Fido, ]	0.9932588216614	3-UniMod:262	5692.28466796875	2	452.285919189453	452.283085753271	null	R	D	null	null	EIL(Label:2H(3))GIEVK	0	unique	target
+PSM	GTPVGKVAR	150	sp|P42942|YG4I_YEAST	1	null	null	[, , Fido, ]	0.995076351003856	null	5689.4169921875	2	442.765319824219	442.769253567321	null	R	Y	null	null	GTPVGKVAR	1	unique	target
+PSM	MHGIKRK	151	sp|Q00618|PGTA_YEAST	1	null	null	[, , Fido, ]	0.996508453606031	null	5689.01708984375	2	435.258483886719	435.260540916371	null	-	Q	null	null	MHGIKRK	1	unique	target
+PSM	LNHGVSLR	152	sp|P47104|RAV1_YEAST	1	null	null	[, , Fido, ]	0.995717343521228	1-UniMod:262,7-UniMod:262	5688.1728515625	2	451.279907226563	451.277883263771	null	K	L	null	null	L(Label:2H(3))NHGVSL(Label:2H(3))R	0	unique	target
+PSM	VGFPVLSVK	153	sp|P37898|AAP1_YEAST	1	null	null	[, , Fido, ]	0.978413514047451	null	5687.7724609375	2	473.290100097656	473.292030178971	null	R	E	null	null	VGFPVLSVK	0	unique	target
+PSM	NETTTKQPLKK	154	sp|P40480|HOS4_YEAST	1	null	null	[, , Fido, ]	0.996417424723236	null	5685.2099609375	2	644.367248535156	644.366987529871	null	M	R	null	null	NETTTKQPLKK	0	unique	target
+PSM	SSIGNRK	155	sp|Q03653|EFR3_YEAST	1	null	null	[, , Fido, ]	0.975871842205773	null	5683.46533203125	2	381.218353271484	381.216853859971	null	R	S	null	null	SSIGNRK	1	unique	target
+PSM	NEKKLQAERR	156	sp|Q08972|NEW1_YEAST	1	null	null	[, , Fido, ]	0.956507006066339	null	5676.79248046875	2	636.357055664063	636.362570466071	null	R	R	null	null	NEKKLQAERR	0	unique	target
+PSM	VRAEREVMR	157	sp|Q03264|NGL2_YEAST	1	null	null	[, , Fido, ]	0.996039861762731	null	5717.234375	2	573.319213867188	573.314034171571	null	K	K	null	null	VRAEREVMR	1	unique	target
+PSM	NQLHNLR	158	sp|P31755|OCH1_YEAST	1	null	null	[, , Fido, ]	0.996450925274722	3-UniMod:262,6-UniMod:262	5675.9326171875	2	450.765502929688	450.767682715921	null	K	D	null	null	NQL(Label:2H(3))HNL(Label:2H(3))R	0	unique	target
+PSM	IWHDGRLK	159	sp|P53227|YG1T_YEAST	1	null	null	[, , Fido, ]	0.996371881483335	null	5784.27294921875	2	512.787841796875	512.787977631121	null	K	Y	null	null	IWHDGRLK	0	unique	target
+PSM	LRIAHMTR	160	sp|P53901|INN1_YEAST	1	null	null	[, , Fido, ]	0.996285788113053	null	5668.91552734375	2	499.288116455078	499.289830043971	null	R	A	null	null	LRIAHMTR	0	unique	target
+PSM	EIEGYLRTK	161	sp|P38066|RIB1_YEAST	1	null	null	[, , Fido, ]	0.997078758917493	6-UniMod:262	5686.8515625	2	556.310791015625	556.312906380871	null	K	I	null	null	EIEGYL(Label:2H(3))RTK	0	unique	target
+PSM	APNQILK	162	sp|Q06708|VAC14_YEAST	1	null	null	[, , Fido, ]	0.995854641792069	null	5665.50537109375	2	392.241729736328	392.239797455671	null	K	H	null	null	APNQILK	0	unique	target
+PSM	LFKTRDIPR	163	sp|P53206|CYSK_YEAST	1	null	null	[, , Fido, ]	0.996447447419598	null	5731.67236328125	2	573.34521484375	573.343117370371	null	K	P	null	null	LFKTRDIPR	0	unique	target
+PSM	QKFNEAKAK	164	sp|P12611|WHI2_YEAST	1	null	null	[, , Fido, ]	0.996316615976724	null	5665.1357421875	2	532.299377441406	532.298375710871	null	R	W	null	null	QKFNEAKAK	0	unique	target
+PSM	DCISDLVLK	165	sp|Q04373|PUF6_YEAST	1	null	null	[, , Fido, ]	0.996837409999975	2-UniMod:4,6-UniMod:262,8-UniMod:262	5663.935546875	2	534.801574707031	534.797457836121	null	K	H	null	null	DC(Carbamidomethyl)ISDL(Label:2H(3))VL(Label:2H(3))K	0	unique	target
+PSM	RKQNELYAKQK	166	sp|Q08492|BUD21_YEAST	1	null	null	[, , Fido, ]	0.996115610344341	null	5758.07080078125	2	703.399536132813	703.399153125571	null	R	K	null	null	RKQNELYAKQK	0	unique	target
+PSM	EDKRKRR	167	sp|P40152|YNV7_YEAST	1	null	null	[, , Fido, ]	0.980959983395831	null	5662.02392578125	2	494.290588378906	494.293958647071	null	M	A	null	null	EDKRKRR	1	unique	target
+PSM	KELMKRR	168	sp|P25627|BUD23_YEAST	1	null	null	[, , Fido, ]	0.995610208432935	null	5661.72119140625	2	480.791381835938	480.792205559921	null	K	G	null	null	KELMKRR	0	unique	target
+PSM	ERARNKER	169	sp|P47116|PTK2_YEAST	1	null	null	[, , Fido, ]	0.99629215919567	null	5660.20556640625	2	529.791442871094	529.794323163021	null	K	N	null	null	ERARNKER	0	unique	target
+PSM	ERARLMRR	170	sp|P40210|SIP5_YEAST	1	null	null	[, , Fido, ]	0.996518892411106	null	5897.75341796875	2	544.322021484375	544.316910639671	null	K	S	null	null	ERARLMRR	0	unique	target
+PSM	PTPPSPPAK	171	sp|Q06604|BSP1_YEAST	1	null	null	[, , Fido, ]	0.997172286869564	null	5657.994140625	2	446.252197265625	446.250362519471	null	K	R	null	null	PTPPSPPAK	0	unique	target
+PSM	QSIKDKLEQLR	172	sp|Q06324|MMR1_YEAST	1	null	null	[, , Fido, ]	0.991688882755887	null	5927.92333984375	2	679.392028808594	679.393536625571	null	K	S	null	null	QSIKDKLEQLR	0	unique	target
+PSM	AYGEDAK	173	sp|P53278|YG3A_YEAST	1	null	null	[, , Fido, ]	0.997209696339278	null	5657.27001953125	2	377.173645019531	377.174320732371	null	R	N	null	null	AYGEDAK	1	unique	target
+PSM	LCISYKGKGK	174	sp|Q06179|FMP27_YEAST	1	null	null	[, , Fido, ]	0.994890999630414	1-UniMod:262,2-UniMod:4	5656.95703125	2	578.828063964844	578.832951357521	null	K	M	null	null	L(Label:2H(3))C(Carbamidomethyl)ISYKGKGK	0	unique	target
+PSM	EVYSSSLPKK	175	sp|P22353|RM08_YEAST	1	null	null	[, , Fido, ]	0.989715259808642	null	5655.11279296875	2	569.305908203125	569.311149306571	null	K	T	null	null	EVYSSSLPKK	0	unique	target
+PSM	VEGSRSAK	176	sp|P53107|YRB30_YEAST	1	null	null	[, , Fido, ]	0.985948251878967	null	5652.9501953125	2	417.230010986328	417.227418923771	null	K	T	null	null	VEGSRSAK	1	unique	target
+PSM	IHELNFR	177	sp|P32874|HFA1_YEAST	1	null	null	[, , Fido, ]	0.994920996834594	4-UniMod:262	5652.4013671875	2	466.261749267578	466.263018625671	null	K	S	null	null	IHEL(Label:2H(3))NFR	0	unique	target
+PSM	NIINQLR	178	sp|P40482|SEC24_YEAST	1	null	null	[, , Fido, ]	0.995952492458058	null	5649.3935546875	2	435.757568359375	435.761428535421	null	R	N	null	null	NIINQLR	0	unique	target
+PSM	VFGHLPR	179	sp|Q07878|VPS13_YEAST	1	null	null	[, , Fido, ]	0.996717199924645	5-UniMod:262	5649.1455078125	2	414.751831054688	414.749546545921	null	R	L	null	null	VFGHL(Label:2H(3))PR	0	unique	target
+PSM	IVAAYFK	180	sp|P39540|ELO1_YEAST	1	null	null	[, , Fido, ]	0.996184885099244	null	5647.6201171875	2	406.238250732422	406.239265955671	null	K	N	null	null	IVAAYFK	1	unique	target
+PSM	VPAEVVK	181	sp|P38921|PET8_YEAST	1	null	null	[, , Fido, ]	0.998037329007613	null	5645.83056640625	2	371.228485107422	371.228898423771	null	R	Q	null	null	VPAEVVK	0	unique	target
+PSM	NKTVSRPR	182	sp|P38756|TCD1_YEAST	1	null	null	[, , Fido, ]	0.996360513942541	null	5644.814453125	2	479.28466796875	479.283059615171	null	K	Q	null	null	NKTVSRPR	1	unique	target
+PSM	GFFGVLK	183	sp|P25558|BUD3_YEAST	1	null	null	[, , Fido, ]	0.997010132237192	null	5644.00439453125	2	384.225067138672	384.226158391871	null	K	N	null	null	GFFGVLK	0	unique	target
+PSM	EQLEHKLK	184	sp|P33338|SLA2_YEAST	1	null	null	[, , Fido, ]	0.996391170800109	null	5668.337890625	2	512.788696289063	512.792926194921	null	K	Q	null	null	EQLEHKLK	0	unique	target
+PSM	EYTKLVR	185	sp|Q06682|UBX5_YEAST	1	null	null	[, , Fido, ]	0.993348040613299	null	5641.33544921875	2	454.763397216797	454.763637067321	null	K	K	null	null	EYTKLVR	0	unique	target
+PSM	LVPDNLLAWK	186	sp|P17883|SKI3_YEAST	1	null	null	[, , Fido, ]	0.996414270319877	null	5640.72998046875	2	584.838745117188	584.839876386321	null	K	G	null	null	LVPDNLLAWK	0	unique	target
+PSM	EEQKRREK	187	sp|Q3E776|YB255_YEAST	1	null	null	[, , Fido, ]	0.987312622924878	null	5639.15380859375	2	551.803344726563	551.801814226821	null	R	I	null	null	EEQKRREK	1	unique	target
+PSM	QLVKDRK	188	sp|P04050|RPB1_YEAST	1	null	null	[, , Fido, ]	0.995992992551226	null	5637.359375	2	443.772857666016	443.777078599221	null	K	F	null	null	QLVKDRK	0	unique	target
+PSM	THTRLNTPK	189	sp|P38167|ECM21_YEAST	1	null	null	[, , Fido, ]	0.996473165811141	null	5709.7958984375	2	534.302490234375	534.301449710871	null	K	R	null	null	THTRLNTPK	0	unique	target
+PSM	ALTSTNR	190	sp|Q03407|PKH1_YEAST	1	null	null	[, , Fido, ]	0.998186753804615	2-UniMod:262	5634.041015625	2	383.217559814453	383.218276966171	null	K	F	null	null	AL(Label:2H(3))TSTNR	0	unique	target
+PSM	VVCDLIEARR	191	sp|Q04439|MYO5_YEAST	1	null	null	[, , Fido, ]	0.992119899471632	3-UniMod:4,5-UniMod:262	5630.1796875	2	617.346008300781	617.344214905371	null	K	P	null	null	VVC(Carbamidomethyl)DL(Label:2H(3))IEARR	0	unique	target
+PSM	WQGKKLIVCR	192	sp|P38427|TSL1_YEAST	1	null	null	[, , Fido, ]	0.995720850901323	9-UniMod:4	5715.1953125	2	644.369506835938	644.371351894871	null	R	D	null	null	WQGKKLIVC(Carbamidomethyl)R	0	unique	target
+PSM	LLDSEDK	193	sp|P32474|EUG1_YEAST	1	null	null	[, , Fido, ]	0.996210518940198	null	5628.46875	2	410.2080078125	410.208360891871	null	S	S	null	null	LLDSEDK	0	non-unique	target
+PSM	SNISTKDIRK	194	sp|P22035|BAS1_YEAST	1	null	null	[, , Fido, ]	0.995773605169079	null	5627.34033203125	2	581.335632324219	581.332947370371	null	M	S	null	null	SNISTKDIRK	1	unique	target
+PSM	KQRHDPLLK	195	sp|P38333|ENP1_YEAST	1	null	null	[, , Fido, ]	0.993935143516965	null	5625.5751953125	2	567.835815429688	567.840741854421	null	R	D	null	null	KQRHDPLLK	0	unique	target
+PSM	IIETDNLK	196	sp|P40516|EFM4_YEAST	1	null	null	[, , Fido, ]	0.995991992748708	7-UniMod:262	5624.9033203125	2	474.772430419922	474.775625237321	null	K	M	null	null	IIETDNL(Label:2H(3))K	0	unique	target
+PSM	DWVPTIIQLERR	197	sp|P39960|BEM2_YEAST	1	null	null	[, , Fido, ]	0.99453129705636	null	5623.0791015625	2	763.423461914063	763.427910753171	null	K	Q	null	null	DWVPTIIQLERR	0	unique	target
+PSM	LEFAIAMFLIQK	198	sp|P34216|EDE1_YEAST	1	null	null	[, , Fido, ]	0.99521006112572	null	5622.72314453125	2	712.407653808594	712.404526586271	null	K	K	null	null	LEFAIAMFLIQK	0	unique	target
+PSM	LEESPLR	199	sp|Q00955|ACAC_YEAST	1	null	null	[, , Fido, ]	0.99696520288087	null	5621.0166015625	2	422.233093261719	422.232169955671	null	K	D	null	null	LEESPLR	0	unique	target
+PSM	RLVLGSCPR	200	sp|Q12389|DBP10_YEAST	1	null	null	[, , Fido, ]	0.994372983288775	2-UniMod:262,4-UniMod:262,7-UniMod:4	5619.2958984375	2	532.321899414063	532.319225352071	null	K	L	null	null	RL(Label:2H(3))VL(Label:2H(3))GSC(Carbamidomethyl)PR	0	unique	target
+PSM	MGTGKKEKSRR	201	sp|P53742|NOG2_YEAST	1	null	null	[, , Fido, ]	0.995865729166782	null	5618.9599609375	2	639.3583984375	639.358973362971	null	-	I	null	null	MGTGKKEKSRR	1	unique	target
+PSM	KRELIESK	202	sp|P11927|KAR1_YEAST	1	null	null	[, , Fido, ]	0.996195491402689	null	5618.15234375	2	501.795959472656	501.800751226821	null	K	W	null	null	KRELIESK	0	unique	target
+PSM	NVLLKFPVSELNR	203	sp|P38780|YHL4_YEAST	1	null	null	[, , Fido, ]	0.995239122919797	null	5613.93701171875	2	764.951904296875	764.945936332921	null	null	null	null	null	NVLLKFPVSELNR	0	non-unique	target
+PSM	GKRLPVPEIVPFR	204	sp|P38111|ATR_YEAST	1	null	null	[, , Fido, ]	0.993635963060725	null	5611.9462890625	2	754.461669921875	754.459013348871	null	K	L	null	null	GKRLPVPEIVPFR	0	unique	target
+PSM	FKLPNIPDQK	205	sp|P32566|SMI1_YEAST	1	null	null	[, , Fido, ]	0.9860020881463	null	5610.1640625	2	600.338256835938	600.342783402271	null	K	S	null	null	FKLPNIPDQK	0	unique	target
+PSM	IKMAPPK	206	sp|P53309|AP18B_YEAST	1	null	null	[, , Fido, ]	0.996553270158118	null	5786.826171875	2	392.73876953125	392.741118368521	null	K	Q	null	null	IKMAPPK	1	unique	target
+PSM	EAVRQLYK	207	sp|P0CX84|RL35A_YEAST	0	null	null	[, , Fido, ]	0.995792637250465	6-UniMod:262	5629.919921875	2	505.299407958984	505.297058785171	null	R	G	null	null	EAVRQL(Label:2H(3))YK	0	non-unique	target
+PSM	EAVRQLYK	207	sp|P0CX85|RL35B_YEAST	0	null	null	[, , Fido, ]	0.995792637250465	6-UniMod:262	5629.919921875	2	505.299407958984	505.297058785171	null	null	null	null	null	EAVRQL(Label:2H(3))YK	0	non-unique	target
+PSM	FHPDKLAK	208	sp|P14906|SEC63_YEAST	1	null	null	[, , Fido, ]	0.993403962332485	6-UniMod:262	5606.4130859375	2	479.784240722656	479.781044205421	null	K	G	null	null	FHPDKL(Label:2H(3))AK	0	unique	target
+PSM	LGIRSSVK	209	sp|P08067|UCRI_YEAST	1	null	null	[, , Fido, ]	0.995224303854462	null	5605.8330078125	2	430.272705078125	430.271629083271	null	M	T	null	null	LGIRSSVK	0	unique	target
+PSM	IEFPSLRDRR	210	sp|P33298|PRS6B_YEAST	1	null	null	[, , Fido, ]	0.996553874085873	6-UniMod:262	5604.27392578125	2	646.368774414063	646.369078572271	null	K	E	null	null	IEFPSL(Label:2H(3))RDRR	0	unique	target
+PSM	ERMRYYKR	211	sp|Q12386|ARP8_YEAST	1	null	null	[, , Fido, ]	0.996905199034067	null	6010.66943359375	2	601.320678710938	601.316576671571	null	R	K	null	null	ERMRYYKR	0	unique	target
+PSM	VLLGNERMK	212	sp|P35210|SPT23_YEAST	1	null	null	[, , Fido, ]	0.996604059144495	2-UniMod:262,3-UniMod:262	5931.2314453125	2	533.316528320313	533.321433883971	null	K	T	null	null	VL(Label:2H(3))L(Label:2H(3))GNERMK	0	unique	target
+PSM	LLKQWPEHATLK	213	sp|Q12019|MDN1_YEAST	1	null	null	[, , Fido, ]	0.978787551991505	null	5602.59619140625	2	732.4208984375	732.422096721271	null	K	E	null	null	LLKQWPEHATLK	0	unique	target
+PSM	IPAQTVVR	214	sp|P38753|HSE1_YEAST	1	null	null	[, , Fido, ]	0.996659220919447	null	5866.41064453125	2	442.273010253906	442.271629083271	null	K	R	null	null	IPAQTVVR	0	unique	target
+PSM	TLAAYKRFLDK	215	sp|Q12525|MHT1_YEAST	1	null	null	[, , Fido, ]	0.997222204779271	2-UniMod:262,9-UniMod:262	5601.93505859375	2	666.407409667969	666.401270306071	null	K	I	null	null	TL(Label:2H(3))AAYKRFL(Label:2H(3))DK	0	unique	target
+PSM	KKNRGAQR	216	sp|P40505|SDS3_YEAST	1	null	null	[, , Fido, ]	0.987233252391022	null	5600.7470703125	2	479.286315917969	479.288676115171	null	K	Y	null	null	KKNRGAQR	1	unique	target
+PSM	NPIKYSLPR	217	sp|P53115|INO80_YEAST	1	null	null	[, , Fido, ]	0.995417152017001	7-UniMod:262	5631.22607421875	2	545.822631835938	545.825983396821	null	R	L	null	null	NPIKYSL(Label:2H(3))PR	0	unique	target
+PSM	SRSKSSR	218	sp|Q04500|UTP14_YEAST	1	null	null	[, , Fido, ]	0.995198467070479	null	5600.1904296875	2	404.224273681641	404.225210391871	null	K	R	null	null	SRSKSSR	1	unique	target
+PSM	KYVNTQGIDNKK	219	sp|Q12389|DBP10_YEAST	1	null	null	[, , Fido, ]	0.99246473472832	null	5598.49169921875	2	704.388549804688	704.383169093671	null	K	Y	null	null	KYVNTQGIDNKK	1	unique	target
+PSM	IWFAISK	220	sp|P06701|SIR3_YEAST	1	null	null	[, , Fido, ]	0.997459614970016	null	5595.9658203125	2	432.750793457031	432.752540503521	null	K	E	null	null	IWFAISK	0	unique	target
+PSM	TFKPILTK	221	sp|P53091|MCM6_YEAST	1	null	null	[, , Fido, ]	0.996949942487745	null	5594.93505859375	2	474.299163818359	474.299855210871	null	R	E	null	null	TFKPILTK	0	unique	target
+PSM	PASLSIPK	222	sp|P11075|SEC7_YEAST	1	null	null	[, , Fido, ]	0.996714523067017	4-UniMod:262	5593.3125	2	408.259948730469	408.256870625671	null	K	K	null	null	PASL(Label:2H(3))SIPK	0	unique	target
+PSM	GRMIHDLK	223	sp|P38169|KMO_YEAST	1	null	null	[, , Fido, ]	0.996162232319452	null	5592.2958984375	2	485.267700195313	485.268563480171	null	K	G	null	null	GRMIHDLK	0	unique	target
+PSM	LTSSSKR	224	sp|P39969|BOI2_YEAST	1	null	null	[, , Fido, ]	0.991829785519819	1-UniMod:262	5591.5703125	2	391.233276367188	391.233927029971	null	K	N	null	null	L(Label:2H(3))TSSSKR	0	unique	target
+PSM	PEPLTLR	225	sp|P21269|CCA1_YEAST	1	null	null	[, , Fido, ]	0.996520739504728	null	5605.3369140625	2	413.246246337891	413.245079987571	null	K	I	null	null	PEPLTLR	0	unique	target
+PSM	IGNFFKK	226	sp|Q12495|RLF2_YEAST	1	null	null	[, , Fido, ]	0.996046570675635	null	5590.52685546875	2	427.246551513672	427.250164987571	null	R	L	null	null	IGNFFKK	1	unique	target
+PSM	LDDSKKWNKR	227	sp|P53840|TOF1_YEAST	1	null	null	[, , Fido, ]	0.996336310485252	1-UniMod:262	5590.18798828125	2	646.866638183594	646.861086556321	null	K	I	null	null	L(Label:2H(3))DDSKKWNKR	0	unique	target
+PSM	VDQLSKTLIER	228	sp|P40564|DJP1_YEAST	1	null	null	[, , Fido, ]	0.996463296351347	4-UniMod:262,8-UniMod:262	5588.119140625	2	654.387878417969	654.393642806071	null	R	L	null	null	VDQL(Label:2H(3))SKTL(Label:2H(3))IER	0	unique	target
+PSM	QKELENK	229	sp|Q06704|IMH1_YEAST	1	null	null	[, , Fido, ]	0.995113681335452	4-UniMod:262	5586.39892578125	2	446.249725341797	446.252317125671	null	K	L	null	null	QKEL(Label:2H(3))ENK	0	unique	target
+PSM	IWSIGEKTIR	230	sp|P38149|DUG2_YEAST	1	null	null	[, , Fido, ]	0.995756278672338	null	5876.28857421875	2	601.849548339844	601.848232918221	null	R	D	null	null	IWSIGEKTIR	1	unique	target
+PSM	SKKSRHWKLK	231	sp|P38861|NMD3_YEAST	1	null	null	[, , Fido, ]	0.996540516296523	null	5584.8056640625	2	649.399963378906	649.396215561771	null	K	R	null	null	SKKSRHWKLK	0	unique	target
+PSM	IENLAVPK	232	sp|P25360|PHO87_YEAST	1	null	null	[, , Fido, ]	0.99630174606253	4-UniMod:262	5583.9150390625	2	443.773132324219	443.775427705421	null	K	L	null	null	IENL(Label:2H(3))AVPK	0	unique	target
+PSM	HTTSAMK	233	sp|P47102|GEA1_YEAST	1	null	null	[, , Fido, ]	0.997306759311741	null	5582.625	2	388.193572998047	388.191990193071	null	K	L	null	null	HTTSAMK	0	unique	target
+PSM	NNWKHVK	234	sp|P38261|EXO84_YEAST	1	null	null	[, , Fido, ]	0.996461199133971	null	5582.31689453125	2	463.254089355469	463.253770487571	null	R	K	null	null	NNWKHVK	0	unique	target
+PSM	AKKEKKDK	235	sp|Q12499|NOP58_YEAST	1	null	null	[, , Fido, ]	0.997038073083029	null	5617.49560546875	2	487.798614501953	487.803293726821	null	K	K	null	null	AKKEKKDK	0	unique	target
+PSM	STLPPRK	236	sp|P54786|ZDS2_YEAST	1	null	null	[, , Fido, ]	0.996815972115432	null	5582.06787109375	2	399.746612548828	399.745246971621	null	K	R	null	null	STLPPRK	0	non-unique	target
+PSM	RIKAIHEVR	237	sp|P25039|EFGM_YEAST	1	null	null	[, , Fido, ]	0.99670430211415	null	5579.73876953125	2	561.346862792969	561.348733870371	null	K	G	null	null	RIKAIHEVR	0	unique	target
+PSM	MLQDKGKLLR	238	sp|P53685|HST1_YEAST	1	null	null	[, , Fido, ]	0.996573030976207	null	5575.83447265625	2	601.355346679688	601.357910362971	null	K	N	null	null	MLQDKGKLLR	0	unique	target
+PSM	RKHGIMK	239	sp|P11746|MCM1_YEAST	1	null	null	[, , Fido, ]	0.996542498215203	null	5581.38720703125	2	435.259887695313	435.260540916371	null	K	K	null	null	RKHGIMK	1	unique	target
+PSM	ILPGSDLNSLK	240	sp|P36158|YK58_YEAST	1	null	null	[, , Fido, ]	0.997065137790633	2-UniMod:262,7-UniMod:262,10-UniMod:262	5566.7431640625	2	583.357238769531	583.360494252771	null	R	D	null	null	IL(Label:2H(3))PGSDL(Label:2H(3))NSL(Label:2H(3))K	0	unique	target
+PSM	LQSTGTAPR	241	sp|Q08215|PEX15_YEAST	1	null	null	[, , Fido, ]	0.995851666904472	null	5673.43994140625	2	465.757232666016	465.753801035421	null	R	K	null	null	LQSTGTAPR	0	unique	target
+PSM	IEQQLNLK	242	sp|P17119|KAR3_YEAST	1	null	null	[, , Fido, ]	0.996355439340375	null	5642.32666015625	2	493.282897949219	493.287476678971	null	K	N	null	null	IEQQLNLK	0	unique	target
+PSM	KNKKDLTTNQR	243	sp|P22202|HSP74_YEAST	1	null	null	[, , Fido, ]	0.992841291707828	null	5558.61279296875	2	673.379699707031	673.380960561771	null	R	S	null	null	KNKKDLTTNQR	0	unique	target
+PSM	EELEKKRR	244	sp|P38961|RRP8_YEAST	1	null	null	[, , Fido, ]	0.97959634682993	null	5556.10595703125	2	544.316467285156	544.314557274671	null	K	K	null	null	EELEKKRR	0	unique	target
+PSM	RDFRRKVIYFR	245	sp|P39940|RSP5_YEAST	1	null	null	[, , Fido, ]	0.996435537881418	null	5612.931640625	2	778.449951171875	778.452053785071	null	K	S	null	null	RDFRRKVIYFR	1	unique	target
+PSM	EIQARPRR	246	sp|P32892|DRS1_YEAST	1	null	null	[, , Fido, ]	0.996235111166546	null	5554.0166015625	2	513.303894042969	513.301783678971	null	K	T	null	null	EIQARPRR	1	unique	target
+PSM	NSNSTPR	247	sp|Q99299|AIM44_YEAST	1	null	null	[, , Fido, ]	0.99759431900004	null	5552.03076171875	2	388.191955566406	388.188293764271	null	K	Q	null	null	NSNSTPR	0	unique	target
+PSM	LFIGDQNNK	248	sp|P22082|SNF2_YEAST	1	null	null	[, , Fido, ]	0.996597155884265	1-UniMod:262	5627.87841796875	2	526.287902832031	526.284148753271	null	R	K	null	null	L(Label:2H(3))FIGDQNNK	0	unique	target
+PSM	ITTDFILR	249	sp|P43612|SA155_YEAST	1	null	null	[, , Fido, ]	0.995717649213188	7-UniMod:262	5550.71044921875	2	491.289886474609	491.293984785171	null	K	G	null	null	ITTDFIL(Label:2H(3))R	0	unique	target
+PSM	THSEKQKR	250	sp|P38085|TAT1_YEAST	1	null	null	[, , Fido, ]	0.995765555302543	null	5717.81005859375	2	507.281646728516	507.277974615171	null	R	D	null	null	THSEKQKR	0	unique	target
+PSM	ECLADWGKCLR	251	sp|O13329|FOB1_YEAST	1	null	null	[, , Fido, ]	0.995640545587536	2-UniMod:4,9-UniMod:4	5548.7734375	2	704.326232910156	704.329024696071	null	K	Y	null	null	EC(Carbamidomethyl)LADWGKC(Carbamidomethyl)LR	0	unique	target
+PSM	RVFQLRSK	252	sp|P34077|NIC96_YEAST	1	null	null	[, , Fido, ]	0.994460260823435	null	5546.86376953125	2	517.319946289063	517.316902242771	null	R	N	null	null	RVFQLRSK	0	unique	target
+PSM	TIKLWKVYEK	253	sp|Q00362|2ABA_YEAST	1	null	null	[, , Fido, ]	0.996830959558514	null	5765.66015625	2	654.389099121094	654.389733593671	null	K	N	null	null	TIKLWKVYEK	0	unique	target
+PSM	LRKFSEYK	254	sp|P19658|EXO70_YEAST	1	null	null	[, , Fido, ]	0.996455280744331	1-UniMod:262	5546.1650390625	2	537.309448242188	537.312708848971	null	R	N	null	null	L(Label:2H(3))RKFSEYK	0	unique	target
+PSM	QKEGKKHMK	255	sp|P46943|GUF1_YEAST	1	null	null	[, , Fido, ]	0.997236125023687	null	5545.87548828125	2	557.30810546875	557.313502671571	null	K	T	null	null	QKEGKKHMK	0	unique	target
+PSM	KKNVKTDGK	256	sp|Q03327|UGO1_YEAST	1	null	null	[, , Fido, ]	0.996653509920584	null	5544.48486328125	2	509.302886962891	509.306200742771	null	K	N	null	null	KKNVKTDGK	0	unique	target
+PSM	IVAAYFK	257	sp|P39540|ELO1_YEAST	1	null	null	[, , Fido, ]	0.996966140997312	null	5543.61328125	2	406.238311767578	406.239265955671	null	K	N	null	null	IVAAYFK	0	unique	target
+PSM	TFWELEILKK	258	sp|Q03660|TR130_YEAST	1	null	null	[, , Fido, ]	0.99463538445173	null	5542.8720703125	2	653.873474121094	653.873916545821	null	K	L	null	null	TFWELEILKK	0	unique	target
+PSM	SKKHSKER	259	sp|Q12476|AIR2_YEAST	1	null	null	[, , Fido, ]	0.990265556601614	null	5542.6162109375	2	500.291290283203	500.288342147071	null	K	C	null	null	SKKHSKER	1	unique	target
+PSM	YFSVKRR	260	sp|P40434|YIR7_YEAST	1	null	null	[, , Fido, ]	0.994625707197348	null	5541.7353515625	2	478.278167724609	478.277245583271	null	null	null	null	null	YFSVKRR	1	non-unique	target
+PSM	ILVDHNSALR	261	sp|Q06697|CDC73_YEAST	1	null	null	[, , Fido, ]	0.994788103474208	2-UniMod:262,9-UniMod:262	5540.603515625	2	572.337158203125	572.341212550871	null	R	G	null	null	IL(Label:2H(3))VDHNSAL(Label:2H(3))R	0	unique	target
+PSM	TLIQNAGGDPIR	262	sp|P39077|TCPG_YEAST	1	null	null	[, , Fido, ]	0.995742250062254	2-UniMod:262	5539.109375	2	629.353881835938	629.353094540371	null	R	L	null	null	TL(Label:2H(3))IQNAGGDPIR	0	unique	target
+PSM	YIDSLQAALNQFTK	263	sp|P42073|REF2_YEAST	1	null	null	[, , Fido, ]	0.992325734188061	5-UniMod:262,9-UniMod:262	5723.40380859375	2	809.433959960938	809.441322029371	null	K	D	null	null	YIDSL(Label:2H(3))QAAL(Label:2H(3))NQFTK	0	unique	target
+PSM	YGLPLSSR	264	sp|Q04049|POLH_YEAST	1	null	null	[, , Fido, ]	0.994253619408195	null	5534.603515625	2	446.748199462891	446.747987003521	null	R	P	null	null	YGLPLSSR	0	unique	target
+PSM	EYKQWLR	265	sp|P36147|PAM17_YEAST	1	null	null	[, , Fido, ]	0.996724041263227	6-UniMod:262	5534.322265625	2	513.281982421875	513.283951221371	null	K	D	null	null	EYKQWL(Label:2H(3))R	0	unique	target
+PSM	DNDLKYMLLR	266	sp|Q92325|LAG2_YEAST	1	null	null	[, , Fido, ]	0.99394397979174	4-UniMod:262,8-UniMod:262,9-UniMod:262	5533.44091796875	2	645.359069824219	645.365253681571	null	K	Q	null	null	DNDL(Label:2H(3))KYML(Label:2H(3))L(Label:2H(3))R	0	unique	target
+PSM	KTASLGNSK	267	sp|Q08773|ISW2_YEAST	1	null	null	[, , Fido, ]	0.996782314924124	5-UniMod:262	5673.0634765625	2	454.765228271484	454.765591673521	null	K	D	null	null	KTASL(Label:2H(3))GNSK	0	unique	target
+PSM	YYSLFVPR	268	sp|Q06179|FMP27_YEAST	1	null	null	[, , Fido, ]	0.995409023915184	4-UniMod:262	5533.15234375	2	524.287841796875	524.288702253271	null	R	T	null	null	YYSL(Label:2H(3))FVPR	0	unique	target
+PSM	LFHNLNQPK	269	sp|P47124|HOC1_YEAST	1	null	null	[, , Fido, ]	0.996244096946966	null	5532.4794921875	2	555.805847167969	555.806367726821	null	K	L	null	null	LFHNLNQPK	0	unique	target
+PSM	ARVNYDKHKSELK	270	sp|Q12532|RQC2_YEAST	1	null	null	[, , Fido, ]	0.996115455284854	null	5820.25146484375	2	794.430236816406	794.433724785071	null	K	P	null	null	ARVNYDKHKSELK	0	unique	target
+PSM	RSVRGKQKMSLR	271	sp|P53313|SDA1_YEAST	1	null	null	[, , Fido, ]	0.993714673758712	null	5531.046875	3	482.621459960938	482.620906567704	null	K	D	null	null	RSVRGKQKMSLR	0	unique	target
+PSM	VLSKDEMIKR	272	sp|P53739|FPK1_YEAST	1	null	null	[, , Fido, ]	0.996393778267203	null	5530.47119140625	2	609.847839355469	609.847375847021	null	K	N	null	null	VLSKDEMIKR	0	unique	target
+PSM	KMKNKIENK	273	sp|P22136|AEP2_YEAST	1	null	null	[, , Fido, ]	0.99693730629269	null	5530.19677734375	2	566.828369140625	566.828985751321	null	K	K	null	null	KMKNKIENK	0	unique	target
+PSM	FENLYRSIK	274	sp|P38811|TRA1_YEAST	1	null	null	[, , Fido, ]	0.996597373294481	null	5844.15673828125	2	585.318786621094	585.319308306571	null	R	P	null	null	FENLYRSIK	0	unique	target
+PSM	YPENFFILR	275	sp|P32598|PP12_YEAST	1	null	null	[, , Fido, ]	0.996655195942515	8-UniMod:262	5527.40869140625	2	601.331665039063	601.325816412771	null	K	G	null	null	YPENFFIL(Label:2H(3))R	0	unique	target
+PSM	LLFEMKEIFR	276	sp|P47061|VPS53_YEAST	1	null	null	[, , Fido, ]	0.996607381859276	null	5671.50439453125	2	663.361694335938	663.367943926771	null	K	V	null	null	LLFEMKEIFR	0	unique	target
+PSM	EEELLRKK	277	sp|P47068|BBC1_YEAST	1	null	null	[, , Fido, ]	0.993896799511307	null	5526.23876953125	2	522.801879882813	522.806033758721	null	R	A	null	null	EEELLRKK	0	unique	target
+PSM	PVPEEYLQTDPSYGLTSDEVLK	278	sp|P05030|PMA1_YEAST	1	null	null	[, , Fido, ]	0.000264957964993617	null	6370.53173828125	3	827.40869140625	827.407486941105	null	R	R	null	null	PVPEEYLQTDPSYGLTSDEVLK	0	unique	target
+PSM	LEDNVKGLK	279	sp|Q12216|SIZ2_YEAST	1	null	null	[, , Fido, ]	0.996304218065527	null	5525.20849609375	2	508.294677734375	508.292759210871	null	K	K	null	null	LEDNVKGLK	0	unique	target
+PSM	NKNKRQR	280	sp|P13259|PCY1_YEAST	1	null	null	[, , Fido, ]	0.996844224578621	null	5658.52734375	2	472.277313232422	472.280851083271	null	K	E	null	null	NKNKRQR	0	unique	target
+PSM	YHDFLRK	281	sp|P26784|RL16A_YEAST	1	null	null	[, , Fido, ]	0.995582009409139	5-UniMod:262	5524.3125	2	491.267333984375	491.270843657571	null	null	null	null	null	YHDFL(Label:2H(3))RK	0	non-unique	target
+PSM	MTPAMIRAR	282	sp|Q3E7B2|COA3_YEAST	1	null	null	[, , Fido, ]	0.996592501974277	null	5702.62548828125	2	523.779113769531	523.783523456821	null	K	K	null	null	MTPAMIRAR	0	unique	target
+PSM	IIIGRDR	283	sp|P31688|TPS2_YEAST	1	null	null	[, , Fido, ]	0.996231754345042	null	5601.43310546875	2	421.759918212891	421.763971035421	null	K	L	null	null	IIIGRDR	1	non-unique	target+decoy
+PSM	HYRKYQK	284	sp|P21954|IDHP_YEAST	1	null	null	[, , Fido, ]	0.996326517414317	null	5518.05029296875	2	511.779632568359	511.780152599221	null	R	G	null	null	HYRKYQK	1	unique	target
+PSM	MASAEPR	285	sp|P20438|CG12_YEAST	1	null	null	[, , Fido, ]	0.997421275191899	null	5644.2705078125	2	381.185455322266	381.184165161171	null	-	P	null	null	MASAEPR	1	unique	target
+PSM	LWHPDRK	286	sp|Q03177|YMZ2_YEAST	1	null	null	[, , Fido, ]	0.997222828913219	1-UniMod:262	5515.98291015625	2	477.767578125	477.771010641621	null	K	N	null	null	L(Label:2H(3))WHPDRK	0	unique	target
+PSM	YHATPPLKR	287	sp|P32908|SMC1_YEAST	1	null	null	[, , Fido, ]	0.996097944440611	7-UniMod:262	5669.2275390625	2	543.315246582031	543.318325348971	null	K	F	null	null	YHATPPL(Label:2H(3))KR	0	unique	target
+PSM	IETSIATIQRLK	288	sp|P04387|GAL80_YEAST	1	null	null	[, , Fido, ]	0.991123994716798	null	5514.4169921875	2	686.909362792969	686.911562205321	null	K	L	null	null	IETSIATIQRLK	0	unique	target
+PSM	NIGSAPNAKR	289	sp|Q06405|ATPK_YEAST	1	null	null	[, , Fido, ]	0.987131359018466	null	5513.171875	2	514.287658691406	514.285799647071	null	K	I	null	null	NIGSAPNAKR	1	unique	target
+PSM	FLLLFSFLKRNQK	290	sp|Q03532|HAS1_YEAST	1	null	null	[, , Fido, ]	0.996554186967016	null	5510.13916015625	2	827.497863769531	827.495596008371	null	R	K	null	null	FLLLFSFLKRNQK	0	unique	target
+PSM	CSKHPNVLR	291	sp|P38147|CHK1_YEAST	1	null	null	[, , Fido, ]	0.997123340600975	1-UniMod:4,8-UniMod:262	5513.73291015625	2	557.305419921875	557.304892213971	null	K	L	null	null	C(Carbamidomethyl)SKHPNVL(Label:2H(3))R	0	unique	target
+PSM	KSKDKEQIK	292	sp|P19658|EXO70_YEAST	1	null	null	[, , Fido, ]	0.993538558766726	null	5509.52392578125	2	552.320556640625	552.324590838471	null	K	E	null	null	KSKDKEQIK	1	unique	target
+PSM	ILPKEYTISNK	293	sp|Q04958|NTE1_YEAST	1	null	null	[, , Fido, ]	0.996570876131488	2-UniMod:262	5508.9951171875	2	654.879821777344	654.883696183921	null	R	R	null	null	IL(Label:2H(3))PKEYTISNK	0	unique	target
+PSM	REVDLKNKRR	294	sp|Q07653|HBT1_YEAST	1	null	null	[, , Fido, ]	0.99149789004478	null	5511.4130859375	2	657.388916015625	657.391662061771	null	K	T	null	null	REVDLKNKRR	0	unique	target
+PSM	NRLLWVNGGLK	295	sp|P40549|MNT3_YEAST	1	null	null	[, , Fido, ]	0.996573446542856	null	5505.96728515625	3	423.919555664063	423.919058154238	null	K	T	null	null	NRLLWVNGGLK	0	unique	target
+PSM	RKHGIMK	296	sp|P11746|MCM1_YEAST	1	null	null	[, , Fido, ]	0.99679417144889	null	5610.8974609375	2	435.259368896484	435.260540916371	null	K	K	null	null	RKHGIMK	0	unique	target
+PSM	RKSGDRHK	297	sp|P35724|MNR2_YEAST	1	null	null	[, , Fido, ]	0.891451352431082	null	5504.3017578125	2	492.275024414063	492.278308583271	null	K	P	null	null	RKSGDRHK	1	unique	target
+PSM	QQTELRHK	298	sp|P07342|ILVB_YEAST	1	null	null	[, , Fido, ]	0.995915047851582	5-UniMod:262	5501.49169921875	2	521.794372558594	521.795214769221	null	R	R	null	null	QQTEL(Label:2H(3))RHK	0	unique	target
+PSM	SQHVAIK	299	sp|P53104|ATG1_YEAST	1	null	null	[, , Fido, ]	0.997217924309792	null	5500.12060546875	2	391.731140136719	391.729596907821	null	K	E	null	null	SQHVAIK	0	unique	target
+PSM	LFGSKTPSGSKR	300	sp|P25360|PHO87_YEAST	1	null	null	[, , Fido, ]	0.99208300299449	1-UniMod:262	5498.23291015625	3	423.248229980469	423.244733537104	null	K	G	null	null	L(Label:2H(3))FGSKTPSGSKR	0	unique	target
+PSM	ELETLEAK	301	sp|P80210|PURA_YEAST	1	null	null	[, , Fido, ]	0.982941853475813	2-UniMod:262,5-UniMod:262	5659.23046875	2	469.770599365234	469.769223311621	null	K	G	null	null	EL(Label:2H(3))ETL(Label:2H(3))EAK	0	unique	target
+PSM	IRNYMKEK	302	sp|P40498|UTP25_YEAST	1	null	null	[, , Fido, ]	0.996736054239966	null	5740.12890625	2	541.293701171875	541.294778607771	null	R	T	null	null	IRNYMKEK	0	unique	target
+PSM	VAYGNGLR	303	sp|P38225|FAT1_YEAST	1	null	null	[, , Fido, ]	0.9946961230836	null	5496.66357421875	2	425.230926513672	425.232503923771	null	K	P	null	null	VAYGNGLR	0	unique	target
+PSM	LDALRKIFQR	304	sp|P48524|BUL1_YEAST	1	null	null	[, , Fido, ]	0.996397802676339	null	5495.59814453125	2	630.387573242188	630.382774029871	null	R	L	null	null	LDALRKIFQR	0	unique	target
+PSM	WLRPTQR	305	sp|Q00362|2ABA_YEAST	1	null	null	[, , Fido, ]	0.996025489698617	null	5494.587890625	2	478.775268554688	478.774870067321	null	K	S	null	null	WLRPTQR	0	unique	target
+PSM	AQKSYSKK	306	sp|Q06836|SYT1_YEAST	1	null	null	[, , Fido, ]	0.993335146892702	null	5494.07861328125	2	470.261962890625	470.266544083271	null	K	K	null	null	AQKSYSKK	1	unique	target
+PSM	QREIELIFR	307	sp|Q07963|UBR2_YEAST	1	null	null	[, , Fido, ]	0.991407208731147	null	5493.16015625	2	602.343017578125	602.345857402271	null	K	Y	null	null	QREIELIFR	0	unique	target
+PSM	DLVSLEKRFR	308	sp|Q04924|GLU2B_YEAST	1	null	null	[, , Fido, ]	0.996225480346285	null	5492.62890625	2	631.859191894531	631.864414482021	null	K	S	null	null	DLVSLEKRFR	0	unique	target
+PSM	IGLSFTTDK	309	sp|P33767|OSTB_YEAST	1	null	null	[, , Fido, ]	0.995457326087761	null	5490.4892578125	2	491.266571044922	491.266210115171	null	K	D	null	null	IGLSFTTDK	0	unique	target
+PSM	ESLNFLRGWNK	310	sp|P35194|UTP20_YEAST	1	null	null	[, , Fido, ]	0.996829232917508	3-UniMod:262,6-UniMod:262	5489.37060546875	2	685.381652832031	685.378326710371	null	K	L	null	null	ESL(Label:2H(3))NFL(Label:2H(3))RGWNK	0	unique	target
+PSM	EHEAKLLQQK	311	sp|Q12315|GLE1_YEAST	1	null	null	[, , Fido, ]	0.997010668320754	6-UniMod:262,7-UniMod:262	5489.095703125	2	615.364807128906	615.359602646571	null	K	D	null	null	EHEAKL(Label:2H(3))L(Label:2H(3))QQK	0	unique	target
+PSM	LYHKDLLSADK	312	sp|P19414|ACON_YEAST	1	null	null	[, , Fido, ]	0.99423634829031	1-UniMod:262,6-UniMod:262,7-UniMod:262	5506.9814453125	3	437.923370361328	437.925426054571	null	K	D	null	null	L(Label:2H(3))YHKDL(Label:2H(3))L(Label:2H(3))SADK	0	unique	target
+PSM	IEKPPAFK	313	sp|P25558|BUD3_YEAST	1	null	null	[, , Fido, ]	0.996058202154982	null	5487.580078125	2	465.274291992188	465.276380115171	null	K	V	null	null	IEKPPAFK	0	unique	target
+PSM	SRDGGLR	314	sp|P08518|RPB2_YEAST	1	null	null	[, , Fido, ]	0.996515455176864	null	5487.3154296875	2	380.708862304688	380.706653312121	null	R	F	null	null	SRDGGLR	0	non-unique	target
+PSM	AEKSHTRR	315	sp|P38707|SYNC_YEAST	1	null	null	[, , Fido, ]	0.996406265722377	null	5487.013671875	2	492.7734375	492.770316567321	null	R	H	null	null	AEKSHTRR	1	unique	target
+PSM	ELEQERR	316	sp|P38691|KSP1_YEAST	1	null	null	[, , Fido, ]	0.995746283535559	null	5486.37548828125	2	480.245208740234	480.248883019471	null	K	L	null	null	ELEQERR	0	unique	target
+PSM	YSILWRQR	317	sp|P40456|ESL1_YEAST	1	null	null	[, , Fido, ]	0.996765766876449	4-UniMod:262	5484.91455078125	2	562.826110839844	562.823774864921	null	K	L	null	null	YSIL(Label:2H(3))WRQR	0	unique	target
+PSM	RQNTLSLWR	318	sp|P05748|RL15A_YEAST	1	null	null	[, , Fido, ]	0.994741962206831	5-UniMod:262,7-UniMod:262	5484.6787109375	2	590.341613769531	590.346829050871	null	K	Y	null	null	RQNTL(Label:2H(3))SL(Label:2H(3))WR	0	non-unique	target
+PSM	QQQQKRR	319	sp|P41896|T2FB_YEAST	1	null	null	[, , Fido, ]	0.994232498897994	null	5483.744140625	2	486.282073974609	486.278308583271	null	K	N	null	null	QQQQKRR	1	unique	target
+PSM	IKQEERKR	320	sp|P33332|SEC3_YEAST	1	null	null	[, , Fido, ]	0.991742541712653	null	5830.7822265625	2	543.82421875	543.822549290621	null	R	Q	null	null	IKQEERKR	0	unique	target
+PSM	VLSEHIEK	321	sp|P39083|RGA1_YEAST	1	null	null	[, , Fido, ]	0.995753220048397	null	5483.5107421875	2	477.767883300781	477.766377099221	null	R	V	null	null	VLSEHIEK	0	unique	target
+PSM	FGVEGRASLLK	322	sp|P19882|HSP60_YEAST	1	null	null	[, , Fido, ]	0.995026906133442	null	5483.02490234375	2	588.840087890625	588.840407886321	null	K	G	null	null	FGVEGRASLLK	0	unique	target
+PSM	RHVITENTK	323	sp|Q99247|YO087_YEAST	1	null	null	[, , Fido, ]	0.996847722426364	null	5923.23681640625	2	549.311462402344	549.306732242771	null	R	G	null	null	RHVITENTK	0	unique	target
+PSM	DDLFIKAIQR	324	sp|P32324|EF2_YEAST	1	null	null	[, , Fido, ]	0.996807784991824	null	5480.53662109375	2	609.846496582031	609.845690418221	null	K	V	null	null	DDLFIKAIQR	0	unique	target
+PSM	INVANNEKR	325	sp|P53599|SSK2_YEAST	1	null	null	[, , Fido, ]	0.996276164540512	null	5717.51904296875	2	529.293151855469	529.291082178971	null	R	S	null	null	INVANNEKR	1	unique	target
+PSM	EKKLELEKAK	326	sp|P53723|YN8B_YEAST	1	null	null	[, , Fido, ]	0.993207064438921	null	5637.64501953125	2	608.365051269531	608.368998529871	null	K	R	null	null	EKKLELEKAK	0	unique	target
+PSM	VLDENAKKLR	327	sp|P41895|T2FA_YEAST	1	null	null	[, , Fido, ]	0.996328230348807	null	5478.205078125	2	593.35107421875	593.351139934171	null	K	F	null	null	VLDENAKKLR	0	unique	target
+PSM	EELEKISK	328	sp|P40480|HOS4_YEAST	1	null	null	[, , Fido, ]	0.996563405652088	null	5477.69921875	2	488.273834228516	488.271492647071	null	R	Q	null	null	EELEKISK	0	unique	target
+PSM	TRRHVTFSKRK	329	sp|P11746|MCM1_YEAST	1	null	null	[, , Fido, ]	0.996620596499359	null	5476.8544921875	2	708.422546386719	708.420753657471	null	K	H	null	null	TRRHVTFSKRK	0	unique	target
+PSM	LNRDDLNK	330	sp|P53901|INN1_YEAST	1	null	null	[, , Fido, ]	0.996813013518565	null	5797.39453125	2	494.262237548828	494.264533083271	null	R	E	null	null	LNRDDLNK	0	unique	target
+PSM	LSKNYTK	331	sp|P10962|MAK16_YEAST	1	null	null	[, , Fido, ]	0.992612609353354	null	5773.96484375	2	427.245910644531	427.242537487571	null	K	A	null	null	LSKNYTK	0	unique	target
+PSM	NWKNSQR	332	sp|P20485|KICH_YEAST	1	null	null	[, , Fido, ]	0.99635568023806	null	5476.28466796875	2	466.742004394531	466.738484939721	null	R	I	null	null	NWKNSQR	0	unique	target
+PSM	ILQPDPNKR	333	sp|P38147|CHK1_YEAST	1	null	null	[, , Fido, ]	0.996101246914237	null	5474.1337890625	2	540.812255859375	540.811650258721	null	K	V	null	null	ILQPDPNKR	0	unique	target
+PSM	AWRRFLQR	334	sp|Q04439|MYO5_YEAST	1	null	null	[, , Fido, ]	0.996547442433258	null	5471.93310546875	2	566.826110839844	566.827968258721	null	null	null	null	null	AWRRFLQR	0	non-unique	target
+PSM	IKFANLCRK	335	sp|P32600|TOR2_YEAST	1	null	null	[, , Fido, ]	0.996212888921304	6-UniMod:262,7-UniMod:4	5471.0048828125	2	576.842529296875	576.841110357521	null	W	S	null	null	IKFANL(Label:2H(3))C(Carbamidomethyl)RK	0	non-unique	target
+PSM	FKVESNWRK	336	sp|P39014|MET30_YEAST	1	null	null	[, , Fido, ]	0.99642983185925	null	5469.48828125	2	597.329528808594	597.324924806571	null	R	G	null	null	FKVESNWRK	0	unique	target
+PSM	IYFKTLMHK	337	sp|P53169|YBP2_YEAST	1	null	null	[, , Fido, ]	0.996589599411891	6-UniMod:262	5469.16064453125	2	592.344848632813	592.340411873471	null	K	K	null	null	IYFKTL(Label:2H(3))MHK	0	unique	target
+PSM	TLNISGTELRR	338	sp|P08536|MET3_YEAST	1	null	null	[, , Fido, ]	0.989833096738522	null	5844.44970703125	2	630.353393554688	630.356953966071	null	R	R	null	null	TLNISGTELRR	0	unique	target
+PSM	EMDSLIELK	339	sp|Q99332|HPH1_YEAST	1	null	null	[, , Fido, ]	0.996339641997526	5-UniMod:262,8-UniMod:262	5861.70263671875	2	542.301208496094	542.297290852071	null	R	N	null	null	EMDSL(Label:2H(3))IEL(Label:2H(3))K	0	unique	target
+PSM	SRSRASSRSR	340	sp|P32351|IMPX_YEAST	1	null	null	[, , Fido, ]	0.99436452261277	null	5466.8681640625	2	575.316345214844	575.313411742771	null	R	V	null	null	SRSRASSRSR	1	unique	target
+PSM	KKDEERKR	341	sp|P53935|NST1_YEAST	1	null	null	[, , Fido, ]	0.995912426063808	null	5462.9140625	2	544.812927246094	544.812181758721	null	R	R	null	null	KKDEERKR	1	unique	target
+PSM	KLDTIALALGPER	342	sp|P31383|2AAA_YEAST	1	null	null	[, , Fido, ]	0.996914297885199	2-UniMod:262,7-UniMod:262,9-UniMod:262	5461.76953125	2	703.437133789063	703.439807571771	null	K	T	null	null	KL(Label:2H(3))DTIAL(Label:2H(3))AL(Label:2H(3))GPER	0	unique	target
+PSM	KTSLKITHR	343	sp|P53133|YGL7_YEAST	1	null	null	[, , Fido, ]	0.996504855070097	null	5460.11328125	2	542.334899902344	542.335292338471	null	R	R	null	null	KTSLKITHR	0	unique	target
+PSM	RFAAIWTLCK	344	sp|P04050|RPB1_YEAST	1	null	null	[, , Fido, ]	0.996614392284574	9-UniMod:4	5459.6171875	2	633.349243164063	633.344802799171	null	K	T	null	null	RFAAIWTLC(Carbamidomethyl)K	0	unique	target
+PSM	IQFGTAGLR	345	sp|Q03262|PGM3_YEAST	1	null	null	[, , Fido, ]	0.994165280827431	8-UniMod:262	5455.6640625	2	483.285858154297	483.283951221371	null	R	S	null	null	IQFGTAGL(Label:2H(3))R	0	unique	target
+PSM	ILDLKFPPKER	346	sp|P00937|TRPG_YEAST	1	null	null	[, , Fido, ]	0.99622253471465	2-UniMod:262,4-UniMod:262	5452.7783203125	2	681.423522949219	681.424745401771	null	K	P	null	null	IL(Label:2H(3))DL(Label:2H(3))KFPPKER	0	unique	target
+PSM	RTYVQMR	347	sp|P33416|HSP78_YEAST	1	null	null	[, , Fido, ]	0.995701257830168	null	5451.30615234375	2	477.251220703125	477.252913416371	null	K	M	null	null	RTYVQMR	1	unique	target
+PSM	FYSSSPEQKYR	348	sp|P32453|ATP11_YEAST	1	null	null	[, , Fido, ]	0.996327638020194	null	5553.62255859375	2	696.335388183594	696.333144902271	null	R	K	null	null	FYSSSPEQKYR	1	unique	target
+PSM	MKKERLEK	349	sp|P38958|PT100_YEAST	1	null	null	[, , Fido, ]	0.996692944119545	6-UniMod:262	5450.48876953125	2	532.815795898438	532.819843793721	null	R	R	null	null	MKKERL(Label:2H(3))EK	0	unique	target
+PSM	MNGLEKIISK	350	sp|P38335|MTC4_YEAST	1	null	null	[, , Fido, ]	0.996505080428252	null	5617.001953125	2	566.828796386719	566.823369251321	null	R	T	null	null	MNGLEKIISK	0	unique	target
+PSM	NLADLIINSK	4575	sp|P40328|TBP6_YEAST	1	null	null	[, , Fido, ]	0.966677816879519	null	5954.00048828125	2	550.815551757813	550.819141322521	null	K	G	null	null	NLADLIINSK	0	unique	target
+PSM	LIVFENLETIR	4576	sp|P12385|ERF1_YEAST	1	null	null	[, , Fido, ]	0.018960421685614	1-UniMod:262,7-UniMod:262	4016.388671875	2	676.900329589844	676.906385853921	null	K	Y	null	null	L(Label:2H(3))IVFENL(Label:2H(3))ETIR	0	unique	target

@@ -608,12 +608,257 @@ function read_mztab(data_access) {
 
     reader.onload = function(e) {
         var mztabData = reader.result;
-        splitMzTabData(mztabData);
+        splitMzTabDataNew(mztabData);
     }
 
     reader.readAsText(file);
 }
 
+//updated: 28.02.15
+function splitMzTabDataNew(data){
+
+    //TODO: is there some sort of xpress ratio in those files? should other values be retrieved? probability?
+    var lines = data.split("\n");
+
+    //for ease of selecting the lines
+
+    //PRTs are not really nedded, as the same info is also saved in PSH
+    /*
+    var code_peptideheader1 = "PRH";
+    var code_peptide1 = "PRT";
+    */
+
+
+    //process:
+    //1.: create protein entries + peptides from the PSM entries (sequence + accession relevant)
+    //2.: in the PEP section: get those peptides + calculate ratio from the study variables
+
+    var code_peptideheader="PSH";
+    var code_peptide="PSM";
+
+    var code_peptideheader2="PEH";
+    var code_peptide2="PEP";
+
+
+    //ACHTUNG: PSH und PEH können gleichzeitig in einer Datei vorkommen
+    var headerdefined=false;//lets you switch between PSH/PEH
+
+    //find relevant lines + columns
+    //1: PSH
+    var headerline1=[];//array of the tab separated values
+    var peptidelines1=[];//array of the lines
+
+    //2:PEH;
+    var headerline2=[];
+    var peptidelines2=[];
+
+    for(line in lines){
+        var line_splitted=lines[line].split("\t");
+
+        switch(line_splitted[0]){
+            case code_peptideheader:
+                headerline1=line_splitted;
+                break;
+            case code_peptideheader2:
+                headerline2=line_splitted;
+                break;
+            case code_peptide:
+                peptidelines1.push(line_splitted);
+                break;
+            case code_peptide2:
+                peptidelines2.push(line_splitted);
+                break;
+        }
+    }
+
+    analyzePSM(headerline1,peptidelines1);
+    analyzePEP(headerline2,peptidelines2);
+
+
+
+    //PSM has no express info
+    function analyzePSM(headerline, peptidelines){
+        //find columns: sequence, accession
+        //Correct for both?
+        var proteinColumnTitle="accession";
+        var peptideColumnTitle="sequence";
+
+        var peptidePosition = -1;
+        var proteinPosition = -1;
+
+        for (var j = 0; j < headerline.length; j++) {
+            if (headerline[j] == peptideColumnTitle) {
+                peptidePosition = j;
+            } else if (headerline[j] == proteinColumnTitle) {
+                proteinPosition = j;
+            }
+        }
+
+        //console alert if columns weren't found
+        if(peptidePosition==-1){
+            //alert("mztab: "+code_peptideheader+": no sequence column found");
+            console.log("mztab: "+code_peptideheader+": no PSM sequence column found");
+        } else if(proteinPosition==-1){
+            //alert("mztab: "+code_peptideheader+": no accession column found");
+            console.log("mztab: "+code_peptideheader+": no PSM accession column found");
+        }
+
+        //transfer data to "proteins" object
+        for (var i = 0; i < peptidelines.length; i++) {
+            //check for empty entries
+            var line=peptidelines[i];
+
+            //prevent errors if lines are missing entries
+            if (line.length > peptidePosition && line.length>proteinPosition) {
+                //accession always this format: sp|id|name
+                var accession = line[proteinPosition].split("|");
+                var id = accession[1];
+                var name = accession[2];
+                var sequence = line[peptidePosition];
+                var xpress=undefined;
+
+                //if the entry was undefined -> simply add new peptide
+                if(proteins[id] == undefined){
+                    proteins[id]={};
+                    proteins[id].peptides={};//peptides also saved as object to prevent duplicates
+                    //in the peptides, also ratio and probability are saved;
+                    proteins[id].name=name;//define name only if the protein was undefined until now
+
+                    if(sequence!=""){
+                        proteins[id].peptides[sequence]={};
+                        //TODO: probability or other values; now just undefined
+                        proteins[id].peptides[sequence]["probability"]="undefined";
+                        if(xpress!=undefined){
+                            proteins[id].peptides[sequence]["ratio"]=xpress;
+                        }
+                    }
+
+                }else {//add peptide to existing object
+                    if(sequence!=""){
+                        //only add if peptide not listed yet
+                        if(proteins[id].peptides[sequence]==undefined){
+                            proteins[id].peptides[sequence]={};
+                            //TODO:prob
+                            proteins[id].peptides[sequence]["probability"]="undefined";
+                            if(xpress!=undefined){
+                                proteins[id].peptides[sequence]["ratio"]=xpress;
+                            }
+                        }
+                    }
+                }
+            }
+        }}
+
+    //same as PSM + express info
+    function analyzePEP(headerline, peptidelines){
+        //find columns: sequence, accession
+        //Correct for both?
+        var proteinColumnTitle="accession";
+        var peptideColumnTitle="sequence";
+
+        //express has to be calculated from the abundances
+        var abundanceColTitle1="peptide_abundance_study_variable[1]";
+        var abundanceColTitle2="peptide_abundance_study_variable[2]";
+
+        var peptidePosition = -1;
+        var proteinPosition = -1;
+        var abundancePosition1= -1;
+        var abundancePosition2= -1;
+
+        for (var j = 0; j < headerline.length; j++) {
+            if (headerline[j] == peptideColumnTitle) {
+                peptidePosition = j;
+            } else if (headerline[j] == proteinColumnTitle) {
+                proteinPosition = j;
+            }
+            else if (headerline[j] == abundanceColTitle1) {
+                abundancePosition1 = j;
+            }
+            else if (headerline[j] == abundanceColTitle2) {
+                abundancePosition2 = j;
+            }
+        }
+
+        //console alert if columns weren't found
+        if(peptidePosition==-1){
+            //alert("mztab: "+code_peptideheader+": no sequence column found");
+            console.log("mztab: "+code_peptideheader+": PEP - no sequence column found");
+        } else if(proteinPosition==-1){
+            //alert("mztab: "+code_peptideheader+": no accession column found");
+            console.log("mztab: "+code_peptideheader+": PEP - no accession column found");
+        }
+
+        //transfer data to "proteins" object
+        for (var i = 0; i < peptidelines.length; i++) {
+            //check for empty entries
+            var line=peptidelines[i];
+
+            //prevent errors if lines are missing entries
+            if (line.length > peptidePosition && line.length>proteinPosition) {
+                //accession always this format: sp|id|name
+                var accession = line[proteinPosition].split("|");
+                var id = accession[1];
+                var name = accession[2];
+                var sequence = line[peptidePosition];
+
+                //calculate xpress ratio:
+                var abundance1= parseFloat(line[abundancePosition1]);
+                var abundance2 = parseFloat(line[abundancePosition2]);
+
+                var xpress=undefined;
+                if(abundance1!=NaN&&abundance2!=NaN){
+                    xpress=abundance1/abundance2;
+                }
+
+                //if the entry was undefined -> simply add new peptide
+                //TODO: if any new changes: combine the functions that save data in "proteins" as one function
+                if(proteins[id] == undefined){
+                    proteins[id]={};
+                    proteins[id].peptides={};//peptides also saved as object to prevent duplicates
+                    //in the peptides, also ratio and probability are saved;
+                    proteins[id].name=name;//define name only if the protein was undefined until now
+
+                    if(sequence!=""){
+                        proteins[id].peptides[sequence]={};
+                        //TODO: probability or other values; now just undefined
+                        proteins[id].peptides[sequence]["probability"]="undefined";
+                        if(xpress!=undefined){
+                            proteins[id].peptides[sequence]["ratio"]=xpress;
+                        }
+                    }
+
+                }else {//add peptide to existing object
+                    if(sequence!=""){
+                        //only add if peptide not listed yet
+                        if(proteins[id].peptides[sequence]==undefined){
+                            proteins[id].peptides[sequence]={};
+                            proteins[id].peptides[sequence]["probability"]="undefined";
+                            if(xpress!=undefined){
+                                proteins[id].peptides[sequence]["ratio"]=xpress;
+                            }
+                        }else{
+                            if(proteins[id].peptides[sequence]["ratio"]==undefined){
+                                if(xpress!=undefined){
+                                    proteins[id].peptides[sequence]["ratio"]=xpress;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }}
+
+
+    fileCounter++;
+    //start only if every file processed:
+    if(fileCounter>=fileNumber){
+        //add foldratio to every peptide; remove proteins without peptides
+        modifyProteins();
+    }
+}
+
+
+//obsolete:
 function splitMzTabData(data) {
 
     //TODO: is there some sort of xpress ratio in those files? should other values be retrieved? probability?

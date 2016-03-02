@@ -724,22 +724,19 @@ function splitMzTabDataNew(data, treatmentNumber, controlNumber){
     //TODO: is there some sort of xpress ratio in those files? should other values be retrieved? probability?
     var lines = data.split("\n");
 
-    //for ease of selecting the lines
-
-    //PRTs are not really nedded, as the same info is also saved in PSH
-    /*
-    var code_peptideheader1 = "PRH";
-    var code_peptide1 = "PRT";
-    */
-
-
     //process:
     //1.: create protein entries + peptides from the PSM entries (sequence + accession relevant)
     //2.: in the PEP section: get those peptides + calculate ratio from the study variables
 
+    //alle proteine
+    var code_peptideheader0="PRH";
+    var code_peptide0="PRT";
+
+    //sequenz peptide
     var code_peptideheader="PSH";
     var code_peptide="PSM";
 
+    //nur quantifizierbare peptide:
     var code_peptideheader2="PEH";
     var code_peptide2="PEP";
 
@@ -748,6 +745,10 @@ function splitMzTabDataNew(data, treatmentNumber, controlNumber){
     var headerdefined=false;//lets you switch between PSH/PEH
 
     //find relevant lines + columns
+    //0:PRH
+    var headerline0=[];
+    var peptidelines0=[];
+
     //1: PSH
     var headerline1=[];//array of the tab separated values
     var peptidelines1=[];//array of the lines
@@ -760,11 +761,17 @@ function splitMzTabDataNew(data, treatmentNumber, controlNumber){
         var line_splitted=lines[line].split("\t");
 
         switch(line_splitted[0]){
+            case code_peptideheader0:
+                headerline0=line_splitted;
+                break;
             case code_peptideheader:
                 headerline1=line_splitted;
                 break;
             case code_peptideheader2:
                 headerline2=line_splitted;
+                break;
+            case code_peptide0:
+                peptidelines0.push(line_splitted);
                 break;
             case code_peptide:
                 peptidelines1.push(line_splitted);
@@ -775,9 +782,50 @@ function splitMzTabDataNew(data, treatmentNumber, controlNumber){
         }
     }
 
+    analyzePRT(headerline0,peptidelines0);//PRT: create protein list; the others: add peptides
     analyzePSM(headerline1,peptidelines1);
     analyzePEP(headerline2,peptidelines2);
 
+    //PSM is the list of all proteins
+    function analyzePRT(headerline, infolines){
+        //find columns: sequence, accession
+        //Correct for both?
+        var proteinColumnTitle="accession";
+
+        var proteinPosition = -1;
+
+        for (var j = 0; j < headerline.length; j++) {
+            if (headerline[j] == proteinColumnTitle) {
+                proteinPosition = j;
+            }
+        }
+
+        if(proteinPosition==-1){
+            //alert("mztab: "+code_peptideheader+": no accession column found");
+            console.log("mztab: "+code_peptideheader+": no PSM accession column found");
+        }
+
+        //transfer data to "proteins" object
+        for (var i = 0; i < infolines.length; i++) {
+            //check for empty entries
+            var line=infolines[i];
+
+            //prevent errors if lines are missing entries
+            if (line.length>proteinPosition) {
+                //accession always this format: sp|id|name
+                var accession = line[proteinPosition].split("|");
+                var id = accession[1];
+                var name = accession[2];
+
+                //if the entry was undefined -> simply add new peptide
+                if(proteins[id] == undefined){
+                    proteins[id]={};
+                    proteins[id].peptides={};//peptides also saved as object to prevent duplicates
+                    //in the peptides, also ratio and probability are saved;
+                    proteins[id].name=name;//define name only if the protein was undefined until now
+                }
+            }
+        }}
 
     //PSM has no express info
     function analyzePSM(headerline, peptidelines){
@@ -822,19 +870,7 @@ function splitMzTabDataNew(data, treatmentNumber, controlNumber){
 
                 //if the entry was undefined -> simply add new peptide
                 if(proteins[id] == undefined){
-                    proteins[id]={};
-                    proteins[id].peptides={};//peptides also saved as object to prevent duplicates
-                    //in the peptides, also ratio and probability are saved;
-                    proteins[id].name=name;//define name only if the protein was undefined until now
 
-                    if(sequence!=""){
-                        proteins[id].peptides[sequence]={};
-                        //TODO: probability or other values; now just undefined
-                        proteins[id].peptides[sequence]["probability"]="undefined";
-                        if(xpress!=undefined){
-                            proteins[id].peptides[sequence]["ratio"]=xpress;
-                        }
-                    }
 
                 }else {//add peptide to existing object
                     if(sequence!=""){
@@ -929,19 +965,6 @@ function splitMzTabDataNew(data, treatmentNumber, controlNumber){
                 //if the entry was undefined -> simply add new peptide
                 //TODO: if any new changes: combine the functions that save data in "proteins" as one function
                 if(proteins[id] == undefined){
-                    proteins[id]={};
-                    proteins[id].peptides={};//peptides also saved as object to prevent duplicates
-                    //in the peptides, also ratio and probability are saved;
-                    proteins[id].name=name;//define name only if the protein was undefined until now
-
-                    if(sequence!=""){
-                        proteins[id].peptides[sequence]={};
-                        //TODO: probability or other values; now just undefined
-                        proteins[id].peptides[sequence]["probability"]="undefined";
-                        if(xpress!=undefined){
-                            proteins[id].peptides[sequence]["ratio"]=xpress;
-                        }
-                    }
 
                 }else {//add peptide to existing object
                     if(sequence!=""){

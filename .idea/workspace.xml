@@ -24,7 +24,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.694445">
+            <state vertical-scroll-proportion="-0.0">
               <caret line="283" column="61" selection-start-line="283" selection-start-column="49" selection-end-line="283" selection-end-column="61" />
               <folding>
                 <element signature="n#style#0;n#ul#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -52,7 +52,7 @@
       <file leaf-file-name="manual.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manual.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.3529413">
+            <state vertical-scroll-proportion="0.0">
               <caret line="93" column="70" selection-start-line="93" selection-start-column="70" selection-end-line="93" selection-end-column="70" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#ul#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -62,21 +62,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dataInput.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dataInput.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/dataInput.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.394737">
-              <caret line="970" column="46" selection-start-line="970" selection-start-column="44" selection-end-line="970" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.2278481">
+              <caret line="724" column="33" selection-start-line="724" selection-start-column="33" selection-end-line="724" selection-end-column="33" />
               <folding>
+                <element signature="n#!!block;n#getInput#0" expanded="false" />
                 <element signature="e#4550#4682#0" expanded="false" />
                 <element signature="e#4753#4794#0" expanded="false" />
                 <element signature="e#4803#4845#0" expanded="false" />
                 <element signature="n#!!block;n#setActiveTab#0" expanded="false" />
                 <element signature="n#!!block;n#createDefaultSettings#0" expanded="false" />
+                <element signature="n#!!block;n#setSettings#0" expanded="false" />
                 <element signature="n#!!block;n#saveSettings#0" expanded="false" />
                 <element signature="n#!!block;n#colorize#0" expanded="false" />
                 <element signature="n#!!block;n#customInput_open#0" expanded="false" />
                 <element signature="n#!!block;n#customInput_cancel#0" expanded="false" />
+                <element signature="n#!!block;n#customInput_start#0" expanded="false" />
                 <element signature="n#!!block;n#customInput_fileChanged#0" expanded="false" />
                 <element signature="e#9856#11880#0" expanded="false" />
                 <element signature="e#11889#12525#0" expanded="false" />
@@ -87,40 +90,15 @@
                 <element signature="n#!!block;n#read_customInput#0" expanded="false" />
                 <element signature="n#!!block;n#splitCustomInput#0" expanded="false" />
                 <element signature="n#!!block;n#read_mztab#0" expanded="false" />
-                <element signature="e#25379#25900#0" expanded="false" />
+                <element signature="e#25390#26121#0" expanded="false" />
+                <element signature="n#!!block;n#analyzePRT#0;n#!!block;n#splitMzTabDataNew#0" expanded="false" />
                 <element signature="n#!!block;n#analyzePSM#0;n#!!block;n#splitMzTabDataNew#0" expanded="false" />
-                <element signature="e#34221#39619#0" expanded="false" />
+                <element signature="n#!!block;n#analyzePEP#0;n#!!block;n#splitMzTabDataNew#0" expanded="false" />
+                <element signature="e#33447#33467#0" expanded="false" />
+                <element signature="e#34621#40019#0" expanded="false" />
+                <element signature="n#!!block;n#transferRatioData#0" expanded="false" />
+                <element signature="n#!!block;n#modifyProteins#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="visualization.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/scripts/visualization.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.18565401">
-              <caret line="605" column="38" selection-start-line="605" selection-start-column="38" selection-end-line="605" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="download.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/download.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.394737">
-              <caret line="24" column="79" selection-start-line="24" selection-start-column="76" selection-end-line="24" selection-end-column="79" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="onlyForHistogram.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/onlyForHistogram.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -140,8 +118,8 @@
         <option value="$PROJECT_DIR$/app.yaml" />
         <option value="$PROJECT_DIR$/manual.html" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/scripts/dataInput.js" />
         <option value="$PROJECT_DIR$/scripts/visualization.js" />
+        <option value="$PROJECT_DIR$/scripts/dataInput.js" />
       </list>
     </option>
   </component>
@@ -181,6 +159,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -229,7 +208,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -355,7 +333,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="11" />
+      <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -731,7 +709,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manual.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3529413">
+        <state vertical-scroll-proportion="0.0">
           <caret line="93" column="70" selection-start-line="93" selection-start-column="70" selection-end-line="93" selection-end-column="70" />
           <folding>
             <element signature="n#style#0;n#img#0;n#ul#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -750,7 +728,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.694445">
+        <state vertical-scroll-proportion="0.0">
           <caret line="283" column="61" selection-start-line="283" selection-start-column="49" selection-end-line="283" selection-end-column="61" />
           <folding>
             <element signature="n#style#0;n#ul#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -774,26 +752,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/download.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.394737">
+        <state vertical-scroll-proportion="0.0">
           <caret line="24" column="79" selection-start-line="24" selection-start-column="76" selection-end-line="24" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/visualization.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.4292723">
+          <caret line="605" column="38" selection-start-line="605" selection-start-column="38" selection-end-line="605" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/dataInput.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.394737">
-          <caret line="970" column="46" selection-start-line="970" selection-start-column="44" selection-end-line="970" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.2278481">
+          <caret line="724" column="33" selection-start-line="724" selection-start-column="33" selection-end-line="724" selection-end-column="33" />
           <folding>
+            <element signature="n#!!block;n#getInput#0" expanded="false" />
             <element signature="e#4550#4682#0" expanded="false" />
             <element signature="e#4753#4794#0" expanded="false" />
             <element signature="e#4803#4845#0" expanded="false" />
             <element signature="n#!!block;n#setActiveTab#0" expanded="false" />
             <element signature="n#!!block;n#createDefaultSettings#0" expanded="false" />
+            <element signature="n#!!block;n#setSettings#0" expanded="false" />
             <element signature="n#!!block;n#saveSettings#0" expanded="false" />
             <element signature="n#!!block;n#colorize#0" expanded="false" />
             <element signature="n#!!block;n#customInput_open#0" expanded="false" />
             <element signature="n#!!block;n#customInput_cancel#0" expanded="false" />
+            <element signature="n#!!block;n#customInput_start#0" expanded="false" />
             <element signature="n#!!block;n#customInput_fileChanged#0" expanded="false" />
             <element signature="e#9856#11880#0" expanded="false" />
             <element signature="e#11889#12525#0" expanded="false" />
@@ -804,18 +793,15 @@
             <element signature="n#!!block;n#read_customInput#0" expanded="false" />
             <element signature="n#!!block;n#splitCustomInput#0" expanded="false" />
             <element signature="n#!!block;n#read_mztab#0" expanded="false" />
-            <element signature="e#25379#25900#0" expanded="false" />
+            <element signature="e#25390#26121#0" expanded="false" />
+            <element signature="n#!!block;n#analyzePRT#0;n#!!block;n#splitMzTabDataNew#0" expanded="false" />
             <element signature="n#!!block;n#analyzePSM#0;n#!!block;n#splitMzTabDataNew#0" expanded="false" />
-            <element signature="e#34221#39619#0" expanded="false" />
+            <element signature="n#!!block;n#analyzePEP#0;n#!!block;n#splitMzTabDataNew#0" expanded="false" />
+            <element signature="e#33447#33467#0" expanded="false" />
+            <element signature="e#34621#40019#0" expanded="false" />
+            <element signature="n#!!block;n#transferRatioData#0" expanded="false" />
+            <element signature="n#!!block;n#modifyProteins#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/visualization.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18565401">
-          <caret line="605" column="38" selection-start-line="605" selection-start-column="38" selection-end-line="605" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>

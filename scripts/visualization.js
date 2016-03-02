@@ -332,6 +332,7 @@ var x_offset=10;
 var y_offset=45;
 var maxwidth = 800;//the max width on the screen
 
+var test;
 function visualizeData(div, id) {
 
     var svg = div.append("svg");
@@ -615,7 +616,8 @@ function visualizeData(div, id) {
             //old: selection = infoDiv.append("p").text(d.sequence +" Heavy2Light: "+d.ratio+" foldRatio: "+d.foldRatio).attr("id","peptideInfo"+d.id+"_"+d.sequence);
 
             var ratioString="";
-            if(d.ratio!=undefined){
+            test= d.ratio;
+            if(d.ratio!=undefined &! isNaN(d.ratio)){
                 ratioString = " Ratio: "+ d.ratio+" log2(Ratio): "+ d.foldRatio;
             }
             selection = infoDiv.select("#peptideInfo"+d.id).html(d.sequence +ratioString);

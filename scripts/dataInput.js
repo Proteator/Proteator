@@ -103,8 +103,10 @@ function getInput(){
                     createDefaultSettings(tab_id, files[0]);
                 }
 
-                //for mzTab: don't create a visible entry
-                if(type.toLowerCase()!="mztab"){
+
+                //older version: for mzTab: don't create a visible entry
+                //if(type.toLowerCase()!="mztab"){
+                if(true){
                     var tab=d3.select("#customInput_tabs").append("td").text(files[0].name).attr("id",tab_id);
 
                     if(tabnumber==0){
@@ -184,10 +186,16 @@ function createDefaultSettings(tab_id,file){
     fileSettings[tab_id].protein_format_long=true;
     fileSettings[tab_id]["file"]=file;
     fileSettings[tab_id]["onlyUseRatio"]=false;
+
+    //for mztab files:
+    fileSettings[tab_id]["treatment"]="";
+    fileSettings[tab_id]["control"]="";
 }
 
 //visualize the settings
 function setSettings(tab_id){
+    //also display the correct div for the file type
+
     var settings = fileSettings[tab_id];
     d3.select("#customInput_proteinLabel").property("value",settings.accession_header);
     d3.select("#customInput_peptideLabel").property("value",settings.peptide_header);
@@ -217,12 +225,34 @@ function setSettings(tab_id){
         d3.select("#checkbox_onlyUseRatio").property("checked",false);
     }
 
+
+
+    var file = fileSettings[tab_id]["file"];
+    var name = file.name;
+    var type = name.substring(name.lastIndexOf(".")+1);
+
+    if(type.toLowerCase()=="mztab"){
+        //display mztab div
+        $("#customInput_textfiles").css("display","none");
+        $("#customInput_mztab_files").css("display","block");
+    }
+    else{
+        //display other div
+        $("#customInput_textfiles").css("display","block");
+        $("#customInput_mztab_files").css("display","none");
+        //TODO: update select dropdown (#select_mztab_treatment, #select_mztab_control)
+    }
+
     //preview file
-    customInput_fileChanged(tab_id);
+    customInput_fileChanged(tab_id);//loading mztab values here
+
+
 }
 
 //called by onchange in the text fields
 function saveSettings(){
+    console.log("saving settings");
+
     var tab_id = activeTab.id;
     //labels are transformed to lower case in order to ease input
     fileSettings[tab_id].accession_header=d3.select("#customInput_proteinLabel").property("value").toLowerCase();
@@ -231,6 +261,10 @@ function saveSettings(){
     fileSettings[tab_id].tab_separation=d3.select("#customInput_separation_tab").property("checked");
     fileSettings[tab_id].protein_format_long=d3.select("#customInput_proteinformat_long").property("checked");
     fileSettings[tab_id]["onlyUseRatio"]=d3.select("#checkbox_onlyUseRatio").property("checked");
+
+    //for mztab files:
+    fileSettings[tab_id]["treatment"]=$("#select_mztab_treatment").val();
+    fileSettings[tab_id]["control"]=$("#select_mztab_control").val();
 
     colorize();//marks the corresponding table cells
 }
@@ -268,24 +302,92 @@ function customInput_fileChanged(tab_id){
     customInput.previewLines=10;
     var file=fileSettings[tab_id]["file"];
 
-    //TODO: create stream to read the file line by line and save resources
-    var reader = new FileReader();
-    reader.onload = function(e) {
-        var result = reader.result;
-        var lines = result.split("\n");
-        try{
-        customInput.lines=lines.splice(0,customInput.previewLines);//save only the lines specified previously as array
+    var name = file.name;
+    var type = name.substring(name.lastIndexOf(".")+1);
+
+    if(type.toLowerCase()=="mztab"){
+        //remove old entries
+        var selectTreatment = d3.select("#select_mztab_treatment");
+        var selectControl = d3.select("#select_mztab_control");
+        selectTreatment.selectAll("*").remove();
+        selectControl.selectAll("*").remove();
+
+        //count how many peptide_study_variable lines are here:
+        var code_peptideheader="PEH";
+        var headerline=[];
+
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var result = reader.result;
+            var lines = result.split("\n");
+            for(line in lines){
+                var line_splitted=lines[line].split("\t");
+                if(line_splitted[0]==code_peptideheader){
+                    headerline=line_splitted;
+                }
+            }
+
+            //find study variables + create options
+            var targetstring = "peptide_abundance_study_variable";
+            var counter=0;
+            if(headerline!=undefined){
+                for(i in headerline){
+                    var string = headerline[i];
+                    var index = string.indexOf(targetstring);
+                    if(index!=-1){
+                        counter++;
+                    }
+                }
+            }
+
+
+
+            //create entries
+            selectTreatment.append("option").text("");
+            selectControl.append("option").text("");
+            for(var i=1;i<=counter;i++){
+                selectTreatment.append("option").text(i).attr("value",i);
+                selectControl.append("option").text(i).attr("value",i);
+            }
+
+            //set values:
+            //for mztab files:
+            console.log("load values");
+            console.log("treatment: "+fileSettings[tab_id]["treatment"]);
+            $("#select_mztab_treatment").val(fileSettings[tab_id]["treatment"]);
+            $("#select_mztab_control").val(fileSettings[tab_id]["control"]);
+
         }
-        catch(e){
-            customInput.lines=lines;
+
+        //call reader
+        if(file!=undefined){
+            reader.readAsText(file);
         }
-        displayLines(customInput.lines);
+
+    }
+    else{
+        //TODO: create stream to read the file line by line and save resources
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var result = reader.result;
+            var lines = result.split("\n");
+            try{
+                customInput.lines=lines.splice(0,customInput.previewLines);//save only the lines specified previously as array
+            }
+            catch(e){
+                customInput.lines=lines;
+            }
+            displayLines(customInput.lines);
+        }
+
+        //call reader
+        if(file!=undefined){
+            reader.readAsText(file);
+        }
     }
 
-    //call reader
-    if(file!=undefined){
-        reader.readAsText(file);
-    }
+
 }
 
 //display results in a preview table
@@ -603,19 +705,21 @@ function splitCustomInput(data, data_access) {
 //---------------------------.mzTab-------------------------------
 function read_mztab(data_access) {
     var file = fileSettings[data_access].file;
+    var treatmentNumber = fileSettings[data_access]["treatment"];
+    var controlNumber = fileSettings[data_access]["control"];
 
     var reader = new FileReader();
 
     reader.onload = function(e) {
         var mztabData = reader.result;
-        splitMzTabDataNew(mztabData);
+        splitMzTabDataNew(mztabData, treatmentNumber, controlNumber);
     }
 
     reader.readAsText(file);
 }
 
 //updated: 28.02.15
-function splitMzTabDataNew(data){
+function splitMzTabDataNew(data, treatmentNumber, controlNumber){
 
     //TODO: is there some sort of xpress ratio in those files? should other values be retrieved? probability?
     var lines = data.split("\n");
@@ -673,7 +777,6 @@ function splitMzTabDataNew(data){
 
     analyzePSM(headerline1,peptidelines1);
     analyzePEP(headerline2,peptidelines2);
-
 
 
     //PSM has no express info
@@ -756,14 +859,27 @@ function splitMzTabDataNew(data){
         var proteinColumnTitle="accession";
         var peptideColumnTitle="sequence";
 
-        //express has to be calculated from the abundances
-        var abundanceColTitle1="peptide_abundance_study_variable[1]";
-        var abundanceColTitle2="peptide_abundance_study_variable[2]";
+
 
         var peptidePosition = -1;
         var proteinPosition = -1;
         var abundancePosition1= -1;
         var abundancePosition2= -1;
+
+        //express has to be calculated from the abundances
+        var abundanceColTitle1="NOTLISTED";
+        var abundanceColTitle2="NOTLISTED";
+
+        //TODO: set abundance positions by the file settings
+        var number_treatments = parseFloat(treatmentNumber);
+        var number_control = parseFloat(controlNumber);
+
+        if(number_treatments!=NaN){
+            abundanceColTitle1="peptide_abundance_study_variable["+number_treatments+"]";
+        }
+        if(number_control!=NaN){
+            abundanceColTitle2="peptide_abundance_study_variable["+number_control+"]";
+        }
 
         for (var j = 0; j < headerline.length; j++) {
             if (headerline[j] == peptideColumnTitle) {
@@ -859,6 +975,7 @@ function splitMzTabDataNew(data){
 
 
 //obsolete:
+/*
 function splitMzTabData(data) {
 
     //TODO: is there some sort of xpress ratio in those files? should other values be retrieved? probability?
@@ -1007,7 +1124,7 @@ function splitMzTabData(data) {
         modifyProteins();
     }
 }
-
+*/
 
 //-----------------------------etc.-----------------------------------------------
 //indefinite loading thingy

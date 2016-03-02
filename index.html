@@ -199,6 +199,7 @@
 
 <!-- window for custom input-->
 <div id="customContainer" class="customInput_container">
+
     <table class="customInput_fileTable" id="customInput_fileTable">
         <tbody id="customInput_fileTableBody">
         <tr id="customInput_tabs">
@@ -206,6 +207,7 @@
         </tbody>
     </table>
 
+    <div id="customInput_textfiles">
     <div class="customInput_settings" id="customInput_settings" onchange="saveSettings(this)">
         <div id="customInputSetting_left">
         <span>
@@ -260,7 +262,6 @@
     </div>
 
 
-
     <p>Preview:</p>
     <table class="customInput_previewTable" id="customInput_previewTable">
         <tbody id="customInput_previewTableBody" class="customInput_previewTableBody">
@@ -278,6 +279,23 @@
         </tr>
         </tbody>
     </table>
+        </div>
+
+    <div id="customInput_mztab_files"  onchange="saveSettings(this)" style='display:none;'>
+        <table>
+            <tr>
+                <td>Treatment</td>
+                <!--<td><select style="display:inline-block;top:-2px;"><option value="0">0</option><option value="1">1</option></select></td>-->
+                <td><select id="select_mztab_treatment" style="display:inline-block;top:-2px;"></select></td>
+            </tr>
+            <tr>
+                <td>Control</td>
+                <td><select id="select_mztab_control" style="display:inline-block;top:-2px;"></select></td>
+            </tr>
+        </table>
+        <!--<div>Result:<select><option value="0">0</option><option value="1">1</option></select></div>-->
+    </div>
+
     <button class="customInput_cancelButton" onclick="customInput_cancel()">Cancel</button>
     <button class="customInput_applyButton" onclick="customInput_start()">Apply</button>
 </div>

@@ -59,16 +59,14 @@ For usage of <i>Proteator</i>, we recommend the web browser <i>Google Chrome</i>
 <h2 id="uploadingData">Uploading data
 </h2>
 <ul>
-    <li><b>Download example files:</b> <a href="img/example.txt">.txt file</a> (use this file to test the input of custom files) or <a href="img/example.mzTab">.mzTab file</a> (mzTab files will be automatically processed)</li>
-    <li><em>Requirements:</em> The required input consists of a text file (.mzTab or comma- or tab-separated values). When using a .mzTab file,
-    a PSH or PEH section should be present. When using other file types, please make sure they contain a protein identifier (e.g. P12830) and
+    <li><b>Download example files:</b> <a href="img/example.txt">.txt file</a> (use this file to test the input of custom files) or <a href="img/example.mzTab">.mzTab file</a></li>
+    <li><em>Requirements:</em> The required input consists of a text file (.mzTab or comma- or tab-separated values). When using other file types, please make sure they contain a protein identifier (e.g. P12830) and
     the sequence of identified peptides (e.g. K.n[1.01]YTALVDQEEKEDVKc[17.00].S). The header for the respective column should be located in the first line
     of the text file.</li>
     <li>Under <i>Files</i> select any number of files that you want to visualize. Please note that big or many files will increase loading time.</li>
     <li>After all files have been selected, press <i>submit</i>.</li>
     <li>The following window will open up:</li>
     <img style="width:1000px" src="img/proteator_fileInput.PNG"/>
-    <li>All files that are not of the type <i>.mzTab</i> will require user input.</li>
     <li>At the upper left corner, the file names are displayed. Click on the names to change the file.</li>
     <li>The table in the center of the window provides a preview of the file.</li>
     <li>Please enter the following information:</li>
@@ -81,6 +79,7 @@ For usage of <i>Proteator</i>, we recommend the web browser <i>Google Chrome</i>
         <li>Repeat those steps for all files which are displayed in the the upper left corner of the window.</li>
         <li>Click apply.</li>
     </ul>
+    <li>For visualizing express ratios with .mztab files, at least two "peptide_abundance_study_variable" columns must be present. In the input window you can specify the respective column for treatment and control.</li>
     <li><em>Note for TPP-XPress:</em> If you have several files, one of which containing xpress ratios, the other one the peptides, check in the file with the peptides the box "only use ratios". All xpress ratios will be retrieved from this file by the sequences of the peptides specified in the other file.</li>
     <li><i>Proteator</i> will now begin downloading the necessary protein data from <i>Uniprot</i>. The progress can be followed by the appearance of the following progress bar:</li>
     <img src="img/proteator_loadingBar.jpg" style="width:500px"/>

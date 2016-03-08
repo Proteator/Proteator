@@ -720,7 +720,6 @@ function read_mztab(data_access) {
 
 //updated: 28.02.15
 function splitMzTabDataNew(data, treatmentNumber, controlNumber){
-
     //TODO: is there some sort of xpress ratio in those files? should other values be retrieved? probability?
     var lines = data.split("\n");
 
@@ -802,8 +801,9 @@ function splitMzTabDataNew(data, treatmentNumber, controlNumber){
 
         if(proteinPosition==-1){
             //alert("mztab: "+code_peptideheader+": no accession column found");
-            console.log("mztab: "+code_peptideheader+": no PSM accession column found");
+            console.log("mztab: "+code_peptideheader0+": no PRT accession column found");
         }
+
 
         //transfer data to "proteins" object
         for (var i = 0; i < infolines.length; i++) {
@@ -825,7 +825,8 @@ function splitMzTabDataNew(data, treatmentNumber, controlNumber){
                     proteins[id].name=name;//define name only if the protein was undefined until now
                 }
             }
-        }}
+        }
+    }
 
     //PSM has no express info
     function analyzePSM(headerline, peptidelines){
@@ -1209,7 +1210,6 @@ function modifyProteins(){
     console.log("Calculating ratios.");
 
     for(protein in proteins){
-
         var currentProt = proteins[protein];
 
         //count peptides
@@ -1229,12 +1229,14 @@ function modifyProteins(){
             //round to two decimal places
             peptideList[peptide].foldRatio=+(Math.round(foldRatio + "e+2")  + "e-2");
         }
+
+        //removed peptide removal to avoid confusion
         //remove protein just if no peptides were found
         if(currentProt.id==""||currentProt.id=="undefined"||protein==undefined){
-            delete proteins[protein];
+            //delete proteins[protein];
         }
         if(numberOfPeptides==0){
-            delete proteins[protein];
+            //delete proteins[protein];
         }
     }
 

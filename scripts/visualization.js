@@ -617,8 +617,12 @@ function visualizeData(div, id) {
 
             var ratioString="";
             test= d.ratio;
+
+            var ratioRounded = d.ratio;
+            ratioRounded = parseFloat(ratioRounded).toFixed(4);
+
             if(d.ratio!=undefined &! isNaN(d.ratio)){
-                ratioString = " Ratio: "+ d.ratio+" log2(Ratio): "+ d.foldRatio;
+                ratioString = " Ratio: "+ ratioRounded+" log2(Ratio): "+ d.foldRatio;
             }
             selection = infoDiv.select("#peptideInfo"+d.id).html(d.sequence +ratioString);
             //this element has the id "peptideInfo...." and will be emptied by the mouseout-function, not so the final one (onclick);
@@ -654,8 +658,12 @@ function visualizeData(div, id) {
             //TODO: find way to update old selection, prevent removal
             d3.select("#peptideInfo"+d.id).html("</br>");
             var ratioString="";
+
+            var ratioRounded = d.ratio;
+            ratioRounded = parseFloat(ratioRounded).toFixed(4);
+
             if(d.ratio!=undefined){
-                ratioString = " Ratio: "+ d.ratio+" log2(Ratio): "+ d.foldRatio;
+                ratioString = " Ratio: "+ ratioRounded+" log2(Ratio): "+ d.foldRatio;
             }
             selection = infoDiv.append("p").text(d.sequence +ratioString).attr("id","peptideInfoFinal"+d.id+"_"+d.sequence);
         }
@@ -765,7 +773,9 @@ function createGraph(dataSvg, peptideData, infoDiv){
                 var selection = document.getElementById("peptideInfoFinal" + d.id + "_" + d.sequence);//can't use d3 here as it doesn't return "null"
                 if (selection == null) {
                     //if no element with the id "peptideInfoFinal...." exists, a new element should be generated
-                    selection = infoDiv.select("#peptideInfo" + d.id).html(d.sequence + " Ratio: " + d.ratio+" log2(Ratio): "+ d.foldRatio);
+                    var ratioRounded = d.ratio;
+                    ratioRounded = parseFloat(ratioRounded).toFixed(4);
+                    selection = infoDiv.select("#peptideInfo" + d.id).html(d.sequence + " Ratio: " + ratioRounded+" log2(Ratio): "+ d.foldRatio);
                     //this element has the id "peptideInfo...." and will be destroyed by the mouseout-function, not so the final one (onclick);
                 }
             }).on("mouseout", function (d) {

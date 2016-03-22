@@ -232,42 +232,64 @@ function createBiojSequence(button){
                 }
 
                 //TODO: can currently only find a single occurence of this peptide, check also for repeats
-                var myStart = seq.indexOf(pepseq)+1;
-                var myEnd = myStart+pepseq.length-1;
+                var index = seq.indexOf(pepseq);
 
-                var annotation={};
-                annotation.name=pepseq;
+                //failsafe-> prevents infinite loop:
+                var runs = 0;
+                var maxruns = 10;
 
-                //calculate color
-                //TODO: make maxcolor global constant
-                var maxColor=3;//leads to completely red or blue
-                var colorvalue=foldRatio;//=foldRatio
-                if(colorvalue>maxColor){
-                    colorvalue=maxColor;
+                //loop to find multiple occurences
+                while(index!=-1){
+                    console.log("#looping");
+                    var myStart = index+1;
+                    var myEnd = myStart+pepseq.length-1;
+
+                    var annotation={};
+                    annotation.name=pepseq;
+
+                    //calculate color
+                    //TODO: make maxcolor global constant
+                    var maxColor=3;//leads to completely red or blue
+                    var colorvalue=foldRatio;//=foldRatio
+                    if(colorvalue>maxColor){
+                        colorvalue=maxColor;
+                    }
+                    else if(colorvalue<-maxColor){
+                        colorvalue=-maxColor;
+                    }
+                    var red=127;
+                    var green=127;
+                    var blue=127;
+
+                    var colorChange=127*(colorvalue/maxColor);
+                    red-=colorChange;
+                    green+=colorChange;
+                    blue-=Math.abs(colorChange);
+                    annotation.color=d3.rgb(red,green,blue);
+
+                    //annotation.color="#F0F020";
+                    annotation.html="Ratio: "+ratio;
+
+                    annotation.regions=[];//TODO: multiple regions possible, make use of this
+                    var singleRegion={};
+                    singleRegion.start=myStart;
+                    singleRegion.end=myEnd;
+                    annotation.regions.push(singleRegion);
+
+
+                    myAnnotations.push(annotation);
+                    var len = pepseq.length;
+                    if(len<1){
+                        len = 1;
+                    }
+                    index = seq.indexOf(pepseq,index+len);
+
+                    runs++;
+                    if(runs>maxruns){
+                        break;
+                    }
                 }
-                else if(colorvalue<-maxColor){
-                    colorvalue=-maxColor;
-                }
-                var red=127;
-                var green=127;
-                var blue=127;
-
-                var colorChange=127*(colorvalue/maxColor);
-                red-=colorChange;
-                green+=colorChange;
-                blue-=Math.abs(colorChange);
-                annotation.color=d3.rgb(red,green,blue);
-
-                //annotation.color="#F0F020";
-                annotation.html="Ratio: "+ratio;
-
-                annotation.regions=[];//TODO: multiple regions possible, make use of this
-                var singleRegion={};
-                singleRegion.start=myStart;
-                singleRegion.end=myEnd;
-                annotation.regions.push(singleRegion);
-
-                myAnnotations.push(annotation);}
+            }
         }
         data.annotations=myAnnotations;
 

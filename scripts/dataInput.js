@@ -210,6 +210,7 @@ function setSettings(tab_id){
         d3.select("#customInput_separation_komma").property("checked",true);
     }
 
+    /*//manual setting the protein format
     if(settings.protein_format_long){
         d3.select("#customInput_proteinformat_long").property("checked",true);
         d3.select("#customInput_proteinformat_short").property("checked",false);
@@ -217,7 +218,8 @@ function setSettings(tab_id){
     else{
         d3.select("#customInput_proteinformat_long").property("checked",false);
         d3.select("#customInput_proteinformat_short").property("checked",true);
-    }
+    }*/
+
     if(settings["onlyUseRatio"]){
         d3.select("#checkbox_onlyUseRatio").property("checked",true);
     }
@@ -259,7 +261,7 @@ function saveSettings(){
     fileSettings[tab_id].peptide_header=d3.select("#customInput_peptideLabel").property("value").toLowerCase();
     fileSettings[tab_id].xpress_header=d3.select("#customInput_xpressLabel").property("value").toLowerCase();
     fileSettings[tab_id].tab_separation=d3.select("#customInput_separation_tab").property("checked");
-    fileSettings[tab_id].protein_format_long=d3.select("#customInput_proteinformat_long").property("checked");
+    //fileSettings[tab_id].protein_format_long=d3.select("#customInput_proteinformat_long").property("checked");
     fileSettings[tab_id]["onlyUseRatio"]=d3.select("#checkbox_onlyUseRatio").property("checked");
 
     //for mztab files:
@@ -592,19 +594,23 @@ function splitCustomInput(data, data_access) {
 
                     var entries = line[proteinPosition].split(",");
 
-                    if (proteinAccessionLong) {//sp|P12830|someName
+                    //here: previously manual setting of the protein format
+                    //if (proteinAccessionLong) {//sp|P12830|someName
                         for (entry in entries) {
-                            var id = entries[entry].split("|")[1];
-                            ids.push(id);
-                        }
-                    }
-                    else {
-                        for (entry in entries) {
-                            var id = entries[entry];
+                            var splitted = entries[entry].split("|");
+                            var id = undefined;
+                            if(splitted.length>1){
+                                id = splitted[1];
+                                if(id==undefined){
+                                    id=entries[entry];
+                                }
+                            }
+                            else{
+                                id = entries[entry];
+                            }
                             ids.push(id);
                         }
 
-                    }
 
                     //TODO: display unaligned peptides
                     //remove everyhting but big letters and use this for all peptides

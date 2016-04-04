@@ -8,19 +8,12 @@
  * create log with undownloaded peptides
  */
 
-
-//as the individual components are prone to change during development, it is the easiest approach to create one of the divs and then measure its height in order to get the height for every div
-var firstDivId;
-function getElementHeight(elementId){
-    var selection = d3.select("#"+elementId);
-    var data=selection.node().getBoundingClientRect();
-    var top = data.top;
-    var height = data.height;
-    var bottom = data.bottom;
-}
+//save date at start and end of visualization to calculate runtime
+var time_vis_start, time_vis_end;
 
 //removes previous contents and visualizes EVERYTHING -> change soon to dynamic visualization
  function visualize(){
+     time_vis_start=Date.now();
      //create legend
      var legendholder = d3.select("#legendHolder");
      legendholder.selectAll("*").remove();
@@ -139,7 +132,8 @@ function getElementHeight(elementId){
 
              setTimeout(function(){displayProtein(startline,stopline);},0);//start new interval
          }
-         else{
+         else{//finished
+
             //hide loading bar again
              $(".loadingbar").css("display","none");
              //enable buttons for the functions that require finished visualization
@@ -147,6 +141,10 @@ function getElementHeight(elementId){
              d3.select("#csv_download").attr("class","pButton");
              d3.select("#tools_invertFoldRatios").attr("class","pButton");
              d3.select("#tools_calculateCoverage").attr("class","pButton");
+
+             time_vis_end = Date.now();
+             var runtime = time_vis_end-time_vis_start;
+             console.log("Visualization time: "+runtime+"ms");//example.mzTab: 176ms
          }
 
      }
@@ -231,7 +229,6 @@ function createBiojSequence(button){
                     seq = proteinData[id].modified;
                 }
 
-                //TODO: can currently only find a single occurence of this peptide, check also for repeats
                 var index = seq.indexOf(pepseq);
 
                 //failsafe-> prevents infinite loop:
@@ -249,7 +246,7 @@ function createBiojSequence(button){
 
                     //calculate color
                     //TODO: make maxcolor global constant
-                    var maxColor=3;//leads to completely red or blue
+                    var maxColor=8;//leads to completely red or blue
                     var colorvalue=foldRatio;//=foldRatio
                     if(colorvalue>maxColor){
                         colorvalue=maxColor;
@@ -309,6 +306,8 @@ function createBiojSequence(button){
 }
 
 function createLegend(div){
+
+    //1.: protein legend
     var entries={
         "Signal peptide":"cyan",
         "Extracellular":"#9D1309",
@@ -321,7 +320,7 @@ function createLegend(div){
     var legendSvg = div.append("svg").attr("class","legendSvg");
     legendSvg.attr({
         width:200,
-        height:400
+        height:200
     });
 
     //settings:
@@ -333,7 +332,7 @@ function createLegend(div){
     //header
     legendSvg.append("text").attr({
         y:legendSettings.top_offset+legendSettings.blocksize
-    }).text("Legend:");
+    }).text("Protein:");
 
     var counter=1;
     for(descr in entries){
@@ -343,6 +342,40 @@ function createLegend(div){
             y:legendSettings.top_offset+counter*legendSettings.y_distance
         });
         legendSvg.append("text").attr({
+            y:legendSettings.top_offset+counter*legendSettings.y_distance+legendSettings.blocksize, x:20
+        }).text(descr);
+        counter++;
+    }
+
+
+    //2.: ratio scale legend
+    var entries2={
+        '>8 ':"#00FF00",
+        '4 ':"#44BB44",
+        '0 ':"#888888",
+        '-4 ':"#BB4444",
+        '<-8 ':"#FF0000",
+        'N/A':"#000"
+    }
+
+    var ratioSvg = div.append("svg").attr("class","legendSvg");
+    ratioSvg.attr({
+        width:200,
+        height:200
+    });
+    //header
+    ratioSvg.append("text").attr({
+        y:legendSettings.top_offset+legendSettings.blocksize
+    }).text("log2(ratio):");
+
+    counter=1;
+    for(descr in entries2){
+        ratioSvg.append("rect").attr({
+            fill: entries2[descr],
+            width:legendSettings.blocksize, height:legendSettings.blocksize,
+            y:legendSettings.top_offset+counter*legendSettings.y_distance
+        });
+        ratioSvg.append("text").attr({
             y:legendSettings.top_offset+counter*legendSettings.y_distance+legendSettings.blocksize, x:20
         }).text(descr);
         counter++;
@@ -370,7 +403,7 @@ function visualizeData(div, id) {
     }
 
 
-    var defaultMax = 500;//on this size, a protein will occupy the entire width
+    var defaultMax = 10;//min size of the scale
     if (sequence.length > defaultMax) {
         defaultMax = sequence.length;
     }
@@ -379,7 +412,7 @@ function visualizeData(div, id) {
     var barheight = 20;
 
     //colors
-    var maxColor = 3;//cutoff value for colorchange
+    var maxColor = 8;//cutoff value for colorchange
     var mainBarColor = "#1515ff";
 
     //display protein
@@ -488,7 +521,19 @@ function visualizeData(div, id) {
      ]
      **/
 
-    var peptidePositions = [];
+        //for handling multiple lines of peptides
+    var peptidePositions = {};//array of positions
+    var currentLane = 1;//different lanes for the peptides
+    var occupiedLanes={};//saves lanes which are occupied for this position
+
+    /*
+    peptidePositions={
+        '1':["s","1"],//"s"=="start","1"==current lane
+        '15':["s","2"],
+        '20':["e","1"]//"e"="end" -> lane 1 free again
+    }
+     */
+    //old:
     /*peptidePositions=[]
         Sequence1:{
                 start : 5,
@@ -510,22 +555,33 @@ function visualizeData(div, id) {
     }
 
     //create mappingData
+
+    //step 1: create list of all the positions
+    var totalLanes = 0;
+    var mappingresult = {};
+    var pdata = [];
+    var lanes = {};
+
     for (peptide in proteins[id].peptides) {
-        var additionalLines=0;//if several peptides overlap
 
+        var pseq = peptide;
+        mappingresult[pseq] = {
+            "lane":[],
+            "start":[],
+        };
 
-        //find where the sequence lies (check again whether code is correct)
         var indexes = [];
-        currentPos = 0;
-        if(peptide.length>0){//don't search for empty peptides
+        var currentPos = 0;
+
+        if (pseq.length > 0) {//don't search for empty peptides
             while (true) {
                 var index1;
-                if(!IL_nondifferentiation){
-                    index1 = sequence.indexOf(peptide, currentPos);
+                if (!IL_nondifferentiation) {
+                    index1 = sequence.indexOf(pseq, currentPos);
                 }
-                else{
-                    var mod_sequence=proteinData[id].modified;
-                    var mod_peptide = proteinData[id].peptides_modified[peptide];
+                else {
+                    var mod_sequence = proteinData[id].modified;
+                    var mod_peptide = proteinData[id].peptides_modified[pseq];
                     index1 = mod_sequence.indexOf(mod_peptide, currentPos);
                 }
 
@@ -533,13 +589,80 @@ function visualizeData(div, id) {
                     break;
                 } else {
                     indexes.push(index1);
-                    currentPos = index1 + 2;//search for multiple occurences of this peptide
-                    //TODO: check whether this + 2 is actually correct
-                }
-            }
+                    currentPos = index1 + 1;//search for multiple occurences of this peptide
+                 }
+             }
         }
 
-        for(var j=0;j<indexes.length;j++){//create new entry for every position found
+        for (j in indexes) {
+            var start = indexes[j];
+            var end = start + pseq.length;
+            pdata.push({"start": start, "end": end, "seq": pseq});
+        }
+    }
+
+    pdata.sort(function (a, b) {
+        return a.start - b.start;
+    });
+
+    for (i in pdata) {
+        var lane = 1;
+
+        var maxLanes = 10;//emergency cutoff
+        var counter = 0;
+
+        while (true) {
+            counter++;
+            if (counter > maxLanes) {
+                break;
+            }
+            if (lanes[lane] == undefined) {
+                break;
+            }
+            else if (pdata[i]["start"] > lanes[lane]["end"]) {
+                break;
+            }
+            else {
+                lane++;
+            }
+        }
+        lanes[lane] = {"start": pdata[i]["start"], "end": pdata[i]["end"]};
+
+        var pseq = pdata[i]["seq"];
+        mappingresult[pseq]["lane"].push(lane);
+        mappingresult[pseq]["start"].push(pdata[i]["start"]);
+    }
+
+    //count lanes
+    for (i in lanes) {
+        totalLanes++;
+    }
+
+    //step 2: create other information + import position
+
+    for (peptide in proteins[id].peptides) {
+
+        var probability = proteins[id].peptides[peptide].probability;
+        var ratio = proteins[id].peptides[peptide].ratio;
+        var foldRatio = proteins[id].peptides[peptide].foldRatio;
+
+        var colorvalue=foldRatio;//=foldRatio
+        if(colorvalue>maxColor){
+            colorvalue=maxColor;
+        }
+        else if(colorvalue<-maxColor){
+            colorvalue=-maxColor;
+        }
+        var red1=127;
+        var green1=127;
+        var blue1=127;
+
+        var colorChange=127*(colorvalue/maxColor);
+        red1-=colorChange;
+        green1+=colorChange;
+        blue1-=Math.abs(colorChange);
+
+        for(var j=0;j<mappingresult[peptide]["start"].length;j++){//create new entry for every position found
             var temp = {};
             temp.id = id; //also save id to make peptides unique
 
@@ -550,62 +673,28 @@ function visualizeData(div, id) {
                 temp.sequence=proteinData[id].peptides_modified[peptide];
             }
 
-            temp.probability=proteins[id].peptides[peptide].probability;
-            temp.ratio=proteins[id].peptides[peptide].ratio;
-            temp.foldRatio=proteins[id].peptides[peptide].foldRatio;
+            temp.probability=probability;
+            temp.ratio=ratio;
+            temp.foldRatio=foldRatio;
 
             //get color
-            var colorvalue=temp.foldRatio;//=foldRatio
-            if(colorvalue>maxColor){
-                colorvalue=maxColor;
-            }
-            else if(colorvalue<-maxColor){
-                colorvalue=-maxColor;
-            }
-            var red1=127;
-            var green1=127;
-            var blue1=127;
-
-            var colorChange=127*(colorvalue/maxColor);
-            red1-=colorChange;
-            green1+=colorChange;
-            blue1-=Math.abs(colorChange);
-
             temp.red=red1;
             temp.green=green1;
             temp.blue=blue1;
 
 
-            var posX=x_offset + scale((indexes[j] - 1));
+            var posX=x_offset + scale((mappingresult[peptide]["start"][j] - 1));
             temp.x=posX;
+            console.log(peptide);
+            console.log("pos x: "+mappingresult[peptide]["start"][j]);
 
-            var moveToNewLine=false;
-            for(k in peptidePositions){
-                var oldPos=peptidePositions[k];
+            temp.y=y_offset+mappingresult[peptide]["lane"][j]*barheight;
 
-                if(indexes[j]>= oldPos.start&&indexes[j]<=oldPos.stop){
-                    moveToNewLine=true;
-                }else if((indexes[j]+peptide.length)>= oldPos.start&&(indexes[j]+peptide.length)<=oldPos.stop){
-                    moveToNewLine=true;
-                }
-            }
-
-
-            if(moveToNewLine){//2nd line of peptides
-                temp.y=y_offset+2*barheight;
-            }
-            else{
-                temp.y=y_offset+barheight;
-            }
             temp.width=scale(peptide.length);
             temp.height = barheight;
 
             //add to list
             mappingData.push(temp);
-
-            //save index
-            var pos={"start":indexes[j],"stop":indexes[j]+peptide.length};
-            peptidePositions.push(pos);
         }
     }
 
@@ -624,8 +713,8 @@ function visualizeData(div, id) {
         fill: function(d){return d3.rgb(d.red,d.green,d.blue)}
     }).on("mouseover",function(d){
         d3.select(this).attr("stroke","grey").attr("stroke-width",2);
-        //select all peptides with the same class; selecting the graph peptides by class is not necessary as they are unique:
-        var mappedPeptideClass="map_peptide_"+ d.id+"_"+d.sequence;
+        //select all peptides with the same class; selecting the ratio-graph peptides by class is not necessary as they are unique:
+        var mappedPeptideClass=".map_peptide_"+ d.id+"_"+d.sequence;
         d3.selectAll(mappedPeptideClass).attr("stroke","grey").attr("stroke-width",2);//first select as grey, later mark active ones as black
 
         //select entry on graph:
@@ -715,7 +804,7 @@ function visualizeData(div, id) {
     //adjust height of svg
     //TODO: only necessary if several lines of peptides exist
     svg.attr({
-        height: barheight*(3+additionalLines)+y_offset
+        height: barheight*(3+totalLanes)+y_offset
     });
     createGraph(graphSvg, mappingData, infoDiv);
 }
@@ -856,6 +945,6 @@ function createGraph(dataSvg, peptideData, infoDiv){
             },
             "y": 5,
             "class": "axisLabel"
-        }).style("text-anchor", "middle").text("foldchange (ratio - log2)");
+        }).style("text-anchor", "middle").text("log2(ratio)");
     }
 }

@@ -11,7 +11,11 @@ function function_cancelDownload(){
 
 var tempXmlStorage=[];
 function downloadData(){
+    //purge log
+    logcontent="";
+
     console.log("Download process started");
+    logcontent+="-Download started-\n";
 
 
     var gradientsize=0;
@@ -34,6 +38,7 @@ function downloadData(){
     proteins2={};
     var downloadcounter=0;
     $("#loadingtext").text("Downloading proteins: "+downloadcounter+"/"+proteinnumber);
+    logcontent+="total proteins: "+proteinnumber+"\n";
 
     var batchsize = 50;
 
@@ -74,16 +79,18 @@ function downloadData(){
             xmlhttp.send();
 
             //catches 404 and other errors
-            if (xmlhttp.status === 200 || xhttp.status === 304) {
+            if (xmlhttp.status === 200 || xmlhttp.status === 304) {
                 xmlDoc=xmlhttp.responseXML;
                 readXml(xmlDoc, id);
             }
             else{//if error occurs, this protein can't be displayed
+                logcontent+="Xml status error " + xmlhttp.status +'\n'
                 delete proteins[id];
             }
 
         } catch (e) {
             console.error(e);
+            logcontent+="Download error: " + e.message +'\n'
         }
         }
         downloadcounter++;
@@ -111,6 +118,7 @@ function downloadData(){
 
 
     function downloadProteinsAsBatch(startposition){
+
         var batchcounter=startposition;
         var last = startposition+batchsize;
         if(last>idArray.length){
@@ -122,6 +130,8 @@ function downloadData(){
 
 
         $("#loadingtext").text("Downloading proteins: "+batchcounter+"/"+proteinnumber);
+        logcontent+="...downloading proteins "+startposition+" - "+last+"\n";
+
         //update the loading bar
         var percent=((batchcounter/proteinnumber)*100);
         var percent2=percent+gradientsize+"%";
@@ -139,18 +149,24 @@ function downloadData(){
 
 
                 var uniprot_url = "http://www.uniprot.org/uniprot/" + id + ".xml";
+                console.log("downloading "+batchcounter+"/"+last);
 
                 jQuery.ajax({
                     url: uniprot_url,
                     type: 'GET',
+                    indexValue: id,
                     success: function (resp) {
-
+                        console.log("success: "+this.indexValue);
+                        logcontent+="success: "+this.indexValue+'\n';
                         tempXmlStorage.push(resp);
                         responseReceived();
                     },
                     //if error occurs, the protein can't be displayed
                     error: function (request, status, error) {
-                        console.log("Error while downloading: " + status + " " + error);
+                        console.log("Error while downloading: " + status + " " + error.name);
+                        logcontent+="failure: "+this.indexValue+'\n';
+                        logcontent+="Error while downloading: " + status + " " + error.name+'\n';
+                        logcontent+=request.responseText+'\n';
                         //delete proteins[id];//would only delete last protein
                         responseReceived();
                     }
@@ -174,6 +190,8 @@ function downloadData(){
                     proteins=proteins2;//transfer to old list; from now on, proteins and proteins 2 are equivalent
 
                     d3.select("#json_download").attr("class","pButton");//allow download of the data
+
+                    logcontent+="-download finished-";
 
                     visualize();//display
                 }
@@ -309,6 +327,7 @@ function readXml(xml) {
             }
             catch(e){
                 //from time to time, topological domains will just have "position" instead of begin and end which makes the information invaluable
+                logcontent+="Topology error: " + e.message +'\n';
             }
         }
     }
@@ -406,7 +425,7 @@ function downloadHTML(){
                 type : 'text/txt'
             }));
             var date = new Date();
-            a.download = 'proteator_'+date.getDate()+'_'+date.getMonth()+'_'+date.getFullYear()+'.html';
+            a.download = 'proteator_'+date.getDate()+'_'+(date.getMonth()+1)+'_'+date.getFullYear()+'.html';
 
             // Append anchor to body.
             document.body.appendChild(a);
@@ -455,7 +474,7 @@ function downloadCSV(){
             type : 'text/txt'
         }));
         var date = new Date();
-        a.download = 'proteator_'+date.getDate()+'_'+date.getMonth()+'_'+date.getFullYear()+'.csv';
+        a.download = 'proteator_'+date.getDate()+'_'+(date.getMonth()+1)+'_'+date.getFullYear()+'.csv';
 
         // Append anchor to body.
         document.body.appendChild(a);

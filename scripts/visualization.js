@@ -685,8 +685,6 @@ function visualizeData(div, id) {
 
             var posX=x_offset + scale((mappingresult[peptide]["start"][j] - 1));
             temp.x=posX;
-            console.log(peptide);
-            console.log("pos x: "+mappingresult[peptide]["start"][j]);
 
             temp.y=y_offset+mappingresult[peptide]["lane"][j]*barheight;
 

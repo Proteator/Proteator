@@ -275,3 +275,22 @@ function createHistogram(){
     histogram.document.write('</body></html>');
     histogram.document.close();
 }
+
+
+//download the log file of all errors, etc. as txt
+var logcontent="";
+function exportLog(){
+    //download file to user
+    var a = window.document.createElement('a');
+    a.href = window.URL.createObjectURL(new Blob([ logcontent ], {
+        type : 'text/txt'
+    }));
+    var date = new Date();
+    a.download = 'proteator_'+date.getDate()+'_'+(date.getMonth()+1)+'_'+date.getFullYear()+'.txt';
+
+    // Append anchor to body.
+    document.body.appendChild(a);
+    a.click();
+    // Remove anchor from body
+    document.body.removeChild(a);
+}

@@ -1233,7 +1233,7 @@ function modifyProteins(){
             }
 
             //round to two decimal places
-            peptideList[peptide].foldRatio=+(Math.round(foldRatio + "e+2")  + "e-2");
+            peptideList[peptide].foldRatio=+(Math.round(foldRatio + "e+3")  + "e-3");
         }
 
         //removed peptide removal to avoid confusion

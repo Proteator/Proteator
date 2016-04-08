@@ -855,7 +855,7 @@ function createGraph(dataSvg, peptideData, infoDiv){
         //todo use final variables for options
         dataSvg.style("height", 60);//size up + display
 
-        var defaultDomain = 5;
+        var defaultDomain = 1;
         //creates scale without ratio and dynamic domain
         var scale = d3.scale.linear().domain([-defaultDomain, defaultDomain]).range([0, maxwidth]);//range: pixels
 

@@ -42,8 +42,6 @@ fileSettings={
 //keeps track of the filenames  for removing the fileSettings data for the missing ones
 var filesNameList={};
 
-var noCustomInputNeeded=false;//determines whether to open up the table or directly start analyzing (if only .mzTab-Files present)
-
 //called by onchange on the input[type=file] buttons
 function getInput(){
     var allInputs = d3.select("#inputholder").selectAll("input");
@@ -153,13 +151,6 @@ function getInput(){
         }
     }
 
-    //all files are of type mzTab -> extractData
-    if(tabnumber==0){
-        noCustomInputNeeded=true;
-    }
-    else{
-        noCustomInputNeeded=false;
-    }
 }
 
 //called if one of the tabs is clicked
@@ -280,14 +271,7 @@ function colorize(){
 var customInput={};
 function customInput_open(b){
     if(b.className=="pButton") {
-        //only .mzTab files
-        if(noCustomInputNeeded){
-            customInput_start();
-        }
-        //other files present -> requires user input
-        else{
-            $("#customContainer").css("display", "block");
-        }
+          $("#customContainer").css("display", "block");
 
     }
 }
@@ -444,6 +428,7 @@ var filetest;
 //allows to follow how many files have been finished and how many still need to be finished
 var fileCounter=0;
 var fileNumber=0;
+var currentFileName="";
 //extract the data from all the files by calling the respective methods
 function extractData(){
     console.log("Input settings:");
@@ -454,6 +439,7 @@ function extractData(){
     ratioDataContainsInput = false;
 
     displayLoading(true);
+    error_hide();
 
 
     //got all necessary information -> hide window again
@@ -472,6 +458,7 @@ function extractData(){
        var file = fileSettings[data]["file"];
         var name = file.name;
         var type = name.substring(name.lastIndexOf(".")+1);
+        currentFileName=name;
 
         console.log("File name: "+name);
         if(type.toLowerCase()=="mztab"){
@@ -562,6 +549,8 @@ function splitCustomInput(data, data_access) {
     var xpressPosition = -1;
 
     for (var j = 0; j < headerline.length; j++) {
+        headerline[j] = headerline[j].replace(/\s/g,"");
+
         if (headerline[j] == peptideColumnTitle) {
             peptidePosition = j;
         } else if (headerline[j] == proteinColumnTitle) {
@@ -575,8 +564,14 @@ function splitCustomInput(data, data_access) {
     //console alert if columns weren't found
     if (peptidePosition == -1) {
         console.log("custom input: " + code_peptideheader + ": no sequence column found");
+        error_show("Error in file: "+currentFileName+' - No sequence column found for: "'+code_peptideheader+'"');
+        displayLoading(false);
+        return;
     } else if (proteinPosition == -1) {
         console.log("custom input: " + code_proteinheader + ": no accession column found");
+        error_show("Error in file: "+currentFileName+" - No accession column found for: "+'"'+code_proteinheader+'"');
+        displayLoading(false);
+        return;
     }
 
     //transfer data to "proteins" object
@@ -585,9 +580,10 @@ function splitCustomInput(data, data_access) {
             //check for empty entries
             var line = peptidelines[i];
 
+            console.log(line);
             try {
                 //prevent errors if lines are missing entries
-                if (line.length >= proteinPosition && line != undefined&&line!="") {
+                if (line != undefined&&line.length >= proteinPosition && line!="") {
 
                     //decide between different sorts of accession (long/short)
                     var ids = [];//TODO: handle multiple entrie
@@ -666,6 +662,9 @@ function splitCustomInput(data, data_access) {
             }
             catch (e) {
                 console.log("Error in data input: " + e);
+                error_show("Error in file: "+currentFileName+": "+ e.message);
+                displayLoading(false);
+                return;
             }
         }
     }
@@ -724,6 +723,7 @@ function read_mztab(data_access) {
     reader.readAsText(file);
 }
 
+var test="";
 //updated: 28.02.15
 function splitMzTabDataNew(data, treatmentNumber, controlNumber){
     //TODO: is there some sort of xpress ratio in those files? should other values be retrieved? probability?
@@ -787,9 +787,14 @@ function splitMzTabDataNew(data, treatmentNumber, controlNumber){
         }
     }
 
-    analyzePRT(headerline0,peptidelines0);//PRT: create protein list; the others: add peptides
+    var PRTfound=analyzePRT(headerline0,peptidelines0);//PRT: create protein list; the others: add peptides
+    if(!PRTfound){//only continue if PRT was found
+        return;
+    }
+
     analyzePSM(headerline1,peptidelines1);
     analyzePEP(headerline2,peptidelines2);
+
 
     //PSM is the list of all proteins
     function analyzePRT(headerline, infolines){
@@ -800,7 +805,9 @@ function splitMzTabDataNew(data, treatmentNumber, controlNumber){
         var proteinPosition = -1;
 
         for (var j = 0; j < headerline.length; j++) {
-            if (headerline[j] == proteinColumnTitle) {
+            var thisline = headerline[j].replace(/\s/g,"");//replace all whitespace chars in the header
+
+            if (thisline == proteinColumnTitle) {
                 proteinPosition = j;
             }
         }
@@ -808,6 +815,10 @@ function splitMzTabDataNew(data, treatmentNumber, controlNumber){
         if(proteinPosition==-1){
             //alert("mztab: "+code_peptideheader+": no accession column found");
             console.log("mztab: "+code_peptideheader0+": no PRT accession column found");
+
+            error_show("Error in file: "+currentFileName+" - No PRT section found!");
+            displayLoading(false);
+            return false;
         }
 
 
@@ -832,6 +843,7 @@ function splitMzTabDataNew(data, treatmentNumber, controlNumber){
                 }
             }
         }
+        return true;
     }
 
     //PSM has no express info
@@ -1211,9 +1223,13 @@ function stripPeptide(peptide){
     return strippedPeptide;
 }
 
-//calculates foldratio and adds it to the peptides; removes entries if no peptide is present
+//calculates foldratio and adds it to the peptides; removes entries if no peptide is present; calculates color for the visualization
 function modifyProteins(){
     console.log("Calculating ratios.");
+
+    //for colors: get highest foldratio
+    highest_foldRatio=0;
+
 
     for(protein in proteins){
         var currentProt = proteins[protein];
@@ -1224,12 +1240,13 @@ function modifyProteins(){
         for(peptide in peptideList){
             numberOfPeptides++;
             var express=peptideList[peptide].ratio;
-            var foldRatio="N/A";
-            try{
+            var foldRatio=NaN;
+            if(express!=undefined&&express!=NaN&&express>0) {
                 foldRatio=Math.log(express,2);
-            }
-            catch(e){
-                console.log(e);
+                var abs = Math.abs(foldRatio);
+                if(highest_foldRatio<abs){
+                    highest_foldRatio = abs;
+                }
             }
 
             //round to two decimal places
@@ -1251,5 +1268,4 @@ function modifyProteins(){
 
     //next step, new file: download proteins from uniprot
     downloadData();
-    displayLoading(false);
 }

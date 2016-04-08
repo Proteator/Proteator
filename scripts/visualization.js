@@ -8,12 +8,39 @@
  * create log with undownloaded peptides
  */
 
+
+//colors:
+var highest_foldRatio = 0;//saves the highest absolute foldratio
+var maxColor = 4;//cutoff value for colorchange; dynamically calculated; 4=default
+var color_upperBound=10;//max and lower possible values for the color
+var color_lowerBound=1;
+
+
+
+
 //save date at start and end of visualization to calculate runtime
 var time_vis_start, time_vis_end;
 
 //removes previous contents and visualizes EVERYTHING -> change soon to dynamic visualization
  function visualize(){
      time_vis_start=Date.now();
+
+     //set colors
+     if(highest_foldRatio>0){
+         highest_foldRatio=Math.ceil(highest_foldRatio*2)/2;
+         if(highest_foldRatio>color_upperBound){
+             maxColor=color_upperBound;
+         }
+         else if(highest_foldRatio<color_lowerBound){
+             maxColor=color_lowerBound;
+         }
+         else{
+             maxColor=highest_foldRatio;
+         }
+     }
+
+
+
      //create legend
      var legendholder = d3.select("#legendHolder");
      legendholder.selectAll("*").remove();
@@ -92,7 +119,7 @@ var time_vis_start, time_vis_end;
                  //create link to look it up on uniprot
                  div.append("a").text(" "+id+" ").attr("name",id).style("color","blue").on("click",function(){window.open("http://www.uniprot.org/uniprot/" + this.name)});
                  //display name beside checkbox
-                 div.append("label").text("- "+proteins[id].name);
+                 div.append("label").text("- "+proteins[id].name +" ("+proteins[id].name_short+") ");
                  div.append("br");
 
                  //if IL nondifferentiation is active, save a modified sequence in the proteinData
@@ -246,7 +273,6 @@ function createBiojSequence(button){
 
                     //calculate color
                     //TODO: make maxcolor global constant
-                    var maxColor=8;//leads to completely red or blue
                     var colorvalue=foldRatio;//=foldRatio
                     if(colorvalue>maxColor){
                         colorvalue=maxColor;
@@ -348,38 +374,45 @@ function createLegend(div){
     }
 
 
-    //2.: ratio scale legend
-    var entries2={
-        '>8 ':"#00FF00",
-        '4 ':"#44BB44",
-        '0 ':"#888888",
-        '-4 ':"#BB4444",
-        '<-8 ':"#FF0000",
-        'N/A':"#000"
-    }
+    //if a foldratio is present: create a ratio scale legend
+    if(highest_foldRatio>0){
+        var legendRatio1 = ">"+maxColor+" ";
+        var legendRatio2 = (maxColor/2)+" ";
+        var legendRatio3 = "-"+(maxColor/2)+" ";
+        var legendRatio4 = "<-"+maxColor+" ";
 
-    var ratioSvg = div.append("svg").attr("class","legendSvg");
-    ratioSvg.attr({
-        width:200,
-        height:200
-    });
-    //header
-    ratioSvg.append("text").attr({
-        y:legendSettings.top_offset+legendSettings.blocksize
-    }).text("log2(ratio):");
+        var entries2={};
+        entries2[legendRatio1]="#00FF00";
+        entries2[legendRatio2]="#44BB44";
+        entries2['0 ']="#888";
+        entries2[legendRatio3]="#BB4444";
+        entries2[legendRatio4]="#FF0000";
+        entries2['N/A']="#000";
 
-    counter=1;
-    for(descr in entries2){
-        ratioSvg.append("rect").attr({
-            fill: entries2[descr],
-            width:legendSettings.blocksize, height:legendSettings.blocksize,
-            y:legendSettings.top_offset+counter*legendSettings.y_distance
+        var ratioSvg = div.append("svg").attr("class","legendSvg");
+        ratioSvg.attr({
+            width:200,
+            height:200
         });
+        //header
         ratioSvg.append("text").attr({
-            y:legendSettings.top_offset+counter*legendSettings.y_distance+legendSettings.blocksize, x:20
-        }).text(descr);
-        counter++;
+            y:legendSettings.top_offset+legendSettings.blocksize
+        }).text("log2(ratio):");
+
+        counter=1;
+        for(descr in entries2){
+            ratioSvg.append("rect").attr({
+                fill: entries2[descr],
+                width:legendSettings.blocksize, height:legendSettings.blocksize,
+                y:legendSettings.top_offset+counter*legendSettings.y_distance
+            });
+            ratioSvg.append("text").attr({
+                y:legendSettings.top_offset+counter*legendSettings.y_distance+legendSettings.blocksize, x:20
+            }).text(descr);
+            counter++;
+        }
     }
+
 
 }
 
@@ -412,7 +445,6 @@ function visualizeData(div, id) {
     var barheight = 20;
 
     //colors
-    var maxColor = 8;//cutoff value for colorchange
     var mainBarColor = "#1515ff";
 
     //display protein
@@ -946,3 +978,18 @@ function createGraph(dataSvg, peptideData, infoDiv){
         }).style("text-anchor", "middle").text("log2(ratio)");
     }
 }
+
+
+//functions for the error messages to screen:
+var error_divid = "errormessage"
+function error_show(message){
+    var e = $("#"+error_divid);
+    e.css("display","block");
+    e.html(message);
+}
+function error_hide(){
+    var e = $("#"+error_divid);
+    e.css("display","none");
+    e.html("");
+}
+

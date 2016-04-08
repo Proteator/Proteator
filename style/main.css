@@ -400,6 +400,21 @@ fieldset{
     top:-15px;
     text-align: center;
 }
+/*error: directly below the loading bar*/
+#errormessage{
+    display:none;
+    position:fixed;
+    height:20px;
+    bottom:0;
+    left:0;
+    right:0;
+    top: 45px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:auto;
+    margin-bottom:auto;
+    text-align: center;
+}
 
 .graphics{
     padding-top:20px;

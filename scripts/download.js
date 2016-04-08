@@ -40,6 +40,7 @@ function downloadData(){
     $("#loadingtext").text("Downloading proteins: "+downloadcounter+"/"+proteinnumber);
     logcontent+="total proteins: "+proteinnumber+"\n";
 
+
     var batchsize = 50;
 
     console.log("Batchsize: "+batchsize);
@@ -156,7 +157,7 @@ function downloadData(){
                     type: 'GET',
                     indexValue: id,
                     success: function (resp) {
-                        console.log("success: "+this.indexValue);
+                        //console.log("success: "+this.indexValue);
                         logcontent+="success: "+this.indexValue+'\n';
                         tempXmlStorage.push(resp);
                         responseReceived();
@@ -234,6 +235,7 @@ function readXml(xml) {
             proteins2[mainId]={};
             proteins2[mainId]["peptides"]={};
             proteins2[mainId]["name"]=xml.getElementsByTagName("fullName")[0].childNodes[0].nodeValue;
+            proteins2[mainId]["name_short"]=xml.getElementsByTagName("gene")[0].getElementsByTagName("name")[0].childNodes[0].nodeValue;
             proteins2[mainId]["topology"]=[];
             proteins2[mainId]["sequence"]="";
 
@@ -448,7 +450,7 @@ function downloadCSV(){
         var entryNo=0;
         //content
         var content = "";
-        var firstline="entry no.,protein,description,peptide,xpress,foldRatio\n";
+        var firstline="entry no.,protein,peptide,xpress,foldRatio\n";
         content+=firstline;
         for(id in proteins){
             var line="";
@@ -457,11 +459,9 @@ function downloadCSV(){
             entryNo++;
             //protein
             line+=id+",";
-            //description
-            line+=proteins[id].name+",";
             //peptides
             for(peptide in proteins[id].peptides){
-                var line2=line+peptide+",";//seqeuence
+                var line2=line+peptide+",";//sequence
                 line2+=proteins[id].peptides[peptide].ratio+",";
                 line2+=proteins[id].peptides[peptide].foldRatio+"\n";
                 content+=line2;

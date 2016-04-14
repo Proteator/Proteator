@@ -540,17 +540,18 @@ function splitCustomInput(data, data_access) {
     }
 
     //find columns: sequence, accession
-    var proteinColumnTitle = code_proteinheader;
-    var peptideColumnTitle = code_peptideheader;
-    var xpressColumnTitle = code_xpressheader;
+    var proteinColumnTitle = code_proteinheader.toLowerCase();
+    var peptideColumnTitle = code_peptideheader.toLowerCase();
+    var xpressColumnTitle = code_xpressheader.toLowerCase();
 
     var peptidePosition = -1;
     var proteinPosition = -1;
     var xpressPosition = -1;
 
     for (var j = 0; j < headerline.length; j++) {
-        headerline[j] = headerline[j].replace(/\s/g,"");
 
+        //here: remove all newline symbols
+        headerline[j] = headerline[j].replace(/\r?\n|\r/g,"").toLowerCase();
         if (headerline[j] == peptideColumnTitle) {
             peptidePosition = j;
         } else if (headerline[j] == proteinColumnTitle) {
@@ -580,7 +581,6 @@ function splitCustomInput(data, data_access) {
             //check for empty entries
             var line = peptidelines[i];
 
-            console.log(line);
             try {
                 //prevent errors if lines are missing entries
                 if (line != undefined&&line.length >= proteinPosition && line!="") {
@@ -615,7 +615,7 @@ function splitCustomInput(data, data_access) {
                         var id = ids[idnumber];
                         //if the entry was undefined -> simply add new peptide
                         //TODO: if any new changes: combine the functions that save data in "proteins" as one function
-                        if (proteins[id] == undefined) {
+                        if (proteins[id] == undefined&&id!="") {
                             proteins[id] = {};
                             proteins[id].peptides = {};//peptides also saved as object to prevent duplicates
                             //in the peptides, also ratio and probability are saved;

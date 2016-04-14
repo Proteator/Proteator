@@ -10,6 +10,7 @@ function function_cancelDownload(){
 
 
 var tempXmlStorage=[];
+var idArray;
 function downloadData(){
     //purge log
     logcontent="";
@@ -27,12 +28,17 @@ function downloadData(){
     $(".loadingbar").css("background","-webkit-linear-gradient(left, #2672EC 0%, white "+gradientsize+"%)");
 
     //count proteins and create array of the ids in order to allow for setTimout loading
-    var idArray=[];
+    idArray=[];
     var proteinnumber=0;
     for(id in proteins){
-        proteinnumber++;
-        idArray.push(id);
-    }
+        if(id==""){
+            delete proteins[id];
+        }
+        else{
+            proteinnumber++;
+            idArray.push(id);
+            }
+        }
 
     //TODO: adjust proteinnumber if ids are removed from the list as they are double
     proteins2={};
@@ -170,6 +176,9 @@ function downloadData(){
                         logcontent+=request.responseText+'\n';
                         //delete proteins[id];//would only delete last protein
                         responseReceived();
+                    },
+                    complete:function(){
+                        console.log("complete");
                     }
                 });
 
@@ -178,7 +187,9 @@ function downloadData(){
 
         //collects all received responses only continues after all proteins arrived
         function responseReceived(){
+            console.log("#response received");
             proteinsDownloaded++;
+            console.log(proteinsDownloaded);
             if(proteinsDownloaded+startposition>=last){
                 for(container in tempXmlStorage){
                     readXml(tempXmlStorage[container]);
@@ -235,7 +246,13 @@ function readXml(xml) {
             proteins2[mainId]={};
             proteins2[mainId]["peptides"]={};
             proteins2[mainId]["name"]=xml.getElementsByTagName("fullName")[0].childNodes[0].nodeValue;
-            proteins2[mainId]["name_short"]=xml.getElementsByTagName("gene")[0].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+            try{
+                proteins2[mainId]["name_short"]=xml.getElementsByTagName("gene")[0].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+            }
+            catch(e){
+                console.log(mainId +": short name not defined");
+                proteins2[mainId]["name_short"]="N/A";
+            }
             proteins2[mainId]["topology"]=[];
             proteins2[mainId]["sequence"]="";
 

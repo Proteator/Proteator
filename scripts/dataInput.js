@@ -632,7 +632,7 @@ function splitCustomInput(data, data_access) {
                                 }
                             }
                         } else {//add peptide to existing object
-                            if (sequence != "") {
+                            if (sequence != ""&&proteins[id]!=undefined) {
                                 //only add if peptide not listed yet
                                 if (proteins[id].peptides[sequence] == undefined) {
                                     proteins[id].peptides[sequence] = {};

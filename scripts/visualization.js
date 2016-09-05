@@ -15,7 +15,17 @@ var maxColor = 4;//cutoff value for colorchange; dynamically calculated; 4=defau
 var color_upperBound=10;//max and lower possible values for the color
 var color_lowerBound=1;
 
-
+//color library for getting the rgbs of the colors
+var colorlib = {
+    "red":[255,0,0],
+    "yellow":[255,255,0],
+    "green":[0,255,0],
+    "cyan":[0,255,255],
+    "blue":[0,0,255],
+    "purple":[255,0,255]
+}
+var color_foldchange_negativ = "red";
+var color_foldchange_positive = "green";
 
 
 //save date at start and end of visualization to calculate runtime
@@ -284,10 +294,34 @@ function createBiojSequence(button){
                     var green=127;
                     var blue=127;
 
-                    var colorChange=127*(colorvalue/maxColor);
+
+                    /*var colorChange=127*(colorvalue/maxColor);
                     red-=colorChange;
                     green+=colorChange;
-                    blue-=Math.abs(colorChange);
+                    blue-=Math.abs(colorChange);*/
+
+                    //new color calculation:
+                    var color_ratio = colorvalue/maxColor; //-1 to +1
+                    var relcolor="red";//default
+                    if(color_ratio<0){//negative foldchange
+                        relcolor = color_foldchange_negativ;
+                    }
+                    else if(color_ratio>0){//positive foldchange
+                        relcolor = color_foldchange_positive;
+                    }
+                    color_ratio=Math.abs(color_ratio);
+
+                    var red_target = colorlib[relcolor][0]
+                    var green_target = colorlib[relcolor][1]
+                    var blue_target = colorlib[relcolor][2]
+
+                    red = 127 + color_ratio*(red_target-127);
+                    green = 127 + color_ratio*(green_target-127);
+                    blue = 127 + color_ratio*(blue_target-127);
+                    //
+
+
+
                     annotation.color=d3.rgb(red,green,blue);
 
                     //annotation.color="#F0F020";
@@ -330,6 +364,16 @@ function createBiojSequence(button){
         button.value="+";
     }
 }
+
+//converting rgb numbers to hex
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
 
 function createLegend(div){
 
@@ -382,11 +426,33 @@ function createLegend(div){
         var legendRatio4 = "<-"+maxColor+" ";
 
         var entries2={};
+        //old color:
+        /*
         entries2[legendRatio1]="#00FF00";
         entries2[legendRatio2]="#44BB44";
         entries2['0 ']="#888";
         entries2[legendRatio3]="#BB4444";
         entries2[legendRatio4]="#FF0000";
+        entries2['N/A']="#000";
+        */
+        //new:
+        entrie2_color_pos = colorlib[color_foldchange_positive];
+        entrie2_color_neg = colorlib[color_foldchange_negativ];
+
+        //calc halfway color:
+        var pos_r = Math.ceil((entrie2_color_pos[0]-127)/2)+127;
+        var pos_g = Math.ceil((entrie2_color_pos[1]-127)/2)+127;
+        var pos_b = Math.ceil((entrie2_color_pos[2]-127)/2)+127;
+        var neg_r = Math.ceil((entrie2_color_neg[0]-127)/2)+127;
+        var neg_g = Math.ceil((entrie2_color_neg[1]-127)/2)+127;
+        var neg_b = Math.ceil((entrie2_color_neg[2]-127)/2)+127;
+
+
+        entries2[legendRatio1]=rgbToHex(entrie2_color_pos[0],entrie2_color_pos[1],entrie2_color_pos[2]);
+        entries2[legendRatio2]=rgbToHex(pos_r,pos_g,pos_b);
+        entries2['0 ']="#888";
+        entries2[legendRatio3]=rgbToHex(neg_r,neg_g,neg_b);
+        entries2[legendRatio4]=rgbToHex(entrie2_color_neg[0],entrie2_color_neg[1],entrie2_color_neg[2]);
         entries2['N/A']="#000";
 
         var ratioSvg = div.append("svg").attr("class","legendSvg");
@@ -627,7 +693,7 @@ function visualizeData(div, id) {
         }
 
         for (j in indexes) {
-            var start = indexes[j];
+            var start = indexes[j]+1;
             var end = start + pseq.length;
             pdata.push({"start": start, "end": end, "seq": pseq});
         }
@@ -689,10 +755,35 @@ function visualizeData(div, id) {
         var green1=127;
         var blue1=127;
 
+        //old color calc:
+        /*
         var colorChange=127*(colorvalue/maxColor);
         red1-=colorChange;
         green1+=colorChange;
         blue1-=Math.abs(colorChange);
+        */
+
+        //new color calculation:
+
+            var color_ratio = colorvalue/maxColor; //-1 to +1
+            var relcolor="red";//default
+            if(color_ratio<0){//negative foldchange
+                relcolor = color_foldchange_negativ;
+            }
+            else if(color_ratio>0){//positive foldchange
+                relcolor = color_foldchange_positive;
+            }
+            color_ratio=Math.abs(color_ratio);
+
+            var red_target = colorlib[relcolor][0]
+            var green_target = colorlib[relcolor][1]
+            var blue_target = colorlib[relcolor][2]
+
+            red1 = 127 + color_ratio*(red_target-127);
+            green1 = 127 + color_ratio*(green_target-127);
+            blue1 = 127 + color_ratio*(blue_target-127);
+        //
+
 
         for(var j=0;j<mappingresult[peptide]["start"].length;j++){//create new entry for every position found
             var temp = {};

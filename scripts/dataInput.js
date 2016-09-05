@@ -270,9 +270,9 @@ function colorize(){
 //custom input - functions for the buttons
 var customInput={};
 function customInput_open(b){
+    settings.close();
     if(b.className=="pButton") {
           $("#customContainer").css("display", "block");
-
     }
 }
 function customInput_cancel(){
@@ -746,7 +746,7 @@ function splitMzTabDataNew(data, treatmentNumber, controlNumber){
     var code_peptide2="PEP";
 
 
-    //ACHTUNG: PSH und PEH können gleichzeitig in einer Datei vorkommen
+    //ACHTUNG: PSH und PEH kï¿½nnen gleichzeitig in einer Datei vorkommen
     var headerdefined=false;//lets you switch between PSH/PEH
 
     //find relevant lines + columns
@@ -1031,7 +1031,7 @@ function splitMzTabData(data) {
     var code_peptide2="PEP";
 
 
-    //ACHTUNG: PSH und PEH können gleichzeitig in einer Datei vorkommen
+    //ACHTUNG: PSH und PEH kï¿½nnen gleichzeitig in einer Datei vorkommen
     var headerdefined=false;//lets you switch between PSH/PEH
 
     //find relevant lines + columns

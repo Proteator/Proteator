@@ -11,6 +11,7 @@ function function_cancelDownload(){
 
 var tempXmlStorage=[];
 var idArray;
+var batchsize = 50;
 function downloadData(){
     //purge log
     logcontent="";
@@ -47,7 +48,7 @@ function downloadData(){
     logcontent+="total proteins: "+proteinnumber+"\n";
 
 
-    var batchsize = 50;
+
 
     console.log("Batchsize: "+batchsize);
     setTimeout(downloadProteinsAsBatch(0),0);

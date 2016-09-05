@@ -26,18 +26,11 @@
 
 
     <!--TODO-list:
-
-        todo: upload
-        todo: prepare presentation
-
-        monday: add manual + add probability filter + options to change it
+        todo: add probability filter + options to change it
         todo: display peptides that couldn't be aligned
-        todo: add additional indefinite loading bars where needed
-        todo: improve csv generation: save additional information in the proteins object
         todo: create cutoff value for probability + options setting
         todo: add buttons buttons generated from domains object for the filters
-        todo: tutorial to running scripts in background
-        todo: do the proteins displayed need to be in interact.prot or is it ok if they are in interact.pep only?
+        todo: running scripts in background?
         -->
 </head>
 <body>
@@ -113,6 +106,9 @@
         <li class="topitem">
             <p class="title">Tools</p>
             <ul class="sublist" style="width:150px;">
+                <li class="subitem">
+                    <p class="pButton" onclick="settings.open()" id="tools_settings">Settings</p>
+                </li>
                 <li class="subitem">
                     <p class="pButton_inactive" onclick="invertFoldRatios()" id="tools_invertFoldRatios">Invert foldchange</p>
                 </li>
@@ -305,12 +301,67 @@
     <button class="customInput_applyButton" onclick="customInput_start()">Apply</button>
 </div>
 
+<!-- settings window; like custom input window-->
+<div id="settings.window" class ="settings_window">
+    <p><b>Settings</b></p>
+    <table >
+        <tr>
+            <td>Max. Color</td>
+            <td><input type="number" name="color_cutoff" min="1" max="10" value="10" step="1" id="settings_color_cutoff"> (1-10)</td>
+            <td>Sets the cutoff from which fold change on peptides will be displayed completely red or green (if the highest available fold change is lower than this number, this value will be used instead).</td>
+        </tr>
+        <tr>
+            <td>Fold change negative</td>
+            <td><form id="settings_foldchange_neg">
+                <input type="radio" name="foldchange_neg" id="settings_foldchange_neg_red" value="red" checked>Red<br>
+                <input type="radio" name="foldchange_neg" id="settings_foldchange_neg_yellow" value="yellow">Yellow<br>
+                <input type="radio" name="foldchange_neg" id="settings_foldchange_neg_green" value="green">Green<br>
+                <input type="radio" name="foldchange_neg" id="settings_foldchange_neg_cyan" value="cyan">Cyan<br>
+                <input type="radio" name="foldchange_neg" id="settings_foldchange_neg_blue" value="blue">Blue<br>
+                <input type="radio" name="foldchange_neg" id="settings_foldchange_neg_purple" value="purple">Purple<br>
+            </form></td>
+            <td>In what colors should peptides be displayed?</td>
+        </tr>
+        <tr>
+            <td>Fold change positive</td>
+            <td><form id="settings_foldchange_pos">
+                <input type="radio" name="foldchange_pos" id="settings_foldchange_pos_red" value="red" >Red<br>
+                <input type="radio" name="foldchange_pos" id="settings_foldchange_pos_yellow" value="yellow">Yellow<br>
+                <input type="radio" name="foldchange_pos" id="settings_foldchange_pos_green" value="green" checked>Green<br>
+                <input type="radio" name="foldchange_pos" id="settings_foldchange_pos_cyan" value="cyan">Cyan<br>
+                <input type="radio" name="foldchange_pos" id="settings_foldchange_pos_blue" value="blue">Blue<br>
+                <input type="radio" name="foldchange_pos" id="settings_foldchange_pos_purple" value="purple">Purple<br>
+            </form></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Batch size</td>
+            <td><input type="number" name="settings_batchsize" min="10" max="100" value="50" step="10" id="settings_batchsize"> (10-100)</td>
+            <td>How many proteins should be downloaded at a time? Higher values may increase download speed if the internet connection is fast.</td>
+        </tr>
+    </table>
+    <p><b>Note:</b> saving settings between sessions requires cookies to be enabled.</p>
+    <div class="settings_buttons_right">
+        <button id="settings.ok" onclick="settings.apply()">OK</button>
+        <button id="settings.cancel" onclick="settings.close()">Cancel</button>
+    </div>
+    <div class="settings_buttons_left">
+        <button id="settings.default" onclick = "settings.reset()">Reset to default</button>
+    </div>
+    <div class="settings_buttons_topright">
+        <button id="settings.cancel2" onclick="settings.close()">X</button>
+    </div>
+</div>
+
 <!-- if you download the html file, the protein data is saved here-->
 <div id="dataContainer" class="dataContainer"></div>
 
 <!-- bind listeners -->
 <script>
 $("#IL_nondif").change(function(){IL_nondif_clicked();});
+
+    //load cookie settings
+    settings.load();
 </script>
 
 </body>

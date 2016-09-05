@@ -294,3 +294,171 @@ function exportLog(){
     // Remove anchor from body
     document.body.removeChild(a);
 }
+
+
+//functions for the settings window
+var settings = {
+    open: function(){
+        customInput_cancel();//close custom input window
+        //settings.load();//load current values [don't use: would always require cookies)
+        //apply current settings
+        $("#settings_color_cutoff").val(color_upperBound);
+        $("#settings_batchsize").val(batchsize);
+        var buttonid_pos = "settings_foldchange_pos_"+color_foldchange_positive;
+        var buttonid_neg = "settings_foldchange_neg_"+color_foldchange_negativ;
+        $("#"+buttonid_pos).prop("checked",true);
+        $("#"+buttonid_neg).prop("checked",true);
+
+        $(".settings_window").css("display", "table");
+    },
+    close: function(){
+        $(".settings_window").css("display", "none");
+    },
+    apply: function(){
+        console.log("applied new settings")
+        //get all values, apply them and save them in cookies
+        //1.: get
+        var settings_maxcolor=parseInt($("#settings_color_cutoff").val());
+        var settings_foldchange_neg = $('input[name=foldchange_neg]:checked').val();
+        var settings_foldchange_pos = $('input[name=foldchange_pos]:checked').val();
+        var settings_batchsize = parseInt($("#settings_batchsize").val());
+
+        console.log("maxcolor: "+settings_maxcolor);
+        console.log("foldchange: "+settings_foldchange_neg+"-"+settings_foldchange_pos);
+        console.log("batchsize: "+settings_batchsize);
+
+        //2.: apply
+        color_upperBound = settings_maxcolor;
+        color_foldchange_negativ = settings_foldchange_neg;
+        color_foldchange_positive = settings_foldchange_pos;
+        batchsize=settings_batchsize;
+
+        //3.: save as cookie
+        console.log("saving cookies...");
+        var cookie_string = "";
+        expires_string = "; expires=Thu, 18 Dec 2099 12:00:00 UTC";
+
+        document.cookie = "maxcolor="+settings_maxcolor+expires_string;
+        document.cookie = "foldchange_neg="+settings_foldchange_neg+expires_string;
+        document.cookie = "foldchange_pos="+settings_foldchange_pos+expires_string;
+        document.cookie = "batchsize="+settings_batchsize+expires_string;
+
+        //4.: close
+        console.log("finished...")
+        settings.close();
+        
+
+    },
+    reset:function(){
+        console.log("resetting settings")
+        //reset all values to default, apply and save in cookies
+        //1.: get
+        var settings_maxcolor=settings.defaultValues.maxColor;
+        var settings_foldchange_neg = settings.defaultValues.foldchange_neg;
+        var settings_foldchange_pos = settings.defaultValues.foldchange_pos;
+        var settings_batchsize = settings.defaultValues.batchsize;
+
+        console.log("maxcolor: "+settings_maxcolor);
+        console.log("foldchange: "+settings_foldchange_neg+"-"+settings_foldchange_pos);
+        console.log("batchsize: "+settings_batchsize);
+
+        //2.: apply
+        color_upperBound = settings_maxcolor;
+        color_foldchange_negativ = settings_foldchange_neg;
+        color_foldchange_positive = settings_foldchange_pos;
+        batchsize=settings_batchsize;
+
+        //3.: set values
+        $("#settings_color_cutoff").val(settings_maxcolor);
+        $("#settings_batchsize").val(settings_batchsize);
+        var buttonid_pos = "settings_foldchange_pos_"+settings_foldchange_pos;
+        var buttonid_neg = "settings_foldchange_neg_"+settings_foldchange_neg;
+        $("#"+buttonid_pos).prop("checked",true);
+        $("#"+buttonid_neg).prop("checked",true);
+
+        //4.: save as cookie
+        console.log("saving as cookies");
+        var cookie_string = "";
+        expires_string = "; expires=Thu, 18 Dec 2099 12:00:00 UTC";
+
+        document.cookie = "maxcolor="+settings_maxcolor+expires_string;
+        document.cookie = "foldchange_neg="+settings_foldchange_neg+expires_string;
+        document.cookie = "foldchange_pos="+settings_foldchange_pos+expires_string;
+        document.cookie = "batchsize="+settings_batchsize+expires_string;
+
+    },
+    load:function(){
+        console.log("loading cookies");
+        //1. load settings from cookies
+        var cookies = document.cookie;
+        console.log("cookies");
+        var cookie_array = cookies.split(";");
+        var cookie_object = {};
+        for(i in cookie_array){
+            cookie = cookie_array[i];
+            cookie = cookie.replace(/\s/g,'');//replace all whitespace
+            cookie_split = cookie.split("=");
+            if(cookie_split.length==2){
+                key = cookie_split[0];
+                val = cookie_split[1];
+                cookie_object[key]=val
+            }
+        }
+        console.log(cookie_object);
+
+        //2. apply settings
+        var temp_maxColor, temp_foldchange_pos, temp_foldchange_neg, temp_batchsize;
+
+        //max color
+        if(cookie_object["maxcolor"]==undefined){
+            temp_maxColor = settings.defaultValues.maxColor;
+        }else{
+            temp_maxColor = parseInt(cookie_object["maxcolor"]);
+        }
+        color_upperBound=temp_maxColor;
+
+        //foldchange color pos
+        if(cookie_object["foldchange_pos"]==undefined){
+            temp_foldchange_pos = settings.defaultValues.foldchange_pos;
+        }else{
+            temp_foldchange_pos = cookie_object["foldchange_pos"];
+        }
+        color_foldchange_positive = temp_foldchange_pos;
+
+        //foldchange color neg
+        if(cookie_object["foldchange_neg"]==undefined){
+            temp_foldchange_neg = settings.defaultValues.foldchange_neg;
+        }else{
+            temp_foldchange_neg = cookie_object["foldchange_neg"];
+        }
+        color_foldchange_negativ = temp_foldchange_neg;
+
+        //batchsize
+        if(cookie_object["batchsize"]==undefined){
+            temp_batchsize = settings.defaultValues.batchsize;
+        }else{
+            temp_batchsize = parseInt(cookie_object["batchsize"]);
+        }
+        batchsize = temp_batchsize;
+
+        console.log("maxcolor: "+temp_maxColor);
+        console.log("foldchange: "+temp_foldchange_neg+"-"+temp_foldchange_pos);
+        console.log("batchsize: "+temp_batchsize);
+
+        //3. set values of the input fields
+        console.log("updating input fields");
+        $("#settings_color_cutoff").val(temp_maxColor);
+        $("#settings_batchsize").val(temp_batchsize);
+        var buttonid_pos = "settings_foldchange_pos_"+temp_foldchange_pos;
+        var buttonid_neg = "settings_foldchange_neg_"+temp_foldchange_neg;
+        $("#"+buttonid_pos).prop("checked",true);
+        $("#"+buttonid_neg).prop("checked",true);
+        console.log("finished loading settings")
+    },
+    defaultValues:{
+        maxColor:10,
+        foldchange_neg:"red",
+        foldchange_pos:"green",
+        batchsize:50
+    }
+}

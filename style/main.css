@@ -542,6 +542,59 @@ svg{
 .customInput_container .customInput_fileTable td{
     padding:5px 10px 5px 10px;
 }
+
+/*settings window:*/
+/* for the custom input */
+.settings_window{
+    display:none;
+    background:white;
+    border: thin solid black;
+    padding-left:10px;
+    padding-right:10px;
+    position: fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    top:0;
+    width:80%;
+    height:80%;
+    margin:auto;
+}
+.settings_window table{
+    display:table;
+    width:100%;
+    border-collapse:collapse;
+    border:none;
+    table-layout:fixed;
+}
+.settings_window td{
+    padding-bottom: 10px;
+    border-left:thin solid black;
+    border-right:thin solid black;
+}
+/*here: remove vertical lines on the outside*/
+.settings_window  td:first-child {
+    border-left: none;
+}
+.settings_window  td:last-child {
+    border-right: none;
+}
+.settings_window .settings_buttons_right{
+    position:absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.settings_window .settings_buttons_left{
+    position:absolute;
+    bottom: 10px;
+    left: 10px;
+}
+.settings_window .settings_buttons_topright{
+    position:absolute;
+    top: 10px;
+    right: 10px;
+}
+
 /*for current selection:*/
 .td_active{
     border:none;
